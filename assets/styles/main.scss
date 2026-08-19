@@ -1,0 +1,109 @@
+@use "./helpers/functions";
+@use "./helpers/breakpoints" as bp;
+@use "./base/afonts";
+
+:root {
+    --scroll-width: 0px;
+
+    --base-fz: 16;
+
+    --f-min: 12;
+    --f-min-px: 12px;
+    --f-max: 16;
+
+    --vw-min: 1024;
+    --vw-min-px: 1024px;
+    --vw-max: 1920;
+
+    --font: #{afonts.$font-name}, "Onest Fallback", sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    --icon-size-xs: #{functions.rem(12)};
+    --icon-size-sm: #{functions.rem(16)};
+    --icon-size-md: #{functions.rem(20)};
+    --icon-size-lg: #{functions.rem(24)};
+    --icon-size-xl: #{functions.rem(32)};
+    --icon-size-2xl: #{functions.rem(48)};
+    --icon-size: var(--icon-size-md);
+
+    --bottom-nav-height: 0px;
+    --app-header-height: #{functions.rem(80)};
+    --app-header-gap: #{functions.rem(24)};
+
+    @include bp.down("laptop") {
+        --base-fz: 16;
+
+        --f-min: 12;
+        --f-min-px: 12px;
+        --f-max: 16;
+
+        --vw-min: 768;
+        --vw-min-px: 768px;
+        --vw-max: 1280;
+
+        --app-header-height: #{functions.rem(72)};
+        --app-header-gap: #{functions.rem(20)};
+    }
+
+    @include bp.down("mobile") {
+        --base-fz: 14;
+
+        --f-min: 14;
+        --f-min-px: 14px;
+        --f-max: 14;
+
+        --vw-min: 360;
+        --vw-min-px: 360px;
+        --vw-max: 768;
+
+        --btn-width: 100%;
+        --bottom-nav-height: calc(#{functions.rem(72)} + env(safe-area-inset-bottom));
+        --app-header-height: #{functions.rem(64)};
+        --app-header-gap: #{functions.rem(16)};
+    }
+
+    @include bp.short {
+        --base-fz: 14;
+
+        --f-min: 14;
+        --f-min-px: 14px;
+        --f-max: 14;
+
+        --vw-min: 360;
+        --vw-min-px: 360px;
+        --vw-max: 768;
+    }
+}
+
+:root[data-tier="mobile"] {
+    --bottom-nav-height: calc(#{functions.rem(72)} + env(safe-area-inset-bottom));
+
+    .app-header__cta,
+    .app-header__burger,
+    .app-header__menu {
+        display: none;
+    }
+
+    .app-bottom-nav {
+        display: flex;
+    }
+}
+
+:root[data-tier="tablet"],
+:root[data-tier="laptop"] {
+    .app-header__lang,
+    .app-header__menu,
+    .app-bottom-nav {
+        display: none;
+    }
+}
+
+:root[data-tier="notebook"],
+:root[data-tier="desktop"] {
+    .app-header__burger,
+    .app-bottom-nav {
+        display: none;
+    }
+}

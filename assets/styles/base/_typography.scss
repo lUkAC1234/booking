@@ -1,0 +1,278 @@
+@use "../helpers/functions";
+@use "../helpers/breakpoints" as bp;
+
+:root {
+    --base-padding: #{functions.rem(16)};
+    --base-gap: #{functions.rem(16)};
+    --small-margin: #{functions.rem(24)};
+    --large-margin: #{functions.rem(40)};
+    --inner-radius: #{functions.rem(16)};
+    --outer-radius: #{functions.rem(32)};
+    --pill-radius: #{functions.rem(999)};
+    --container: min(100%, #{functions.rem(1600)});
+    --transition: 240ms var(--ease-decel);
+
+    --section-py: #{functions.rem(120)};
+    --interactive-height: #{functions.rem(56)};
+
+    --fz-hero: clamp(#{functions.rem(44)}, 7vw, #{functions.rem(96)});
+    --fz-page-title: clamp(#{functions.rem(32)}, 4.6vw, #{functions.rem(64)});
+    --fz-section-title: clamp(#{functions.rem(26)}, 3.4vw, #{functions.rem(44)});
+    --fz-subsection-title: clamp(#{functions.rem(20)}, 1.8vw, #{functions.rem(28)});
+    --fz-lead: clamp(#{functions.rem(18)}, 1.4vw, #{functions.rem(20)});
+    --fz-body: #{functions.rem(16)};
+    --fz-body-sm: #{functions.rem(14)};
+    --fz-caption: #{functions.rem(12)};
+
+    --lh-hero: 0.92;
+    --lh-tight: 1;
+    --lh-snug: 1.06;
+    --lh-base: 1.4;
+    --lh-relaxed: 1.6;
+
+    --ls-hero: -0.03em;
+    --ls-display: -0.03em;
+    --ls-heading: -0.02em;
+    --ls-body: 0;
+    --ls-caps: 0.1em;
+}
+
+@include bp.down("laptop") {
+    :root {
+        --section-py: #{functions.rem(96)};
+        --small-margin: #{functions.rem(20)};
+        --large-margin: #{functions.rem(32)};
+    }
+}
+
+@include bp.down("mobile") {
+    :root {
+        --section-py: #{functions.rem(72)};
+        --small-margin: #{functions.rem(16)};
+        --large-margin: #{functions.rem(24)};
+        --outer-radius: #{functions.rem(24)};
+        --lh-hero: 1;
+    }
+}
+
+@include bp.reduced-motion {
+    :root {
+        --transition: 0ms linear;
+    }
+}
+
+html {
+    font-size: calc(
+        (100vw - var(--vw-min-px)) / (var(--vw-max) - var(--vw-min)) * (var(--f-max) - var(--f-min)) + var(--f-min-px)
+    ) !important;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font);
+    line-height: var(--lh-base);
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    -webkit-text-size-adjust: 100%;
+    font-size: functions.rem(16);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: var(--lh-snug);
+    letter-spacing: var(--ls-heading);
+    color: var(--text-color);
+    text-wrap: balance;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: var(--font-weight-bold);
+}
+
+h4,
+h5,
+h6 {
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--ls-body);
+}
+
+h1 {
+    font-size: functions.rem(64);
+}
+
+h2 {
+    font-size: functions.rem(44);
+}
+
+h3 {
+    font-size: functions.rem(28);
+}
+
+h4 {
+    font-size: functions.rem(22);
+}
+
+h5 {
+    font-size: functions.rem(20);
+}
+
+h6 {
+    font-size: functions.rem(18);
+}
+
+button,
+a,
+strong {
+    color: var(--text-color);
+}
+
+strong {
+    font-weight: var(--font-weight-medium);
+}
+
+p,
+div,
+a,
+li,
+dd,
+dt,
+blockquote,
+span,
+time,
+em,
+i,
+mark,
+del,
+button,
+svg {
+    font-size: functions.rem(16);
+    font-weight: var(--font-weight-regular);
+}
+
+p,
+li,
+blockquote,
+dd {
+    line-height: var(--lh-relaxed);
+}
+
+small {
+    font-size: functions.rem(14);
+}
+
+code {
+    font-family: "Courier New", monospace;
+    font-size: functions.rem(14);
+    font-weight: var(--font-weight-regular);
+}
+
+strong,
+b,
+label,
+a {
+    font-size: inherit;
+}
+
+@include bp.down("laptop") {
+    h1 {
+        font-size: functions.rem(48);
+    }
+
+    h2 {
+        font-size: functions.rem(36);
+    }
+
+    h3 {
+        font-size: functions.rem(24);
+    }
+}
+
+@include bp.down("tablet") {
+    h1 {
+        font-size: functions.rem(40);
+    }
+
+    h2 {
+        font-size: functions.rem(30);
+    }
+
+    h3 {
+        font-size: functions.rem(22);
+    }
+
+    h4 {
+        font-size: functions.rem(20);
+    }
+
+    h5 {
+        font-size: functions.rem(18);
+    }
+}
+
+@include bp.down("mobile") {
+    h1 {
+        font-size: functions.rem(32);
+    }
+
+    h2 {
+        font-size: functions.rem(26);
+    }
+
+    h3 {
+        font-size: functions.rem(20);
+    }
+
+    h4 {
+        font-size: functions.rem(18);
+    }
+
+    h5 {
+        font-size: functions.rem(18);
+    }
+
+    h6 {
+        font-size: functions.rem(16);
+    }
+
+    small {
+        font-size: functions.rem(14);
+    }
+
+    code {
+        font-size: functions.rem(14);
+    }
+}
+
+@include bp.reduced-motion {
+    * {
+        transition: none !important;
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+h1 *,
+h2 *,
+h3 *,
+h4 *,
+h5 *,
+h6 * {
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    color: inherit;
+}

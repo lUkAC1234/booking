@@ -1,0 +1,25 @@
+@use "./variables";
+
+@function rem($size) {
+    @return #{calc($size / variables.$base-fz) + rem};
+}
+
+@function em($size, $em: variables.$base-fz) {
+    @return #{calc($size / $em) + em};
+}
+
+@function vw($size, $vw-cur: 1920) {
+    @return #{calc($size / $vw-cur) * 100 + vw};
+}
+
+@function vh($size, $vh-cur: 970) {
+    @return #{calc($size / $vh-cur) * 100 + vh};
+}
+
+@function dvh($size, $dvh-cur: 970) {
+    @return #{calc($size / $dvh-cur) * 100 + dvh};
+}
+
+@function setPercentage($size, $width: 1920) {
+    @return (calc($size / $width) * 100) + 0%;
+}

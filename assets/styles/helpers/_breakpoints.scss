@@ -1,0 +1,73 @@
+@use "sass:map";
+@use "sass:meta";
+
+$tier-max: (
+    mobile: 639px,
+    tablet: 1023px,
+    laptop: 1279px,
+    notebook: 1365px,
+);
+
+$tier-min: (
+    mobile: 0,
+    tablet: 640px,
+    laptop: 1024px,
+    notebook: 1280px,
+    desktop: 1366px,
+);
+
+@function _max($name) {
+    @if not map.has-key($tier-max, $name) {
+        @error "Unknown breakpoint tier '#{$name}'. Allowed: mobile, tablet, laptop, notebook.";
+    }
+    @return map.get($tier-max, $name);
+}
+
+@function _min($name) {
+    @if not map.has-key($tier-min, $name) {
+        @error "Unknown breakpoint tier '#{$name}'. Allowed: mobile, tablet, laptop, notebook, desktop.";
+    }
+    @return map.get($tier-min, $name);
+}
+
+@mixin down($name) {
+    @media (max-width: _max($name)) {
+        @content;
+    }
+}
+
+@mixin up($name) {
+    @media (min-width: _min($name)) {
+        @content;
+    }
+}
+
+@mixin only($name) {
+    @if $name == "desktop" {
+        @media (min-width: _min("desktop")) {
+            @content;
+        }
+    } @else {
+        @media (min-width: _min($name)) and (max-width: _max($name)) {
+            @content;
+        }
+    }
+}
+
+@mixin between($from, $to) {
+    @media (min-width: _min($from)) and (max-width: _max($to)) {
+        @content;
+    }
+}
+
+@mixin short {
+    @media (max-height: 500px) {
+        @content;
+    }
+}
+
+@mixin reduced-motion {
+    @media (prefers-reduced-motion: reduce) {
+        @content;
+    }
+}

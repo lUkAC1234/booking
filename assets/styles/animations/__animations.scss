@@ -1,0 +1,217 @@
+@use "../helpers/breakpoints" as bp;
+
+.motion {
+    transition:
+        opacity var(--rv-dur, 0.9s) var(--ease-decel, cubic-bezier(0.22, 1, 0.36, 1)) var(--rv-delay, 0s),
+        transform var(--rv-dur, 0.9s) var(--ease-decel, cubic-bezier(0.22, 1, 0.36, 1)) var(--rv-delay, 0s),
+        clip-path var(--rv-dur, 0.9s) var(--ease-decel, cubic-bezier(0.22, 1, 0.36, 1)) var(--rv-delay, 0s);
+    will-change: opacity, transform;
+}
+
+.motion--armed {
+    opacity: 0;
+    transform: translate3d(0, var(--rv-d, 72px), 0);
+}
+
+.motion--armed[data-rv="down"] {
+    transform: translate3d(0, calc(var(--rv-d, 72px) * -1), 0);
+}
+
+.motion--armed[data-rv="left"] {
+    transform: translate3d(var(--rv-d, 88px), 0, 0);
+}
+
+.motion--armed[data-rv="right"] {
+    transform: translate3d(calc(var(--rv-d, 88px) * -1), 0, 0);
+}
+
+.motion--armed[data-rv="scale"] {
+    transform: scale(0.9);
+}
+
+.motion--armed[data-rv="zoom"] {
+    transform: scale(1.08);
+}
+
+.motion--armed[data-rv="clip"] {
+    opacity: 1;
+    clip-path: inset(0 0 100% 0);
+}
+
+.motion--armed[data-rv="clip-left"] {
+    opacity: 1;
+    clip-path: inset(0 100% 0 0);
+}
+
+.motion.is-in {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+}
+
+.motion[data-rv="clip"].is-in,
+.motion[data-rv="clip-left"].is-in {
+    clip-path: inset(0 0 0 0);
+}
+
+.motion-stagger > .motion {
+    transition-delay: calc(var(--rv-stagger, 0.12s) * var(--reveal-i, 0));
+}
+
+.motion-stagger.is-in > .motion {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+}
+
+.motion-stagger.is-in > .motion[data-rv="clip"],
+.motion-stagger.is-in > .motion[data-rv="clip-left"] {
+    clip-path: inset(0 0 0 0);
+}
+
+.tr--pending {
+    opacity: 0;
+}
+
+.tr-w,
+.tr-c {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-bottom: 0.16em;
+    margin-bottom: -0.16em;
+}
+
+.tr-w__i,
+.tr-c__i {
+    display: inline-block;
+    transform: translate3d(0, 115%, 0);
+    transition: transform var(--tr-dur, 1s) var(--ease-soft, cubic-bezier(0.33, 1, 0.68, 1));
+    transition-delay: calc(var(--tr-stagger, 0.06s) * var(--tr-i, 0));
+    will-change: transform;
+}
+
+.tr.is-in {
+    .tr-w__i,
+    .tr-c__i {
+        transform: translate3d(0, 0, 0);
+        will-change: auto;
+    }
+}
+
+.hero--js {
+    [data-hero="lead"],
+    [data-hero="actions"],
+    [data-hero="card"] {
+        opacity: 0;
+        transform: translate3d(0, 32px, 0);
+        transition:
+            opacity var(--hero-dur, 0.9s) var(--ease-decel, cubic-bezier(0.22, 1, 0.36, 1)) var(--hero-delay, 0s),
+            transform var(--hero-dur, 0.9s) var(--ease-decel, cubic-bezier(0.22, 1, 0.36, 1)) var(--hero-delay, 0s);
+        will-change: opacity, transform;
+    }
+
+    [data-hero="lead"] {
+        --hero-delay: 0.18s;
+    }
+
+    [data-hero="actions"] {
+        --hero-delay: 0.32s;
+    }
+
+    [data-hero="card"] {
+        transition-delay: calc(0.36s + var(--rv-stagger, 0.1s) * var(--reveal-i, 0));
+    }
+
+    [data-hero="media"] {
+        transform: scale(1.06);
+        transition: transform 1.2s var(--ease-decel, cubic-bezier(0.22, 1, 0.36, 1));
+        will-change: transform;
+    }
+}
+
+.hero--js.hero-in {
+    [data-hero="lead"],
+    [data-hero="actions"],
+    [data-hero="card"] {
+        opacity: 1;
+        transform: none;
+        will-change: auto;
+    }
+
+    [data-hero="media"] {
+        transform: none;
+        will-change: auto;
+    }
+}
+
+.hero--reduced {
+    [data-hero] {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+@keyframes counterReadyFallback {
+    to {
+        opacity: 1;
+    }
+}
+
+[data-counter-target] {
+    transition: opacity 0.3s var(--ease-decel, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+[data-counter-target]:not([data-counter-ready]) {
+    opacity: 0;
+    animation: counterReadyFallback 0.01s 3s forwards;
+}
+
+[data-counter-target]:not([data-counter-ready]) ~ .home-stats__value-suffix,
+[data-counter-target]:not([data-counter-ready]) + .home-stats__value-suffix {
+    opacity: 0;
+    transition: opacity 0.3s var(--ease-decel, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+[data-parallax] {
+    will-change: transform;
+}
+
+.is-revealed-fallback {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    will-change: auto;
+}
+
+@include bp.reduced-motion {
+    .motion,
+    .motion--armed,
+    .motion-stagger > .motion,
+    .hero--js [data-hero],
+    [data-hero],
+    [data-counter-target] {
+        opacity: 1 !important;
+        transform: none !important;
+        clip-path: none !important;
+        animation: none !important;
+        transition: none !important;
+        will-change: auto;
+    }
+
+    .tr-w__i,
+    .tr-c__i {
+        transform: none !important;
+        transition: none !important;
+        will-change: auto;
+    }
+
+    .tr--pending {
+        opacity: 1 !important;
+    }
+
+    [data-parallax] {
+        transform: none !important;
+        will-change: auto;
+    }
+}

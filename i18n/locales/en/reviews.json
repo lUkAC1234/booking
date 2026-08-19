@@ -1,0 +1,73 @@
+{
+    "reviews": {
+        "title": "What our guests say",
+        "lead": "Apartments, tours and airport pickups, in the words of the people who booked them.",
+        "services": {
+            "apartments": "Apartment",
+            "tours": "Tour",
+            "transfer": "Transfer"
+        },
+        "items": {
+            "hannah": {
+                "name": "Hannah",
+                "country": "Germany",
+                "quote": "The photos were honest, which is rarer than it should be. Two real bedrooms, a kitchen we actually cooked in, and Amir Timur Square ten minutes down the road."
+            },
+            "marco": {
+                "name": "Marco",
+                "country": "Italy",
+                "quote": "We did Amirsoy on the Tuesday and Chimgan on the Thursday. Same driver both times, picked us up at the door, and he knew exactly when the light on the ridge would be best."
+            },
+            "yuki": {
+                "name": "Yuki",
+                "country": "Japan",
+                "quote": "My flight landed at 03:40 and was forty minutes late. The driver was there with a sign, no questions, no extra charge. That alone justified booking ahead."
+            },
+            "daniel": {
+                "name": "Daniel",
+                "country": "United Kingdom",
+                "quote": "Stayed nine nights and worked four of them from the desk by the window. Fibre Wi-Fi held up for video calls all week, which I had not counted on."
+            },
+            "elise": {
+                "name": "Elise",
+                "country": "France",
+                "quote": "The metro tour was the surprise of the trip. I had no idea those stations looked like that, and we had most of the platforms to ourselves."
+            },
+            "omar": {
+                "name": "Omar",
+                "country": "United Arab Emirates",
+                "quote": "Booked a minivan for five of us with far too much luggage. It arrived early, the driver loaded everything, and we were at the apartment in half an hour."
+            },
+            "sofia": {
+                "name": "Sofia",
+                "country": "Spain",
+                "quote": "The sixteenth-floor apartment at sunset is worth the trip on its own. We extended by three nights on the second day."
+            },
+            "james": {
+                "name": "James",
+                "country": "United States",
+                "quote": "Samarkand in a day sounded ambitious until we did it. Early train, back by eleven at night, and the Registan at golden hour was worth every hour on the rails."
+            },
+            "anna": {
+                "name": "Anna",
+                "country": "Poland",
+                "quote": "Asked for a child seat the night before and it was fitted when the car arrived. No fuss, no charge, no reminder needed."
+            },
+            "lukas": {
+                "name": "Lukas",
+                "country": "Czech Republic",
+                "quote": "Skied Amirsoy in February. They sorted rental and had us on the first lift while everyone else was still queuing at the base."
+            },
+            "priya": {
+                "name": "Priya",
+                "country": "India",
+                "quote": "Everything happened in one WhatsApp thread — the booking, the address, the tour, the ride back to the airport. No forms, no waiting for confirmation emails."
+            },
+            "mehmet": {
+                "name": "Mehmet",
+                "country": "Türkiye",
+                "quote": "The bazaar walk ended with plov from a kazan the size of a table. I have eaten a lot of plov and this was a different category."
+            }
+        }
+    }
+}

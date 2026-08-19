@@ -1,0 +1,28 @@
+@use "../helpers/functions";
+
+.truncate {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    box-orient: vertical;
+    line-clamp: 1;
+    overflow: hidden;
+}
+
+.truncate-2-lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    box-orient: vertical;
+    line-clamp: 2;
+    overflow: hidden;
+}
+
+.truncate-3-lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    box-orient: vertical;
+    line-clamp: 3;
+    overflow: hidden;
+}

@@ -1,0 +1,12 @@
+{
+    "booking": {
+        "message": {
+            "general": "Hello! I found you on tashkentapartmentstours.com and I would like to book. Could you tell me what is available?",
+            "apartment": "Hello! I would like to book the {item} apartment in Tashkent. Is it available?",
+            "tour": "Hello! I would like to book the {item} tour. What dates do you have available?",
+            "transfer": "Hello! I need an airport transfer: {item}. Could you confirm the price and the meeting point?"
+        },
+        "cta-title": "Ready to book your stay in Tashkent?",
+        "cta-lead": "Send one message and we confirm availability, the address and the meeting details in the same thread. No forms, no accounts, no waiting."
+    }
+}

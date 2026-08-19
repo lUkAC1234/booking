@@ -1,0 +1,82 @@
+{
+    "about": {
+        "title": "About City Center Apartments Tashkent",
+        "lead": "We are a small family operation in Tashkent: two apartments we look after ourselves, ten tours we drive personally, and airport transfers at whatever hour your flight lands.",
+        "hero": {
+            "chips": {
+                "since": "Hosting since 2020",
+                "apartments": "2 apartments, both central",
+                "tours": "10 tours we run ourselves",
+                "languages": "English, Russian, Uzbek"
+            }
+        },
+        "story": {
+            "title": "Who you are actually writing to",
+            "lead": "There is no call centre behind this website and no agency taking a cut. When you send a message, it reaches a phone belonging to one of three people, and one of those three will be the person who meets you.",
+            "paragraphs": {
+                "start": "This started the ordinary way. A family flat in the centre of Tashkent stood empty for most of the year, friends kept asking whether visiting colleagues could use it, and by the end of the first summer we had hosted more strangers than friends. What surprised us was not that people wanted somewhere to stay. It was how often they arrived having been told almost nothing useful about the city, and how much of a good trip came down to small, unglamorous logistics: someone at the airport at four in the morning, a driver who knows which road to Chimgan is closed, an honest answer about whether the bazaar is worth an early start.",
+                "second": "So we added the second apartment, and then we stopped. Two is the number we can genuinely look after. We clean them ourselves between guests, we replace the kettle when the kettle dies, and we know without checking which one has the better light in the afternoon and which one is quieter at night. An operator with forty listings cannot answer those questions, and most of them do not pretend to. We would rather be the small option that knows its own inventory than the big one that manages a spreadsheet.",
+                "third": "The tours came from the same place. Guests kept asking where to go, we kept driving them there, and eventually it made more sense to name the routes than to improvise them every week. Everything we offer is somewhere we have been many times in every season: Amirsoy in deep snow and in July heat, Chimgan on a clear day and in cloud, Charvak when the water is warm enough to swim and when it absolutely is not. That is why our advice about timing is specific rather than promotional. We would rather move your mountain day by twenty-four hours than sell you a cold and cloudy one.",
+                "fourth": "Airport transfers were the last piece, and the one guests thank us for most. Most flights into Tashkent land between two and five in the morning, which is exactly when arriving in an unfamiliar country is hardest and when the taxi rank is least forgiving. Having a driver with your name on a sign, who has watched your flight and will wait an hour if passport control is slow, removes the single worst hour of the trip. We run the transfers for guests staying with us and for people staying elsewhere, because it is a good service whether or not you rent our apartment.",
+                "fifth": "What ties all of it together is that there is one thread. You write once, on WhatsApp, and the apartment, the driver and the mountain day are arranged by the same person in the same conversation. Nothing is confirmed by an automated email you have to dig out of a spam folder at midnight, and nobody is going to hand you off to a partner agency. That is the whole model, and it is the reason we have never built a booking engine: a booking engine would be faster for us and worse for you.",
+                "sixth": "The people who stay with us are not one type. In spring and autumn it is mostly couples and small groups doing Uzbekistan properly, with Tashkent as the first and last stop around Samarkand and Bukhara. In winter it is skiers, who want an early car to Amirsoy and a warm flat to come back to. Through the summer it is families escaping the heat towards Charvak, and a steady stream of people here for work who discover halfway through the week that the mountains are ninety minutes away. We have learned to ask a couple of questions at the start rather than assume, because a family with a small child and a snowboarder on a solo trip need almost nothing in common from us.",
+                "seventh": "We are also honest about what we are not. We are not a hotel: there is no reception desk, no restaurant and nobody in the building at three in the morning except the security guard in the lobby. We do not run tours to every corner of the country, because we only sell routes we drive ourselves and know in every season. And we will tell you when something is not worth it, whether that is a mountain day in heavy cloud or a bazaar trip on the one afternoon a week it half empties. Losing a booking that way costs us less than a guest who felt sold to."
+            },
+            "link-apartments": "See the two apartments",
+            "link-contact": "Write to us directly"
+        },
+        "stats": {
+            "title": "The operation in four numbers",
+            "lead": "Small on purpose. These are the real figures, not a rounded-up version of them, and we would rather they grew slowly than doubled in a season we could not staff properly.",
+            "items": {
+                "apartments": "Apartments in the centre",
+                "tours": "Tours we run ourselves",
+                "years": "Years hosting in Tashkent",
+                "languages": "Languages we work in"
+            }
+        },
+        "principles": {
+            "title": "Four things we do not compromise on",
+            "lead": "Every business says it is honest and responsive. These are the specific commitments you can hold us to, written plainly enough to be checked, and phrased as things we do rather than values we admire. If we ever fail one of them, the fastest way to fix it is to tell us in the same thread you booked in.",
+            "items": {
+                "local": {
+                    "title": "We are local, and we are here",
+                    "text": "Tashkent is home, not a market we entered. We grew up here, we live a ten-minute drive from both apartments, and if something breaks at eleven at night one of us comes over. That proximity is the whole product. It is what lets us promise a late check-in without qualifying it, hand over keys in person, and give you an honest answer about a neighbourhood or a restaurant instead of the answer that generates a commission. It also means the small things get handled without becoming a story: a pharmacy at midnight, a SIM card that will not activate, a taxi driver who has misread the address. Those are the moments that decide whether a trip felt easy, and they cannot be solved by a support ticket from another city."
+                },
+                "thread": {
+                    "title": "One conversation, start to finish",
+                    "text": "Your apartment, your tours and your airport transfer are arranged by the same person in the same WhatsApp thread. You never repeat yourself to a second department, you never chase a confirmation email, and when your flight moves you tell one person and everything downstream adjusts. We reply within about ten minutes during the day and we check the phone through the night when we know a guest is in the air. Keeping it in one conversation also means the history stays in one place: the address, the entrance code, the driver's number and the plan for the mountain day are all scrollable in the same chat at the moment you need them, instead of scattered across four confirmation emails in a language you may not read."
+                },
+                "honest": {
+                    "title": "Honest pricing, quoted before you commit",
+                    "text": "We do not publish fixed prices because the true price depends on the season, the length of your stay and how many of you there are, and a made-up number on a web page would be a worse answer than a real one on request. You get the total in writing before anything is confirmed, and that figure is what you pay. If a longer stay makes the nightly rate cheaper, we tell you so without being asked. The same applies in the other direction: if the dates you want are the busiest week of the year and the price reflects that, we say so plainly rather than burying it, and we will suggest the week either side if flexibility would save you money."
+                },
+                "fees": {
+                    "title": "No hidden fees, no surprise surcharges",
+                    "text": "There is no cleaning fee added at the end, no service charge, no premium for arriving at three in the morning and no upsell waiting for you at the kerb. Child seats are free, the first hour of airport waiting is free, and if we have to send a minivan instead of a sedan because your luggage does not fit, that is our problem and not a line on your bill. Nor is there a deposit to lose. We hold your dates on your word, and if your plans change we would rather know early and release the apartment than hold money over you for a trip that is not happening."
+                }
+            }
+        },
+        "services": {
+            "title": "What we can arrange for you",
+            "lead": "Three services, run by the same people, bookable in the same message.",
+            "items": {
+                "apartments": {
+                    "title": "Apartments in Tashkent city center",
+                    "text": "Two flats within walking distance of Amir Timur Square, both with self check-in at any hour, fibre Wi-Fi and free parking. We hand over the keys ourselves and we are minutes away for the whole stay. One is a two-bedroom apartment on the eighth floor for families and small groups, the other a one-bedroom on the sixteenth with a window wall over Tashkent City Park.",
+                    "link": "See both apartments"
+                },
+                "tours": {
+                    "title": "Tours to the mountains and the old city",
+                    "text": "Ten routes we drive personally, from the Amirsoy gondola and the Chimgan ridge to Chorsu Bazaar, the metro mosaics and a high-speed day trip to Samarkand. Pickup is always from your door. We group them by mountains, city, winter and day trips so you can build a week without repeating yourself, and we will say which day suits which route once we know your dates.",
+                    "link": "See all 10 tours"
+                },
+                "transfer": {
+                    "title": "Airport transfers at any hour",
+                    "text": "Meet and greet with a name sign in the arrivals hall, flight tracking, sixty minutes of free waiting and a sedan or minivan depending on how much you are carrying. Night arrivals cost the same as daytime ones. We also drive the return leg, the railway station runs for Samarkand departures, and straight from the terminal to Amirsoy if you would rather start in the mountains.",
+                    "link": "See transfer routes"
+                }
+            }
+        }
+    }
+}

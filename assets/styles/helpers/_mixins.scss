@@ -1,0 +1,32 @@
+@use "./functions";
+@use "./variables";
+
+@mixin on-dark {
+    --text-color: var(--on-dark-text);
+    --text-color-secondary: var(--on-dark-text-secondary);
+    --ink: var(--on-dark-text);
+    --ink-80: var(--on-dark-text-secondary);
+    --ink-60: var(--on-dark-text-muted);
+    --ink-40: rgba(255, 255, 255, 0.4);
+    --ink-20: var(--on-dark-border);
+    --border-color: var(--on-dark-border);
+    --hr-border-color: rgba(255, 255, 255, 0.1);
+    --surface: var(--on-dark-surface);
+    --surface-mute: var(--on-dark-surface-hover);
+    --primary-color: var(--light-primary-color);
+
+    background-color: var(--surface-ink);
+    color: var(--on-dark-text);
+}
+
+@mixin visually-hidden {
+    position: absolute;
+    width: functions.rem(2);
+    height: functions.rem(2);
+    padding: 0;
+    margin: functions.rem(-2);
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}

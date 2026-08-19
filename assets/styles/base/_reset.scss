@@ -1,0 +1,123 @@
+@use "../helpers/functions";
+
+* {
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    padding: 0;
+    margin: 0;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+details,
+summary {
+    list-style: none;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+svg:not(:root) {
+    width: auto;
+}
+
+.layers-wrap svg,
+.header svg {
+    transition: all 0.2s;
+}
+
+svg.none-animation {
+    transition: none;
+}
+
+body {
+    margin: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.dlist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    border-radius: 0;
+    height: auto;
+}
+
+button {
+    cursor: pointer;
+}
+
+button,
+input {
+    &:disabled,
+    &[disabled] {
+        cursor: not-allowed;
+        filter: grayscale(1);
+    }
+}
+
+label {
+    font-weight: normal;
+}
+
+figure {
+    margin: 0;
+}
+
+img[align="left"] {
+    margin: functions.vh(15) functions.vw(25) functions.vh(10) 0;
+}
+
+img[align="right"] {
+    margin: functions.vh(5) 0 functions.vh(10) functions.vw(15);
+}
+
+img[align="center"] {
+    margin: 0 auto functions.vh(15);
+    display: block;
+}
+
+dt {
+    font-weight: normal;
+}
+
+a {
+    text-decoration: none;
+    background-color: transparent;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--text-color);
+    border: none;
+    width: functions.rem(20);
+    height: functions.rem(20);
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cline x1='18' y1='6' x2='6' y2='18'/%3E%3Cline x1='6' y1='6' x2='18' y2='18'/%3E%3C/svg%3E") no-repeat center;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cline x1='18' y1='6' x2='6' y2='18'/%3E%3Cline x1='6' y1='6' x2='18' y2='18'/%3E%3C/svg%3E") no-repeat center;
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    cursor: pointer;
+}
+

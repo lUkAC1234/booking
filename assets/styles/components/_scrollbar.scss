@@ -1,0 +1,14 @@
+@use "../helpers/functions";
+@use "sass:color";
+
+.scrollbar {
+    &::-webkit-scrollbar {
+        background-color: transparent;
+        width: functions.rem(6);
+        height: functions.rem(4);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: color.adjust(#dcddde, $lightness: -10%);
+    }
+}

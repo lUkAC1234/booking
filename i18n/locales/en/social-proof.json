@@ -1,0 +1,23 @@
+{
+    "social-proof": {
+        "dismiss": "Dismiss notification",
+        "just-now": "Just now",
+        "minutes-ago": "{count} minutes ago",
+        "messages": {
+            "apartment-viewing": "{count} people are viewing {item} right now",
+            "apartment-booked": "{count} guests booked {item} this week",
+            "apartment-enquiries": "{count} new apartment enquiries came in today",
+            "apartment-checkin": "{count} guests checked in to our apartments this week",
+            "tour-booked": "{count} people just booked the {item}",
+            "tour-joined": "{count} travellers joined the {item} this month",
+            "tour-asked": "{count} people asked about the {item} today",
+            "tour-planning": "{count} people are planning a Tashkent tour right now",
+            "tour-weekend": "{count} groups are heading to the mountains this weekend",
+            "transfer-confirmed": "{count} airport transfers confirmed today",
+            "transfer-night": "{count} night arrivals are being met tonight",
+            "transfer-meeting": "{count} drivers are waiting at arrivals right now",
+            "transfer-booked": "{count} guests booked an airport pickup today",
+            "transfer-times": "{count} people are checking transfer times right now"
+        }
+    }
+}

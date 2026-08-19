@@ -1,0 +1,48 @@
+# Dependencies
+node_modules
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Nuxt
+.nuxt
+.output
+.data
+.cache
+.netlify
+.vercel
+.wrangler
+dist
+dist-ssr
+build
+build-ssr
+
+# Env
+.env
+.env.local
+.env.*.local
+*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode
+.vs
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Sitemap (generated)
+/dist/sitemap.xml
+.claude
+.remember

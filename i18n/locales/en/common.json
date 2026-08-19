@@ -1,0 +1,19 @@
+{
+    "common": {
+        "no-internet": "No internet connection",
+        "error": "Something went wrong, please try again later",
+        "loading": "Loading",
+        "page-title": "City Center Apartments",
+        "read-more": "Read more",
+        "view-all": "View all",
+        "learn-more": "Learn more",
+        "breadcrumb": "Breadcrumb",
+        "skip-to-content": "Skip to content",
+        "book": "Book",
+        "book-now": "Book now",
+        "book-on-whatsapp": "Book on WhatsApp",
+        "message-on-telegram": "Message on Telegram",
+        "price-on-request": "Price on request",
+        "photo-brief": "Photo needed"
+    }
+}

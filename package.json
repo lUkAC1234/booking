@@ -1,0 +1,55 @@
+{
+    "name": "city-center-apartments",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "nuxt dev --host",
+        "build": "nuxt build && node scripts/strip-leaked-paths.mjs && node scripts/inline-critical-css.mjs",
+        "generate": "nuxt generate",
+        "preview": "nuxt preview",
+        "start": "node .output/server/index.mjs",
+        "postinstall": "nuxt prepare",
+        "lint": "eslint . --max-warnings=0",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier --write \"**/*.{vue,ts,js,scss,json,md}\"",
+        "check-format": "prettier --check \"**/*.{vue,ts,js,scss,json,md}\"",
+        "typecheck": "nuxt typecheck"
+    },
+    "dependencies": {
+        "@nuxt/image": "^1.8.0",
+        "@nuxtjs/i18n": "^9.1.0",
+        "@nuxtjs/robots": "^5.0.0",
+        "@nuxtjs/sitemap": "^7.0.0",
+        "@pinia/nuxt": "^0.7.0",
+        "@vueuse/core": "^11.3.0",
+        "@vueuse/nuxt": "^11.3.0",
+        "gsap": "^3.12.5",
+        "marked": "^18.0.4",
+        "nuxt": "^3.14.0",
+        "pinia": "^2.2.0",
+        "vue": "^3.5.0",
+        "vue-router": "^4.4.0"
+    },
+    "devDependencies": {
+        "@nuxt/eslint": "^0.7.0",
+        "@types/node": "^22.10.0",
+        "eslint": "^9.16.0",
+        "prettier": "^3.4.0",
+        "sass-embedded": "^1.83.0",
+        "sharp": "^0.35.3",
+        "typescript": "^5.7.0",
+        "vue-tsc": "^2.1.10"
+    },
+    "//overrides": {
+        "esbuild": "pinned ahead of the transitive range",
+        "sharp": "@nuxt/image@1.x declares ipx@^2.1.1 as an optionalDependency, and ipx@2.1.1 pins sharp@^0.32.6 — vulnerable libvips (GHSA-f88m-g3jw-g9cj). The upstream fix is @nuxt/image@2, which requires @nuxt/kit@4 (i.e. a Nuxt 3 -> 4 migration). Forcing sharp>=0.35 clears the advisory while staying on Nuxt 3: ipx only calls long-stable sharp APIs (resize/rotate/extract/extend/toFormat/toBuffer). Remove this override when migrating to Nuxt 4 + @nuxt/image@2."
+    },
+    "overrides": {
+        "esbuild": "^0.28.1",
+        "sharp": "^0.35.3"
+    },
+    "engines": {
+        "node": ">=20.11.0"
+    }
+}

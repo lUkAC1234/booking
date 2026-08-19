@@ -1,0 +1,16 @@
+{
+    "nav": {
+        "home": "Home",
+        "apartments": "Apartments",
+        "tours": "Tours",
+        "transfer": "Airport transfer",
+        "about": "About us",
+        "contact": "Contact",
+        "primary": "Primary navigation",
+        "more": "More",
+        "menu": "Menu",
+        "open-menu": "Open menu",
+        "close-menu": "Close menu",
+        "language": "Language"
+    }
+}

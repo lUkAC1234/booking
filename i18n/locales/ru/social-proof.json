@@ -1,0 +1,23 @@
+{
+    "social-proof": {
+        "dismiss": "Скрыть уведомление",
+        "just-now": "Только что",
+        "minutes-ago": "{count} минут назад",
+        "messages": {
+            "apartment-viewing": "{count} человека сейчас смотрят «{item}»",
+            "apartment-booked": "{count} гостя забронировали «{item}» на этой неделе",
+            "apartment-enquiries": "{count} новых запроса на квартиры пришли сегодня",
+            "apartment-checkin": "{count} гостя заселились в наши квартиры на этой неделе",
+            "tour-booked": "{count} человека только что забронировали тур «{item}»",
+            "tour-joined": "{count} путешественника присоединились к туру «{item}» в этом месяце",
+            "tour-asked": "{count} человека спросили про тур «{item}» сегодня",
+            "tour-planning": "{count} человека прямо сейчас планируют тур по Ташкенту",
+            "tour-weekend": "{count} группы едут в горы в эти выходные",
+            "transfer-confirmed": "{count} трансфера из аэропорта подтверждены сегодня",
+            "transfer-night": "{count} ночных рейса встречаем этой ночью",
+            "transfer-meeting": "{count} водителя сейчас ждут в зале прилёта",
+            "transfer-booked": "{count} гостя заказали встречу в аэропорту сегодня",
+            "transfer-times": "{count} человека сейчас уточняют время трансфера"
+        }
+    }
+}

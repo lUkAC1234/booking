@@ -1,0 +1,56 @@
+{
+    "faq": {
+        "title": "Frequently asked questions",
+        "lead": "Everything guests ask us before they book. Anything else — message us on WhatsApp and you will have an answer within minutes.",
+        "items": {
+            "how-to-book": {
+                "question": "How do I book an apartment, a tour or a transfer?",
+                "answer": "Tap any booking button on this site and it opens a WhatsApp chat with us, already filled in with what you were looking at. Tell us your dates and we confirm availability, the exact address and the meeting details in the same thread. There is no form to fill in and no account to create."
+            },
+            "languages": {
+                "question": "Which languages do you speak?",
+                "answer": "We host in English and Russian, and our drivers and guides work in both. Uzbek is our first language, so anything you need arranged locally — a doctor, a SIM card, a table at a restaurant — we can handle it for you by phone."
+            },
+            "payment": {
+                "question": "How do I pay, and do you take cards?",
+                "answer": "We agree the price with you on WhatsApp before anything is confirmed, so there are never hidden fees. You can pay in cash in US dollars or Uzbek som on arrival, or by bank transfer in advance if you prefer. Prices depend on the season and the length of your stay, which is why we quote on request rather than publishing a fixed rate."
+            },
+            "check-in": {
+                "question": "What time is check-in, and is late arrival a problem?",
+                "answer": "Standard check-in is from 14:00 and check-out is until 12:00, but both are flexible when the apartment is free. Late-night arrivals are completely normal for us — most flights into Tashkent land between 02:00 and 05:00, and we meet those guests at the apartment whatever the hour, at no extra cost."
+            },
+            "min-stay": {
+                "question": "Is there a minimum stay?",
+                "answer": "Two nights is our minimum in high season and one night the rest of the year. Stays over a week get a reduced nightly rate, and monthly stays are priced separately — tell us your dates on WhatsApp and we will quote you directly."
+            },
+            "location": {
+                "question": "How central are the apartments really?",
+                "answer": "Both apartments are inside the true centre of Tashkent. From either one you can walk to Amir Timur Square, the Broadway pedestrian street and a metro station in under fifteen minutes, and Chorsu Bazaar and Tashkent City Park are a short ride away. You will not need a taxi to reach the places you came to see."
+            },
+            "amirsoy-distance": {
+                "question": "How far is Amirsoy from Tashkent?",
+                "answer": "Amirsoy is roughly eighty kilometres from the centre of Tashkent and the drive takes about an hour and a half, climbing steadily into the Western Tian Shan. Chimgan and Beldersay sit a little further along the same road, and Charvak Lake is on the way, which is why most of our guests combine two of them in a single day trip."
+            },
+            "tour-season": {
+                "question": "What is the best season for the mountains?",
+                "answer": "Amirsoy and Beldersay run their lifts for skiing and snowboarding from roughly December to March. From April the same slopes turn green and the hiking season opens through to October, with Charvak Lake at its best in July and August for swimming. Chimgan and the Tashkent city tours work all year round."
+            },
+            "tour-pickup": {
+                "question": "Do you pick us up from our accommodation?",
+                "answer": "Yes. Every tour starts at your door, whether you are staying in one of our apartments or in a hotel elsewhere in Tashkent, and ends there too. Tell us where you are on WhatsApp and we agree a pickup time the evening before."
+            },
+            "airport-meeting": {
+                "question": "Where exactly will the driver meet me at the airport?",
+                "answer": "Your driver waits in the arrivals hall of Tashkent International Airport holding a sign with your name on it, so there is nobody to find and nothing to negotiate. Send us your flight number in advance and we track the flight, which means a delay never leaves you standing outside looking for a taxi."
+            },
+            "flight-delay": {
+                "question": "What happens if my flight is delayed?",
+                "answer": "Nothing on your side. We track your flight number and the driver simply arrives later. Every transfer includes sixty minutes of free waiting time from the moment the aircraft lands, which comfortably covers passport control and baggage even on a busy night."
+            },
+            "child-seat": {
+                "question": "Can you provide a child seat or a larger car?",
+                "answer": "Yes to both. Child and booster seats are free of charge, we just need to know the age of the child in advance. For families or groups with a lot of luggage we send a minivan instead of a sedan — mention it on WhatsApp when you book and we will arrange the right vehicle."
+            }
+        }
+    }
+}

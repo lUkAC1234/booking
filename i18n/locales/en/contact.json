@@ -1,0 +1,69 @@
+{
+    "contact": {
+        "title": "Book an apartment in Tashkent on WhatsApp",
+        "lead": "One thread, one person, an answer in about ten minutes. There is no form on this page and no account to create — messaging us is the booking system.",
+        "hero": {
+            "chips": {
+                "reply": "We reply in 10 minutes",
+                "hours": "Daily 08:00 – 23:00",
+                "languages": "English, Russian, Uzbek",
+                "night": "Night arrivals answered"
+            }
+        },
+        "channels": {
+            "title": "Two ways to reach us",
+            "lead": "Both go to the same phone and the same people. Pick whichever app you already have open — WhatsApp is what most guests use, Telegram is just as fast, and neither of them puts you in a queue behind an automated menu. There is no phone line to call and no email address to wait on, because a written thread is the only channel we can answer reliably at three in the morning.",
+            "items": {
+                "whatsapp": {
+                    "name": "WhatsApp",
+                    "note": "The fastest route to a real answer. Tap through and the message arrives already filled in with whatever you were reading, so you only have to add your dates. This is the number we watch overnight when a guest is flying in, and it is the one the driver will call from if the arrivals hall is busy."
+                },
+                "telegram": {
+                    "name": "Telegram",
+                    "note": "The same team and the same availability, if Telegram is where you live. Useful if you want to send a screenshot of your flight itinerary or a photo of your booking, and easier for long messages when you are planning several days at once. Answers arrive on the same schedule as WhatsApp."
+                }
+            }
+        },
+        "hours": {
+            "title": "When we answer, and what to send",
+            "lead": "We are on the phone daily from eight in the morning to eleven at night, Tashkent time, which is UTC+5. Outside those hours we still read messages when we know a guest is in the air, so a night arrival is never left unanswered. If you are writing from Europe, Tashkent is four or five hours ahead depending on the season, which means a message sent over your breakfast usually has an answer before you have finished it. From North America the gap is larger, so it is worth sending everything you need in one message rather than waiting for a back and forth.",
+            "rows": {
+                "hours": "Daily 08:00 – 23:00 (Asia/Tashkent, UTC+5)",
+                "reply": "Typical reply time: about 10 minutes",
+                "languages": "We answer in English, Russian and Uzbek",
+                "night": "Late-night arrivals are handled overnight"
+            },
+            "include-title": "Put these three things in your first message",
+            "steps": {
+                "dates": {
+                    "title": "Your dates and how many of you",
+                    "text": "Arrival and departure dates, plus the number of adults and children. That is enough for us to check both apartments and come back with a total price rather than a range."
+                },
+                "flight": {
+                    "title": "Your flight number, if you have one",
+                    "text": "The flight number lets us track the aircraft and arrange the airport transfer at the same time. If your flight lands at four in the morning, say so and we will confirm a driver in the same reply."
+                },
+                "plans": {
+                    "title": "What you want to see",
+                    "text": "Mountains, the old city, a day trip to Samarkand, or nothing planned yet. Tell us roughly and we will suggest which tour fits which day of your stay based on the season and the weather. If you have a fixed day that cannot move, say which one and we will build the rest of the week around it."
+                }
+            }
+        },
+        "areas": {
+            "title": "Where we host, drive and guide",
+            "lead": "Both apartments sit in the centre of Tashkent, and our drivers cover the whole city plus the mountains and the two closest historic cities. If you are unsure whether we reach where you are going, ask — the answer is usually yes, and where it is not we will tell you who does it properly instead of taking the booking anyway. Tours and transfers are available whether or not you are staying with us, so guests in hotels elsewhere in Tashkent book them on exactly the same terms.",
+            "items": {
+                "center": "Amir Timur Square, Broadway and Sailgokh Street",
+                "city": "Tashkent City Park, Yunusabad and Mirabad districts",
+                "old": "Chorsu Bazaar, Khast Imam and the old city",
+                "airport": "Tashkent International Airport, both terminals",
+                "mountains": "Amirsoy, Chimgan, Beldersay and Charvak Lake",
+                "trips": "Samarkand and Bukhara by high-speed train"
+            },
+            "link-apartments": "See the apartments in the centre",
+            "link-tours": "See the tours we drive",
+            "link-transfer": "See the transfer routes",
+            "link-about": "Read about who we are"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "error404": {
+        "page-title": "404 — Page not found",
+        "title": "Page not found",
+        "description": "The page may have moved or you followed an outdated link. Head back to the home page.",
+        "back-home": "Back to home",
+        "go-back": "Go back"
+    }
+}

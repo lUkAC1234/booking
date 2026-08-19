@@ -1,0 +1,19 @@
+# City Center Apartments
+
+> Daily-rate apartments in the centre of Tashkent, guided tours to Amirsoy, Chimgan, Charvak and Beldersay, city tours of old Tashkent and the metro, day trips to Samarkand and Bukhara, and airport transfers around the clock. Run by local hosts. Booking happens in one WhatsApp thread — there is no booking form, no calendar and no account.
+
+Content is available in English (default, no prefix) and Russian (`/ru/`).
+
+## Pages
+
+- [Home](https://tashkentapartmentstours.com/): apartments, tours and transfers in one place.
+- [Apartments](https://tashkentapartmentstours.com/tashkent-city-center-apartments/): two apartments for daily rent in Tashkent city center, near Amir Timur Square and Tashkent City Park.
+- [Tours](https://tashkentapartmentstours.com/tashkent-tours-amirsoy-chimgan/): Amirsoy, Chimgan, Charvak, Beldersay, Chorsu bazaar, Tashkent metro, ski transfers, Samarkand and Bukhara day trips.
+- [Airport transfer](https://tashkentapartmentstours.com/tashkent-airport-transfer/): Tashkent International Airport pickups and drop-offs with meet and greet, flight tracking and free waiting time.
+- [About us](https://tashkentapartmentstours.com/about-us/): who we are and how we host.
+- [Contact](https://tashkentapartmentstours.com/contact-us/): WhatsApp and Telegram, daily 08:00–23:00 Asia/Tashkent, in English and Russian.
+
+## Notes
+
+- Prices are quoted on request, in the WhatsApp thread; no rates are published on the site.
+- All booking links open WhatsApp at +998 98 808 05 15.

@@ -1,0 +1,6 @@
+{
+    "alert": {
+        "success-copy": "Copied to clipboard",
+        "dismiss": "Dismiss notification"
+    }
+}

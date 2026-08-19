@@ -1,0 +1,12 @@
+:root {
+    --btns-transition: 300ms;
+
+    --ease-decel: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+
+    --dur-micro: 200ms;
+    --dur-state: 240ms;
+    --dur-drawer: 360ms;
+    --dur-header: 400ms;
+    --dur-reveal: 900ms;
+}

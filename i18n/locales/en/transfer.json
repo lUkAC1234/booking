@@ -1,0 +1,105 @@
+{
+    "transfer": {
+        "title": "Tashkent airport transfer",
+        "lead": "Most flights into Tashkent land between two and five in the morning. We meet all of them.",
+        "section-title": "Airport transfers, day and night",
+        "section-lead": "Send us your flight number and stop thinking about it. Your driver watches the flight, waits with a sign carrying your name, and takes you straight to the door. No haggling at the arrivals rank at four in the morning, no cash machine hunt, no guessing the fair price.",
+        "routes-title": "Routes we drive",
+        "features-title": "Included in every transfer",
+        "all-link": "Transfer details and prices",
+        "hero": {
+            "photo": "A quiet arrivals kerb at Tashkent International Airport just before dawn, a dark sedan waiting under warm sodium lighting, terminal glass reflecting the sky, luggage trolley in the foreground, cinematic wide shot, warm grading, faint film grain, no recognisable people, 4:3 landscape.",
+            "chips": {
+                "meet": "Meet and greet with a name sign",
+                "tracking": "We track your flight",
+                "waiting": "60 minutes free waiting",
+                "night": "Night arrivals, no surcharge"
+            }
+        },
+        "routes-lead": "These are the runs we drive every week. If your route is not on the list it almost certainly still works — send it to us on WhatsApp and we will quote it.",
+        "features-lead": "Everything below is part of the price rather than an upsell at the kerb. That is the whole difference between a booked Tashkent airport transfer and negotiating with a driver at four in the morning in a language you do not speak.",
+        "how-it-works": {
+            "title": "How the transfer works",
+            "lead": "Three messages, one driver, no cash machine hunt at arrivals. The whole arrangement happens before you board.",
+            "steps": {
+                "send": {
+                    "title": "Send your flight number",
+                    "text": "Message us the flight number, the date and where you are going. That is all we need. Knowing the flight rather than the time is what lets us track the aircraft, so a two-hour delay changes nothing on your side."
+                },
+                "confirm": {
+                    "title": "We confirm the car",
+                    "text": "We reply with the vehicle, the driver's name and the exact meeting point. Tell us if you need a child seat or a minivan for luggage and we swap the car, at no extra cost. Nothing is charged in advance."
+                },
+                "meet": {
+                    "title": "Walk out and go",
+                    "text": "Your driver is standing in the arrivals hall with a sign carrying your name, past passport control and baggage claim. He carries the bags, the car is already paid or paid on arrival as agreed, and you are at the door in about forty minutes."
+                }
+            }
+        },
+        "guide": {
+            "title": "Arriving at Tashkent airport",
+            "lead": "Tashkent International Airport is small, calm and easy to read once you know the shape of it. This is what actually happens between the aircraft door and the car, and what is worth doing before you leave the terminal. None of it is complicated, but almost all of it is easier to read before you land than to work out at four in the morning with a suitcase in one hand.",
+            "items": {
+                "arrivals": {
+                    "title": "The arrivals hall",
+                    "text": "International flights land at Terminal 2. Passport control takes ten to twenty-five minutes depending on how many aircraft arrived together, and baggage usually appears before the queue clears. Past customs there is one exit into a single arrivals hall, not several, so there is no wrong door to take. Drivers wait immediately in front of it behind a low barrier, and ours will be holding a printed sign with your name. If you cannot see him, message us from the airport Wi-Fi and we will call him while you stand still."
+                },
+                "sim": {
+                    "title": "SIM cards and staying online",
+                    "text": "Uzbek operators sell tourist SIM cards at counters inside the arrivals hall, and you need your passport to buy one. A package with enough data for a week costs the equivalent of a few dollars. If the counters are closed on a very early arrival, do not worry about it — the airport has free Wi-Fi, our apartments have fibre broadband, and any operator shop in the centre will sell you the same SIM later that day."
+                },
+                "money": {
+                    "title": "Money and exchange",
+                    "text": "There is a bank window and several ATMs in the arrivals hall, and the airport rate is close enough to the city rate that it is not worth optimising at that hour. Uzbekistan runs largely on cash outside the big hotels, so it is worth changing enough som for taxis, bazaars and mountain cafes. Cards work in supermarkets and restaurants in the centre, less reliably in the old city and almost never at Chorsu."
+                },
+                "drive": {
+                    "title": "The drive into the centre",
+                    "text": "The airport sits inside the city rather than outside it, so the drive to the centre takes about thirty-five to forty-five minutes at normal hours and closer to twenty-five in the middle of the night. The road runs past the Tashkent City towers on the way in, which is the first thing most visitors photograph. If you are heading straight for the mountains instead, Amirsoy is around two hours from the terminal and we can drive you there directly with your luggage in the boot."
+                },
+                "luggage": {
+                    "title": "Luggage, groups and child seats",
+                    "text": "A sedan takes two passengers with large suitcases comfortably, or three travelling light. Past that we send a minivan, and the swap costs nothing extra because guessing your luggage volume is our job rather than yours. Tell us how many bags you have when you book and we will size the car correctly the first time. Child and booster seats are free and fitted before the car leaves for the airport, so we do need the age of the child in advance rather than at the kerb. Skis, snowboards and bicycles all travel fine, but they need a roof box or a larger vehicle, so mention them in the same message. Groups larger than seven are split across two cars that arrive together and drive in convoy, which is how we handle families booking both apartments at once."
+                },
+                "departure": {
+                    "title": "Leaving Tashkent",
+                    "text": "For departures we work backwards from your flight time. Three hours before an international departure is the number we use in normal conditions, and we build in the drive plus a margin for the morning traffic on the airport road. Check-in at Terminal 2 opens three hours before departure and closes forty minutes before, and security is rarely slow. If you are checking out of one of our apartments on the same morning, the driver simply collects you from the courtyard at the agreed time, so there is no gap between handing back the keys and being on your way."
+                }
+            }
+        },
+        "features": {
+            "meet-greet": "Meet and greet in the arrivals hall with a name sign",
+            "flight-tracking": "We track your flight number, so delays are our problem",
+            "free-waiting": "60 minutes of free waiting from the moment you land",
+            "child-seat": "Child and booster seats at no extra cost",
+            "bilingual-driver": "Drivers who speak English and Russian",
+            "vehicle-choice": "Sedan or minivan, depending on luggage and group size"
+        },
+        "routes": {
+            "airport-to-center": {
+                "from": "Tashkent International Airport (TAS)",
+                "to": "City centre",
+                "note": "35–45 minutes"
+            },
+            "center-to-airport": {
+                "from": "City centre",
+                "to": "Tashkent International Airport (TAS)",
+                "note": "35–45 minutes"
+            },
+            "airport-to-mountains": {
+                "from": "Tashkent International Airport (TAS)",
+                "to": "Amirsoy or Chimgan",
+                "note": "About 2 hours"
+            },
+            "night-flights": {
+                "from": "Night and early-morning arrivals",
+                "to": "Anywhere in Tashkent",
+                "note": "02:00–06:00, no night surcharge"
+            },
+            "railway-station": {
+                "from": "Tashkent railway station",
+                "to": "City centre or the airport",
+                "note": "For Samarkand and Bukhara departures"
+            }
+        }
+    }
+}

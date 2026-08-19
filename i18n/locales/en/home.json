@@ -1,0 +1,30 @@
+{
+    "home": {
+        "services-title": "What we do in Tashkent",
+        "hero": {
+            "title": "Find your home in the heart of Tashkent",
+            "lead": "Two apartments in Tashkent city center, ten guided tours to Amirsoy, Chimgan and beyond, and airport transfers that run at every hour a plane lands. Local hosts, one WhatsApp thread, no agency in between.",
+            "cta-secondary": "See the apartments",
+            "chips": {
+                "apartments": "2 apartments in the centre",
+                "tours": "10 guided tours",
+                "transfer": "Airport transfers 24/7",
+                "reply": "We reply in 10 minutes"
+            },
+            "photo": "A cream-plastered Tashkent apartment building facade in late afternoon light with deep-red architectural accents, low camera angle looking up, clean geometric composition, warm grading, faint film grain, no people, 4:5 portrait."
+        },
+        "contacts": {
+            "title": "Talk to a person, not a booking engine",
+            "lead": "There is no form on this site and no calendar to fight with. Message us on whichever app you already use and we answer with real availability, the exact address and the meeting details.",
+            "whatsapp-note": "Fastest. We usually reply within 10 minutes.",
+            "telegram-note": "Same team, same answers, if you prefer Telegram.",
+            "facts": {
+                "location": "Tashkent, Uzbekistan",
+                "hours": "Daily 08:00 – 23:00",
+                "languages": "English, Russian and Uzbek"
+            },
+            "contact-link": "All contact details",
+            "about-link": "About us"
+        }
+    }
+}
