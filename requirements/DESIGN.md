@@ -258,7 +258,7 @@ Source of truth: `assets/styles/helpers/_breakpoints.scss`. **Always the mixins,
 | `notebook` | `1280–1365px` | Inline horizontal nav + `BookButton` |
 | `desktop` | `≥1366px` | Inline horizontal nav + `BookButton` |
 
-Mixins: `bp.down($tier)`, `bp.up($tier)`, `bp.only($tier)`, `bp.between($from, $to)`, `bp.short` (`max-height: 500px`), `bp.reduced-motion`. Import alias is always `bp`.
+Mixins: `bp.down($tier)`, `bp.up($tier)`, `bp.only($tier)`, `bp.between($from, $to)`, `bp.short` (`max-height: 500px`), `bp.reduced-motion`, `bp.touch` (`hover: none` — pointer capability, not width). Import alias is always `bp`.
 
 ```scss
 @use "~/assets/styles/helpers/breakpoints" as bp;
@@ -283,7 +283,17 @@ Every primitive is built once in `components/ui/` (or `components/layout/`) and 
 
 ### `BaseButton` — `components/ui/BaseButton.vue`
 
-Default padding `rem(16) rem(28)` at `rem(16)`; `size="small"` is `rem(12) rem(20)` at `rem(14)`. Radius `--pill-radius`. Border `rem(2) solid transparent` or token-coloured per variant. Focus ring `rem(2) solid var(--primary-color)` at `rem(4)` offset. Transitions `background-color`, `color`, `border-color` at 240ms `--ease-decel`.
+Default padding `rem(16) rem(28)` at `rem(16)`; `size="small"` is `rem(12) rem(20)` at `rem(14)`. Radius `--pill-radius`. Border `rem(2) solid transparent` or token-coloured per variant. Focus ring `rem(2) solid var(--primary-color)` at `rem(4)` offset. Transitions `color` and `border-color` at `--dur-state` `--ease-decel`.
+
+**Hover fill — pointer-origin ink.** No variant cross-fades `background-color`; nothing on the button transitions colour at all. The root is an `inline-grid` with one cell holding **two stacked faces**, both `grid-area: 1 / 1`, each carrying the full chrome (`padding`, `gap`, the `rem(2)` `--btn-border` hairline, the label, the chip): `.base-button__face` is the resting look, `.base-button__face--ink` is the hovered look — `--btn-ink` fill, `--btn-ink-label` label, `--btn-ink-border` hairline — and is `aria-hidden`, so the duplicated label is never announced. The inked face is revealed by `clip-path: circle(0% → 150%)` over `--btn-ink-dur` (680ms) on `--ease-decel`, centred on the pointer's real entry / exit point: `pointerenter` and `pointerleave` write `--btn-ink-x` / `--btn-ink-y` onto the element, defaulting to `50% 50%` for keyboard focus. 150% is the general cover radius — `circle()` resolves a percentage against `√(w²+h²)/√2`, so `√2 ≈ 141%` always reaches the far corner.
+
+Because the fill, the label and the hairline all live in **one clipped layer**, the wave crosses them together: the swept half of a word already reads in the inverted colour while the rest still reads in the resting one. Nothing snaps at the end of the transition. The root carries no padding and no border, so the inked face spans the whole border box and no ring of the resting colour survives.
+
+`ghost` inks the label only (`--btn-ink: transparent`, `--btn-ink-label: --primary-color`); `disabled` and `loading` hide the inked face outright.
+
+**Touch.** Under `bp.touch` (`hover: none`) the wave is dropped — hover is a lie on a touchscreen and a sticky `:hover` would freeze the circle mid-sweep. The inked face falls back to `clip-path: none` plus an `opacity` fade at `--dur-state`, on `:hover`, `:focus-visible` and `:active`, so a tap reads as one smooth colour change.
+
+**Full-width.** `fullwidth` sets `justify-content: space-between` on the root and `flex-grow: 1` + `space-between` on `__label`, so the label sits on the leading edge and the chip or trailing icon pins to the trailing edge instead of floating together in the middle of a wide bar.
 
 | Variant | Anatomy |
 |---|---|

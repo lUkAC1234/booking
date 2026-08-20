@@ -8,7 +8,7 @@
         "features-title": "Included in every transfer",
         "all-link": "Transfer details and prices",
         "hero": {
-            "photo": "A quiet arrivals kerb at Tashkent International Airport just before dawn, a dark sedan waiting under warm sodium lighting, terminal glass reflecting the sky, luggage trolley in the foreground, cinematic wide shot, warm grading, faint film grain, no recognisable people, 4:3 landscape.",
+            "photo": "A quiet arrivals kerb at Tashkent International Airport just before dawn, a dark compact SUV waiting under warm sodium lighting, terminal glass reflecting the sky, luggage trolley in the foreground, cinematic wide shot, warm grading, faint film grain, no recognisable people, 4:3 landscape.",
             "chips": {
                 "meet": "Meet and greet with a name sign",
                 "tracking": "We track your flight",
@@ -28,7 +28,7 @@
                 },
                 "confirm": {
                     "title": "We confirm the car",
-                    "text": "We reply with the vehicle, the driver's name and the exact meeting point. Tell us if you need a child seat or a minivan for luggage and we swap the car, at no extra cost. Nothing is charged in advance."
+                    "text": "We reply with the driver's name, the registration and the exact meeting point. Tell us if you need a child seat, or if you are carrying skis or a bicycle, and we set the car up before it leaves for the airport. Nothing is charged in advance."
                 },
                 "meet": {
                     "title": "Walk out and go",
@@ -58,7 +58,7 @@
                 },
                 "luggage": {
                     "title": "Luggage, groups and child seats",
-                    "text": "A sedan takes two passengers with large suitcases comfortably, or three travelling light. Past that we send a minivan, and the swap costs nothing extra because guessing your luggage volume is our job rather than yours. Tell us how many bags you have when you book and we will size the car correctly the first time. Child and booster seats are free and fitted before the car leaves for the airport, so we do need the age of the child in advance rather than at the kerb. Skis, snowboards and bicycles all travel fine, but they need a roof box or a larger vehicle, so mention them in the same message. Groups larger than seven are split across two cars that arrive together and drive in convoy, which is how we handle families booking both apartments at once."
+                    "text": "Every transfer we run is driven in our own Kia Sportage — a compact SUV that takes four passengers and their luggage. Four people with four large suitcases is the honest ceiling; if you are five or more, or carrying more than that, tell us when you book and we will arrange a second car that arrives at the same time rather than discovering the problem at the kerb. Child and booster seats are free and fitted before the car leaves for the airport, so we need the age of the child in advance. Skis, snowboards and bicycles travel fine, but they need planning, so mention them in the same message."
                 },
                 "departure": {
                     "title": "Leaving Tashkent",
@@ -72,7 +72,7 @@
             "free-waiting": "60 minutes of free waiting from the moment you land",
             "child-seat": "Child and booster seats at no extra cost",
             "bilingual-driver": "Drivers who speak English and Russian",
-            "vehicle-choice": "Sedan or minivan, depending on luggage and group size"
+            "one-car": "One Kia Sportage — up to 4 guests with their luggage"
         },
         "routes": {
             "airport-to-center": {
@@ -98,7 +98,7 @@
             "railway-station": {
                 "from": "Tashkent railway station",
                 "to": "City centre or the airport",
-                "note": "For Samarkand and Bukhara departures"
+                "note": "For Afrosiyob high-speed departures"
             }
         },
         "table": {

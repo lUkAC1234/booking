@@ -1,7 +1,16 @@
 <template>
     <Teleport to="body">
         <Transition name="app-mobile-menu">
-            <div v-if="store.isOpen" id="app-mobile-menu" ref="dialogRef" class="app-mobile-menu" role="dialog" aria-modal="true" tabindex="-1" :aria-label="t('nav.menu')">
+            <div
+                v-if="store.isOpen"
+                id="app-mobile-menu"
+                ref="dialogRef"
+                class="app-mobile-menu"
+                role="dialog"
+                aria-modal="true"
+                tabindex="-1"
+                :aria-label="t('nav.menu')"
+            >
                 <div class="app-mobile-menu__backdrop" @click="store.close" />
                 <div class="app-mobile-menu__panel">
                     <div class="app-mobile-menu__head">
@@ -72,7 +81,10 @@ onKeyStroke("Escape", () => {
     if (store.isOpen) store.close();
 });
 
-watch(() => route.fullPath, () => store.close());
+watch(
+    () => route.fullPath,
+    () => store.close(),
+);
 
 onBeforeUnmount(() => {
     scrollLocked.value = false;

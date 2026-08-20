@@ -27,7 +27,7 @@ const FEATURE_IDS = [
     "free-waiting",
     "child-seat",
     "bilingual-driver",
-    "vehicle-choice",
+    "one-car",
 ] as const;
 
 export const useTransferRoutes = () => {

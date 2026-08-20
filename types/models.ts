@@ -3,6 +3,7 @@ export type IconName =
     | "bed"
     | "building"
     | "calendar"
+    | "car"
     | "check"
     | "clock"
     | "document"

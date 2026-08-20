@@ -15,27 +15,27 @@ export interface Apartment {
     bathrooms: number;
 }
 
-const APARTMENT_IDS = ["amir-timur-loft", "tashkent-city-panorama"] as const;
-const FACT_KEYS = ["size", "bedrooms", "bathrooms", "floor", "wifi", "checkin"] as const;
+const APARTMENT_IDS = ["buyuk-turon", "amir-temur"] as const;
+const FACT_KEYS = ["size", "rooms", "metro", "bathrooms", "wifi", "checkin"] as const;
 
 const FACT_ICONS: Record<(typeof FACT_KEYS)[number], IconName> = {
     size: "ruler",
-    bedrooms: "bed",
+    rooms: "bed",
+    metro: "train",
     bathrooms: "bath",
-    floor: "building",
     wifi: "wifi",
     checkin: "key",
 };
 
-const AMENITY_KEYS = ["kitchen", "laundry", "workspace", "linen", "climate", "parking", "security"] as const;
-const NEARBY_KEYS = ["square", "broadway", "metro", "chorsu", "park"] as const;
+const AMENITY_KEYS = ["wifi", "tv", "kitchen", "climate", "essentials", "furnished", "checkin"] as const;
+const NEARBY_KEYS = ["metro", "park", "shop", "food", "transport", "culture", "station"] as const;
 const PARAGRAPH_KEYS = ["intro", "space", "area"] as const;
 
 type ApartmentId = (typeof APARTMENT_IDS)[number];
 
 const SPECS: Record<ApartmentId, Pick<Apartment, "floorSize" | "rooms" | "bedrooms" | "bathrooms">> = {
-    "amir-timur-loft": { floorSize: 74, rooms: 3, bedrooms: 2, bathrooms: 2 },
-    "tashkent-city-panorama": { floorSize: 52, rooms: 2, bedrooms: 1, bathrooms: 1 },
+    "buyuk-turon": { floorSize: 55, rooms: 2, bedrooms: 1, bathrooms: 1 },
+    "amir-temur": { floorSize: 62, rooms: 2, bedrooms: 1, bathrooms: 1 },
 };
 
 export const useApartments = () => {

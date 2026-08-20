@@ -5,6 +5,7 @@
         <AboutStats />
         <AboutPrinciples />
         <AboutServices />
+        <AboutStay />
         <BookingCtaBand />
     </article>
 </template>

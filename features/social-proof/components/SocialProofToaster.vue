@@ -1,13 +1,7 @@
 <template>
     <Teleport to="body">
         <Transition name="social-proof">
-            <aside
-                v-if="visibleToast"
-                class="social-proof"
-                role="status"
-                aria-live="polite"
-                aria-atomic="true"
-            >
+            <aside v-if="visibleToast" class="social-proof" role="status" aria-live="polite" aria-atomic="true">
                 <span class="social-proof__icon" aria-hidden="true">
                     <SvgIcon :name="ICON_BY_SERVICE[visibleToast.service]" />
                 </span>
@@ -55,8 +49,7 @@ const { buildQueue } = useSocialProof();
 const suppressedRoute = computed(() => route.path.includes("/contact-us"));
 const visibleToast = computed(() => (suppressedRoute.value ? null : current.value));
 
-const messageOf = (toast: SocialProofToast) =>
-    t(toast.messageKey, { count: toast.count, item: toast.item });
+const messageOf = (toast: SocialProofToast) => t(toast.messageKey, { count: toast.count, item: toast.item });
 
 const timeOf = (toast: SocialProofToast) =>
     toast.minutesAgo < JUST_NOW_BELOW
@@ -72,19 +65,15 @@ const scrollDepth = computed(() => {
     return scrollable > 0 ? y.value / scrollable : 0;
 });
 
-const { start: startFirstTimer, stop: stopFirstTimer } = useTimeoutFn(
-    () => showNext(),
-    FIRST_DELAY_MS,
-    { immediate: false },
-);
+const { start: startFirstTimer, stop: stopFirstTimer } = useTimeoutFn(() => showNext(), FIRST_DELAY_MS, {
+    immediate: false,
+});
 const { start: startCycle, stop: stopCycle } = useTimeoutFn(() => showNext(), cycleDelay, {
     immediate: false,
 });
-const { start: startAutoDismiss, stop: stopAutoDismiss } = useTimeoutFn(
-    () => store.dismiss(),
-    AUTO_DISMISS_MS,
-    { immediate: false },
-);
+const { start: startAutoDismiss, stop: stopAutoDismiss } = useTimeoutFn(() => store.dismiss(), AUTO_DISMISS_MS, {
+    immediate: false,
+});
 
 let stopScrollWatch: (() => void) | null = null;
 
@@ -98,8 +87,7 @@ const showNext = () => {
     window.sessionStorage.setItem(SESSION_KEY, String(shown));
     startAutoDismiss();
     if (store.canShow) {
-        cycleDelay.value =
-            MIN_CYCLE_MS + Math.floor(Math.random() * (MAX_CYCLE_MS - MIN_CYCLE_MS + 1));
+        cycleDelay.value = MIN_CYCLE_MS + Math.floor(Math.random() * (MAX_CYCLE_MS - MIN_CYCLE_MS + 1));
         startCycle();
     }
 };

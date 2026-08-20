@@ -188,7 +188,10 @@ useEventListener(
 
 if (props.closeOnRouteChange) {
     const route = useRoute();
-    watch(() => route.fullPath, () => close());
+    watch(
+        () => route.fullPath,
+        () => close(),
+    );
 }
 
 defineExpose({ open, close, toggle, isOpen });

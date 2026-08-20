@@ -1,7 +1,7 @@
 <template>
     <article class="page-tours">
         <ToursHero />
-        <ToursGroups />
+        <ToursCatalog />
         <ToursPractical />
         <FaqSection page="tours" bg="surface" />
         <BookingCtaBand context-kind="tour" />

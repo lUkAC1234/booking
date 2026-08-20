@@ -45,13 +45,13 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
 
-            <div v-reveal class="home-transfer__actions">
-                <BookButton context-kind="transfer" />
-                <BaseButton :to="'/tashkent-airport-transfer/'" variant="outline-light">
-                    {{ t("transfer.all-link") }}
-                </BaseButton>
+                <div class="home-transfer__actions">
+                    <BookButton context-kind="transfer" />
+                    <BaseButton :to="'/tashkent-airport-transfer/'" variant="outline-light">
+                        {{ t("transfer.all-link") }}
+                    </BaseButton>
+                </div>
             </div>
         </AppContainer>
     </section>
@@ -88,20 +88,19 @@ const featureLabels = computed(() => features.value.map((feature) => feature.lab
     }
 
     &__routes {
-        padding: functions.rem(32) functions.rem(16) functions.rem(16);
+        padding: functions.rem(8);
         border: functions.rem(2) solid var(--border-color);
         border-radius: var(--outer-radius);
         background-color: var(--surface);
     }
 
     &__routes-title {
-        margin: 0 0 functions.rem(20);
+        margin: functions.rem(16) 0 functions.rem(28);
         padding-inline: functions.rem(16);
-        font-size: var(--fz-caption);
-        font-weight: var(--font-weight-medium);
-        letter-spacing: var(--ls-caps);
-        text-transform: uppercase;
-        color: var(--ink-60);
+        font-size: var(--fz-subsection-title);
+        line-height: var(--lh-snug);
+        letter-spacing: var(--ls-heading);
+        color: var(--ink);
     }
 
     &__table {
@@ -111,19 +110,19 @@ const featureLabels = computed(() => features.value.map((feature) => feature.lab
         th,
         td {
             text-align: left;
-            padding: functions.rem(18) functions.rem(16);
+            padding: functions.rem(20) functions.rem(16);
             vertical-align: middle;
         }
 
         thead th {
-            padding-block: 0 functions.rem(14);
+            padding-block: 0 functions.rem(12);
             font-size: var(--fz-caption);
             font-weight: var(--font-weight-medium);
             letter-spacing: var(--ls-caps);
             text-transform: uppercase;
             color: var(--ink-60);
             white-space: nowrap;
-            border-bottom: functions.rem(2) solid var(--border-color);
+            border-bottom: functions.rem(2) solid var(--ink);
         }
 
         thead th:last-child,
@@ -147,7 +146,7 @@ const featureLabels = computed(() => features.value.map((feature) => feature.lab
 
     &__route {
         font-weight: var(--font-weight-medium);
-        font-size: var(--fz-body-sm);
+        font-size: var(--fz-body);
         color: var(--ink);
         white-space: nowrap;
     }
@@ -195,20 +194,24 @@ const featureLabels = computed(() => features.value.map((feature) => feature.lab
 
     &__duration {
         font-size: var(--fz-body-sm);
-        color: var(--ink-80);
+        color: var(--ink-60);
         white-space: nowrap;
     }
 
     &__price {
         font-size: var(--fz-body-sm);
-        color: var(--ink-60);
+        font-weight: var(--font-weight-medium);
+        color: var(--ink);
         white-space: nowrap;
     }
 
     &__actions {
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
         gap: functions.rem(16);
+        padding: functions.rem(24) functions.rem(16) functions.rem(16);
+        border-top: functions.rem(2) solid var(--border-color);
     }
 
     @include bp.down("laptop") {
@@ -219,6 +222,11 @@ const featureLabels = computed(() => features.value.map((feature) => feature.lab
         &__intro {
             grid-template-columns: 1fr;
             gap: functions.rem(40);
+        }
+
+        &__routes-title {
+            margin: functions.rem(12) 0 functions.rem(20);
+            padding-inline: functions.rem(12);
         }
 
         &__table {
@@ -270,19 +278,15 @@ const featureLabels = computed(() => features.value.map((feature) => feature.lab
         }
 
         &__price {
-            margin-top: functions.rem(2);
+            margin-top: functions.rem(4);
+        }
+
+        &__actions {
+            padding: functions.rem(20) functions.rem(12) functions.rem(12);
         }
     }
 
     @include bp.down("mobile") {
-        &__routes {
-            padding: functions.rem(24) functions.rem(8) functions.rem(8);
-        }
-
-        &__routes-title {
-            padding-inline: functions.rem(12);
-        }
-
         &__actions {
             flex-direction: column;
             align-items: stretch;

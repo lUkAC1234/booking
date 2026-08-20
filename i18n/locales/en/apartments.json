@@ -1,7 +1,7 @@
 {
     "apartments": {
         "title": "Apartments in Tashkent city center",
-        "lead": "Two apartments, both a walk from Amir Timur Square. We host them ourselves, so the person who answers your message is the person who hands you the keys.",
+        "lead": "Two apartments in the middle of Tashkent, both a short walk from a metro station. We host them ourselves, so the person who answers your message is the person who hands you the keys.",
         "section-lead": "We keep exactly two apartments and look after both of them personally. That is the whole inventory, which is why we can promise the photos match what you walk into, and why the calendar fills up early in spring and autumn.",
         "all-link": "See both apartments",
         "amenities-title": "In every apartment",
@@ -9,42 +9,46 @@
         "hero": {
             "photo": "Cream-plastered residential facade in central Tashkent photographed in late afternoon light, deep-red architectural accents around the balconies, a low camera angle, clean geometric composition, warm grading, faint film grain, no people, 4:3 landscape.",
             "chips": {
-                "walk": "10 minutes to Amir Timur Square",
-                "checkin": "Self check-in at any hour",
+                "walk": "Metro within a few minutes",
+                "checkin": "Check-in and check-out 24/7",
                 "stay": "From one night",
                 "reply": "We reply in 10 minutes"
             }
         },
         "list": {
             "title": "Both apartments in detail",
-            "lead": "Read the two of them side by side and tell us which one suits your dates. Every square metre, every floor number and every photo brief below describes the flat you will actually walk into, because we hand over the keys ourselves."
+            "lead": "Read the two of them side by side and tell us which one suits your dates. Every square metre, every address and every photo brief below describes the flat you will actually walk into, because we hand over the keys ourselves."
         },
         "location": {
-            "title": "Why the centre is worth it",
-            "lead": "Tashkent is a big, flat, generously spaced city, and staying in the wrong district turns every evening into a taxi ride. Both of our apartments sit inside the ring where the things you came for are within walking distance of each other.",
-            "link-tours": "See the tours we run from here",
+            "title": "What your host will tell you",
+            "lead": "Staying in the centre is only half of it. The other half is knowing where to eat for four dollars, which metro station is worth the detour and which fruit row at the bazaar is the sweet one. That knowledge comes with the keys, and none of it costs anything.",
+            "link-tours": "See the excursions we drive",
             "link-contact": "Ask us what is on this week",
-            "link-transfer": "Airport transfer to the centre",
+            "link-transfer": "Airport transfer to the door",
             "items": {
-                "square": {
-                    "title": "Amir Timur Square",
-                    "text": "The square is the geographic and social centre of Tashkent, ringed by the Hotel Uzbekistan, the Amir Timur Museum and a stand of chinar trees old enough to have shaded several republics. From either apartment you reach it on foot in ten to fifteen minutes, and once you are there the rest of the historic centre unfolds without a single taxi."
-                },
-                "broadway": {
-                    "title": "Broadway and Sailgokh Street",
-                    "text": "Locals call the pedestrian stretch running off the square Broadway, and it is where Tashkent goes in the evening: portrait painters, chess tables, corn sellers, small stages and a permanent hum of families walking nowhere in particular. It is two minutes further than the square and it is the easiest way to understand the city on your first night."
-                },
                 "metro": {
-                    "title": "The metro, six minutes away",
-                    "text": "Tashkent's metro is one of the most beautiful in the world and costs a few thousand som a ride. The nearest station to the Amir Timur Loft is six minutes on foot, eight from the Tashkent City Panorama, which means Chorsu Bazaar, the Kosmonavtlar station mosaics and the whole eastern half of the city are reachable without arranging anything in advance."
+                    "title": "The first metro in Central Asia",
+                    "text": "Tashkent opened its metro in 1977, the first in the region, and built the stations like public halls: chandeliers, carved marble, cosmonaut mosaics and domed ceilings thirty metres underground. Kosmonavtlar, Minor, Toshkent, Pakhtakor and Alisher Navoi are the ones worth the detour. Photography and filming were officially permitted from 1 June 2018, which is why almost nobody outside the country has seen them, and why we now run a proper excursion through them."
                 },
-                "chorsu": {
-                    "title": "Chorsu Bazaar and the old city",
-                    "text": "Four metro stops from the apartments the city changes character completely: the blue dome of Chorsu, mountains of dried apricots, bread stamped in wooden moulds, and behind it the Khast Imam complex with the Uthman Quran. Guests who plan a lazy morning here usually end up staying until the afternoon."
+                "plov": {
+                    "title": "Besh Qozon, where plov is made by the tonne",
+                    "text": "Plov is the national dish and the Central Asian Plov Centre, known to everyone here as Besh Qozon, is where it happens at scale: roughly one and a half tonnes cooked in a single day, in open kazans wide enough to stand in. Go before one in the afternoon, because when the kazan is finished it is finished. We will tell you what else to order alongside it, and we drive guests there as a half-day excursion with the bazaars attached."
                 },
-                "park": {
-                    "title": "Tashkent City Park",
-                    "text": "The newest part of the centre, built around a lake with fountains that run after dark, glass towers on one side and lawns on the other. From the Tashkent City Panorama it is a fifteen-minute walk and the view of it from the sixteenth floor is the reason most guests book that apartment. The airport is a twenty-five-minute drive from either address."
+                "bazaars": {
+                    "title": "Bazaars, fruit and what to actually buy",
+                    "text": "Uzbek fruit is the thing guests write to us about afterwards — melons, apricots, grapes and figs that taste nothing like the supermarket version at home. We will tell you which markets are worth the trip, which rows inside them sell the sweet stuff rather than the photogenic stuff, roughly what things should cost, and how to get there and back on the metro without a taxi."
+                },
+                "host": {
+                    "title": "An owner who actually answers",
+                    "text": "The apartment is hosted by its owner, not by an agency with a call centre. Ask about a good, inexpensive restaurant near the flat and you get a name rather than a search link; ask about the national dishes and you get an order of what to try first. Questions about the country are welcome too — Uzbekistan is a big part of Central Asia and most guests leave knowing considerably more about it than they arrived with."
+                },
+                "mountains": {
+                    "title": "The Tian Shan, ninety minutes away",
+                    "text": "The Tashkent region runs straight into the Western Tian Shan: Amirsoy, Greater Chimgan, the turquoise Charvak reservoir and a 2,290-metre cable line that lifts you above the tree line. These are the places locals actually go at the weekend, and they are close enough that a mountain day starts after breakfast and ends before dinner."
+                },
+                "airport": {
+                    "title": "Airport transfers around the clock",
+                    "text": "Most flights into Tashkent land between two and five in the morning. The transfer runs at whatever hour you arrive — from the terminal to the apartment door, back again when you leave, and out to the mountains or the sights of the city on any day in between. Same car, same driver, no surcharge for a night arrival."
                 }
             }
         },
@@ -54,76 +58,80 @@
             "steps": {
                 "message": {
                     "title": "Send us your dates",
-                    "text": "Tap any booking button and WhatsApp opens with the apartment already named. Tell us the dates, how many of you there are and roughly when you land. We answer with real availability, the total price and the exact address."
+                    "text": "Tap any booking button and WhatsApp opens with the apartment already named. Tell us the dates, how many of you there are and roughly when you land. We answer with real availability, the total price and the exact address. Arrival and departure times are flexible, but they can collide with the guests either side of you, so tell us what you would like before you book rather than after."
                 },
                 "confirm": {
                     "title": "We confirm and hold it",
-                    "text": "Once you say yes the apartment comes off the calendar. No deposit is required, no card is charged, and if your plans change you tell us in the same thread. We will also ask whether you want a driver waiting at the airport."
+                    "text": "Once you say yes the apartment comes off the calendar. No deposit is required, no card is charged, and if your plans change you tell us in the same thread. We will also ask whether you want a driver waiting at the airport and whether you have a mountain day in mind."
                 },
                 "checkin": {
-                    "title": "Let yourself in",
-                    "text": "On the day of arrival we send the entrance code and a photo of the door. Self check-in works at three in the morning as easily as at three in the afternoon, and one of us is a ten-minute drive away if anything needs sorting."
+                    "title": "Arrive at any hour",
+                    "text": "Check-in and check-out run around the clock. Tell us your exact arrival time and a member of our staff meets you at the apartment. If you land in the middle of the night and would rather not wait for anyone, you let yourself in with the key from the mini-safe — we send the entrance code and a photo of the door on the day."
                 }
             }
         },
         "amenities": {
-            "kitchen": "Fully equipped kitchen with an oven, kettle and coffee",
-            "laundry": "Washing machine and drying rack",
-            "workspace": "A desk and a chair you can actually work from",
-            "linen": "Fresh linen, towels and toiletries on arrival",
-            "climate": "Air conditioning and heating in every room",
-            "parking": "Free parking in the courtyard",
-            "security": "Secure entrance with a guarded lobby"
+            "wifi": "High-speed Wi-Fi, 20 to 100 Mbps",
+            "tv": "Two smart TVs",
+            "kitchen": "A large kitchen with a refrigerator and a microwave",
+            "climate": "Two air conditioners",
+            "essentials": "Hairdryer, iron and fresh linen on arrival",
+            "furnished": "Fully furnished, with every basic necessity in place",
+            "checkin": "Check-in and check-out at any hour, day or night"
         },
         "items": {
-            "amir-timur-loft": {
-                "title": "Amir Timur Loft",
-                "summary": "A two-bedroom apartment on the eighth floor, ten minutes on foot from Amir Timur Square and the Broadway pedestrian street.",
-                "photo": "Warm daylight interior of a two-bedroom Tashkent apartment: cream plaster walls, a low oak coffee table, a deep terracotta leather armchair, a floor lamp with a white linen shade, sheer curtains diffusing afternoon light, a framed abstract print above a sideboard, ceramic vases. Editorial interiors photography, warm white balance, soft natural light, faint film grain, no people, 16:10 landscape.",
+            "buyuk-turon": {
+                "title": "Buyuk Turon Apartment",
+                "summary": "Fifty-five square metres on Buyuk Turon street, one hundred and fifty metres from Kosmonavtlar metro and ten metres from the Golubye Kupola park.",
+                "photo": "Warm daylight interior of a Tashkent apartment: cream plaster walls, a low oak coffee table, a deep terracotta armchair, a floor lamp with a white linen shade, sheer curtains diffusing afternoon light, a framed abstract print above a sideboard, ceramic vases. Editorial interiors photography, warm white balance, soft natural light, faint film grain, no people, 16:10 landscape.",
                 "facts": {
-                    "size": "74 m²",
-                    "bedrooms": "2 bedrooms",
-                    "bathrooms": "2 bathrooms",
-                    "floor": "8th floor",
-                    "wifi": "Fibre Wi-Fi",
-                    "checkin": "Self check-in"
+                    "size": "55 m²",
+                    "rooms": "1 bedroom + living room",
+                    "metro": "Metro — 150 m",
+                    "bathrooms": "1 bathroom",
+                    "wifi": "Wi-Fi 20–100 Mbps",
+                    "checkin": "Check-in 24/7"
                 },
                 "paragraphs": {
-                    "intro": "This is the apartment most guests book when there are more than two of them. Seventy-four square metres split into two separate bedrooms, a living room that comfortably seats five, and two full bathrooms, so nobody is queueing in the morning before a mountain day.",
-                    "space": "The living room faces a quiet inner courtyard rather than the road, which matters more than it sounds in a city centre. Both bedrooms have blackout curtains, the kitchen is set up for actual cooking rather than reheating, and the desk by the window has a power socket and enough light to work a full day if you need to.",
-                    "area": "Everything you came to Tashkent for is walkable from the front door. Amir Timur Square is ten minutes away, the Broadway pedestrian street runs off it, and the nearest metro station puts Chorsu Bazaar four stops away. When you book a tour with us, the driver collects you here."
+                    "intro": "Buyuk Turon street, 75. Fifty-five square metres arranged as a separate bedroom and a living room, in what is probably the calmest and safest pocket of the city centre for a visitor. It is neat, clean and set up to feel like a good small hotel rather than somebody's spare flat — which is exactly what guests tell us afterwards.",
+                    "space": "Everything in it was chosen for people who are here for a week rather than a lifetime: high-speed Wi-Fi that holds a video call, two smart TVs, a large kitchen with a refrigerator and a microwave, two air conditioners, a hairdryer and an iron. It is fully furnished and stocked with the basics, so the only thing you need to arrive with is your luggage.",
+                    "area": "You step out of the door into the middle of everything. The Golubye Kupola park is ten metres away, a Smart supermarket twenty, the restaurant of the same name a hundred, and Kosmonavtlar metro station a hundred and fifty. The Museum of History and the Central Exhibition Hall are both about four hundred metres, which is a five to ten minute walk. Banks and government offices are on the same few streets, which matters more than it sounds if you are here for work."
                 },
                 "nearby": {
-                    "square": "Amir Timur Square — 10 minutes on foot",
-                    "broadway": "Broadway pedestrian street — 12 minutes on foot",
-                    "metro": "Metro station — 6 minutes on foot",
-                    "chorsu": "Chorsu Bazaar — 4 metro stops",
-                    "park": "Tashkent City Park — 15 minutes by car"
+                    "metro": "Kosmonavtlar metro station — 150 m",
+                    "park": "Golubye Kupola park — 10 m",
+                    "shop": "Smart supermarket — 20 m",
+                    "food": "Golubye Kupola restaurant — 100 m",
+                    "transport": "Public transport stop — 200 m",
+                    "culture": "Museum of History and Exhibition Hall — 400 m",
+                    "station": "North railway station (Afrosiyob) — 2 km"
                 }
             },
-            "tashkent-city-panorama": {
-                "title": "Tashkent City Panorama",
-                "summary": "A one-bedroom apartment on the sixteenth floor with a window wall facing the Tashkent City Park towers.",
-                "photo": "High-floor apartment in Tashkent City: a floor-to-ceiling window with the Tashkent City Park towers visible at golden hour, cream bouclé sofa, round marble side table, muted rose throw blanket, minimal styling, pale oak floor. Warm grading, natural light only, no people, 16:10 landscape.",
+            "amir-temur": {
+                "title": "Amir Temur Avenue Apartment",
+                "summary": "Sixty-two square metres on Amir Temur Avenue, the main artery running north out of the city centre, with a metro station a few minutes from the entrance.",
+                "photo": "Bright interior of a Tashkent apartment on a main avenue: tall windows behind sheer curtains, cream bouclé sofa, round marble side table, muted rose throw blanket, pale oak floor, minimal styling, a bookshelf in soft shadow. Warm grading, natural light only, no people, 16:10 landscape.",
                 "facts": {
-                    "size": "52 m²",
-                    "bedrooms": "1 bedroom",
+                    "size": "62 m²",
+                    "rooms": "1 bedroom + living room",
+                    "metro": "Metro — 400 m",
                     "bathrooms": "1 bathroom",
-                    "floor": "16th floor",
-                    "wifi": "Fibre Wi-Fi",
-                    "checkin": "Self check-in"
+                    "wifi": "Wi-Fi 20–100 Mbps",
+                    "checkin": "Check-in 24/7"
                 },
                 "paragraphs": {
-                    "intro": "Fifty-two square metres on the sixteenth floor, built around one long window that looks straight at the Tashkent City Park towers. Couples and solo travellers book this one, and a fair number of them extend by a few nights once they have seen the view at sunset.",
-                    "space": "The bedroom is separate rather than a corner of the living room, which is the difference between a studio and somewhere you can actually live for a week. The building has a lift, a guarded lobby and free parking in the courtyard, and the flat itself is quiet enough on the sixteenth floor that street noise never reaches it.",
-                    "area": "Tashkent City Park is a fifteen-minute walk and is at its best in the evening when the fountains are lit. The metro is close enough that you can be at Chorsu Bazaar in under half an hour without ever booking a taxi, and the airport is a twenty-five-minute drive when it is time to leave."
+                    "intro": "Amir Temur Avenue, 48. Sixty-two square metres, the larger of the two, laid out as a separate bedroom and a generous living room. The avenue is the axis of modern Tashkent — wide, tree-lined and lit late — and the flat sits far enough back from it to stay quiet at night.",
+                    "space": "The fit-out is identical to the other apartment because we furnished both ourselves: high-speed Wi-Fi, two smart TVs, a large kitchen with a refrigerator and a microwave, two air conditioners, a hairdryer and an iron. Seven extra square metres go into the living room, which is why groups of three and four usually take this one.",
+                    "area": "Amir Temur Square, the Broadway pedestrian street and the Hotel Uzbekistan are a straight walk down the avenue, and the nearest metro station is about four hundred metres from the entrance. Cafes, bakeries and a supermarket are on the same block, the Tashkent TV Tower and the Japanese Garden are a short drive north, and the airport is roughly twenty-five minutes by car."
                 },
                 "nearby": {
-                    "square": "Amir Timur Square — 15 minutes on foot",
-                    "broadway": "Broadway pedestrian street — 18 minutes on foot",
-                    "metro": "Metro station — 8 minutes on foot",
-                    "chorsu": "Chorsu Bazaar — 5 metro stops",
-                    "park": "Tashkent City Park — 15 minutes on foot"
+                    "metro": "Nearest metro station — 400 m",
+                    "park": "Amir Temur Square and its chinar trees — 1.5 km",
+                    "shop": "Supermarket — 100 m",
+                    "food": "Cafes and restaurants on the avenue — 50 m",
+                    "transport": "Public transport stop — 100 m",
+                    "culture": "TV Tower and the Japanese Garden — 2 km",
+                    "station": "North railway station (Afrosiyob) — 3 km"
                 }
             }
         }

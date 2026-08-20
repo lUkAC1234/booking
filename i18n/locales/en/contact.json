@@ -45,23 +45,23 @@
                 },
                 "plans": {
                     "title": "What you want to see",
-                    "text": "Mountains, the old city, a day trip to Samarkand, or nothing planned yet. Tell us roughly and we will suggest which tour fits which day of your stay based on the season and the weather. If you have a fixed day that cannot move, say which one and we will build the rest of the week around it."
+                    "text": "Amirsoy, Chimgan, Charvak, one of the cable cars, the metro stations, Besh Qozon — or nothing planned yet. Tell us roughly and we will suggest which day of your stay suits which route, based on the season and the forecast. If you have a fixed day that cannot move, say which one and we will build the rest of the week around it."
                 }
             }
         },
         "areas": {
-            "title": "Where we host, drive and guide",
-            "lead": "Both apartments sit in the centre of Tashkent, and our drivers cover the whole city plus the mountains and the two closest historic cities. If you are unsure whether we reach where you are going, ask — the answer is usually yes, and where it is not we will tell you who does it properly instead of taking the booking anyway. Tours and transfers are available whether or not you are staying with us, so guests in hotels elsewhere in Tashkent book them on exactly the same terms.",
+            "title": "Where we host and drive",
+            "lead": "Both apartments sit in the centre of Tashkent, and our drivers cover the whole city plus the mountain valleys north-east of it. If you are unsure whether we reach where you are going, ask — the answer is usually yes, and where it is not we will tell you who does it properly instead of taking the booking anyway. Day trips and transfers are available whether or not you are staying with us, so guests in hotels elsewhere in Tashkent book them on exactly the same terms.",
             "items": {
                 "center": "Amir Timur Square, Broadway and Sailgokh Street",
                 "city": "Tashkent City Park, Yunusabad and Mirabad districts",
-                "old": "Chorsu Bazaar, Khast Imam and the old city",
+                "old": "Chorsu, Besh Qozon and the big bazaars",
                 "airport": "Tashkent International Airport, both terminals",
-                "mountains": "Amirsoy, Chimgan, Beldersay and Charvak Lake",
-                "trips": "Samarkand and Bukhara by high-speed train"
+                "mountains": "Amirsoy, Greater Chimgan and the Chinorkent cable car",
+                "trips": "Charvak reservoir and the Bostanlyk valleys"
             },
             "link-apartments": "See the apartments in the centre",
-            "link-tours": "See the tours we drive",
+            "link-tours": "See the day trips we drive",
             "link-transfer": "See the transfer routes",
             "link-about": "Read about who we are"
         }

@@ -8,7 +8,7 @@
                 :type="source.type"
                 :srcset="source.srcset"
                 sizes="100vw"
-            >
+            />
             <img
                 class="home-hero__image"
                 :src="fallback.src"
@@ -19,7 +19,7 @@
                 height="941"
                 fetchpriority="high"
                 decoding="async"
-            >
+            />
         </picture>
 
         <AppContainer size="wide" class="home-hero__inner">
@@ -39,12 +39,7 @@
             </div>
 
             <ul class="home-hero__facts" role="list">
-                <li
-                    v-for="fact in facts"
-                    :key="fact.key"
-                    data-hero="card"
-                    class="home-hero__fact"
-                >
+                <li v-for="fact in facts" :key="fact.key" data-hero="card" class="home-hero__fact">
                     <SvgIcon :name="fact.icon" />
                     <span class="home-hero__fact-label">{{ fact.label }}</span>
                 </li>
@@ -76,8 +71,7 @@ const img = useImage();
 
 useHeroIntro(root);
 
-const url = (src: string, format: string, width: number) =>
-    img(src, { format, quality: QUALITY, width, fit: "cover" });
+const url = (src: string, format: string, width: number) => img(src, { format, quality: QUALITY, width, fit: "cover" });
 
 const srcset = (src: string, format: string, widths: number[]) =>
     widths.map((width) => `${url(src, format, width)} ${width}w`).join(", ");

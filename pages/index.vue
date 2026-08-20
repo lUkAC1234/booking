@@ -34,7 +34,7 @@ jsonLd.localBusiness({
     addressLocality: appContact.city,
     addressRegion: appContact.region,
     addressCountry: appContact.country,
-    areaServed: ["Tashkent", "Amirsoy", "Chimgan", "Charvak", "Beldersay", "Samarkand", "Bukhara"],
+    areaServed: ["Tashkent", "Amirsoy", "Chimgan", "Charvak", "Chinorkent", "Bostanlyk"],
 });
 
 jsonLd.itemList(

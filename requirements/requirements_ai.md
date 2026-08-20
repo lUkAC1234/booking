@@ -1132,6 +1132,7 @@ Do not add styles that are already inherited from global base styles. Only write
 | `@include bp.between("tablet", "laptop")` | `@media (min-width: 640px) and (max-width: 1279px)` | Tablet through laptop (burger range) |
 | `@include bp.short` | `@media (max-height: 500px)` | Short viewports (landscape phones, embedded) |
 | `@include bp.reduced-motion` | `@media (prefers-reduced-motion: reduce)` | Reduced-motion preference |
+| `@include bp.touch` | `@media (hover: none)` | Touch pointers — drop hover-only motion, keep a plain state change |
 
 **Tier definitions** (defined ONCE in [_breakpoints.scss](frontend/assets/styles/helpers/_breakpoints.scss); do not duplicate elsewhere):
 | Tier | Range | Description |

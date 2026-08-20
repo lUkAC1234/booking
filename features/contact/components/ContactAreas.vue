@@ -18,12 +18,7 @@
             </ul>
 
             <div v-reveal class="contact-areas__links">
-                <BaseButton
-                    v-for="link in links"
-                    :key="link.to"
-                    :to="link.to"
-                    variant="ghost"
-                >
+                <BaseButton v-for="link in links" :key="link.to" :to="link.to" variant="ghost">
                     {{ link.label }}
                     <SvgArrowRight />
                 </BaseButton>
@@ -47,9 +42,7 @@ const LINK_ENTRIES = [
 
 const areas = computed(() => AREA_IDS.map((id) => t(`contact.areas.items.${id}`)));
 
-const links = computed(() =>
-    LINK_ENTRIES.map((entry) => ({ to: entry.to, label: t(entry.label) })),
-);
+const links = computed(() => LINK_ENTRIES.map((entry) => ({ to: entry.to, label: t(entry.label) })));
 </script>
 
 <style scoped lang="scss">

@@ -29,11 +29,12 @@ const { t } = useI18n();
 const headingId = useId();
 
 const PLACE_LINKS = [
-    { id: "square", to: "/tashkent-tours-amirsoy-chimgan/", label: "apartments.location.link-tours" },
-    { id: "broadway", to: "/contact-us/", label: "apartments.location.link-contact" },
     { id: "metro", to: "/tashkent-tours-amirsoy-chimgan/", label: "apartments.location.link-tours" },
-    { id: "chorsu", to: "/tashkent-tours-amirsoy-chimgan/", label: "apartments.location.link-tours" },
-    { id: "park", to: "/tashkent-airport-transfer/", label: "apartments.location.link-transfer" },
+    { id: "plov", to: "/tashkent-tours-amirsoy-chimgan/", label: "apartments.location.link-tours" },
+    { id: "bazaars", to: "/contact-us/", label: "apartments.location.link-contact" },
+    { id: "host", to: "/contact-us/", label: "apartments.location.link-contact" },
+    { id: "mountains", to: "/tashkent-tours-amirsoy-chimgan/", label: "apartments.location.link-tours" },
+    { id: "airport", to: "/tashkent-airport-transfer/", label: "apartments.location.link-transfer" },
 ] as const;
 
 const places = computed(() =>

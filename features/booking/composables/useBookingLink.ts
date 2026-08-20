@@ -16,9 +16,7 @@ export const useBookingLink = (
         return t(`booking.message.${resolvedKind}`, { item: title });
     });
 
-    const whatsappHref = computed(
-        () => `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(message.value)}`,
-    );
+    const whatsappHref = computed(() => `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(message.value)}`);
 
     const telegramHref = computed(() => `https://t.me/+${contact.telegram}`);
 

@@ -7,28 +7,36 @@
         :disabled="disabled || loading"
         :class="rootClass"
         :aria-busy="loading ? 'true' : undefined"
+        @pointerenter="setInkOrigin"
+        @pointerleave="setInkOrigin"
     >
-        <span v-if="loading" class="base-button__spinner" aria-hidden="true" />
-        <span class="base-button__label">
-            <slot />
+        <span class="base-button__face">
+            <span v-if="loading" class="base-button__spinner" aria-hidden="true" />
+            <span class="base-button__label">
+                <slot />
+            </span>
+            <span v-if="hasChip" class="base-button__chip" aria-hidden="true">
+                <slot name="icon">
+                    <SvgArrowRight />
+                </slot>
+            </span>
         </span>
-        <span v-if="hasChip" class="base-button__chip" aria-hidden="true">
-            <slot name="icon">
-                <SvgArrowRight />
-            </slot>
+        <span class="base-button__face base-button__face--ink" aria-hidden="true">
+            <span v-if="loading" class="base-button__spinner" />
+            <span class="base-button__label">
+                <slot />
+            </span>
+            <span v-if="hasChip" class="base-button__chip">
+                <slot name="icon">
+                    <SvgArrowRight />
+                </slot>
+            </span>
         </span>
     </component>
 </template>
 
 <script setup lang="ts">
-type Variant =
-    | "primary"
-    | "secondary"
-    | "outline-light"
-    | "outline-dark"
-    | "ghost"
-    | "primary-pill"
-    | "icon";
+type Variant = "primary" | "secondary" | "outline-light" | "outline-dark" | "ghost" | "primary-pill" | "icon";
 type Size = "default" | "small";
 
 interface Props {
@@ -65,6 +73,14 @@ const tag = computed(() => {
 
 const hasChip = computed(() => props.variant === "primary-pill");
 
+const setInkOrigin = (event: PointerEvent) => {
+    const button = event.currentTarget;
+    if (!(button instanceof HTMLElement)) return;
+    const bounds = button.getBoundingClientRect();
+    button.style.setProperty("--btn-ink-x", `${event.clientX - bounds.left}px`);
+    button.style.setProperty("--btn-ink-y", `${event.clientY - bounds.top}px`);
+};
+
 const rootClass = computed(() => [
     "base-button",
     `base-button--${props.variant}`,
@@ -86,13 +102,16 @@ const rootClass = computed(() => [
     --button-py: #{functions.rem(16)};
     --button-px: #{functions.rem(28)};
     --button-fz: #{functions.rem(16)};
+    --button-gap: #{functions.rem(10)};
+    --btn-ink: transparent;
+    --btn-ink-label: currentColor;
+    --btn-ink-x: 50%;
+    --btn-ink-y: 50%;
+    --btn-ink-dur: 680ms;
 
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: functions.rem(10);
-    padding: var(--button-py) var(--button-px);
-    border: functions.rem(2) solid transparent;
+    overflow: hidden;
+    display: inline-grid;
+    grid-template-columns: 1fr;
     border-radius: var(--pill-radius);
     font-family: var(--font);
     font-size: var(--button-fz);
@@ -102,14 +121,6 @@ const rootClass = computed(() => [
     text-align: center;
     cursor: pointer;
     user-select: none;
-    transition:
-        background-color 240ms var(--ease-decel),
-        color 240ms var(--ease-decel),
-        border-color 240ms var(--ease-decel);
-
-    @include bp.reduced-motion {
-        transition: none;
-    }
 
     &:focus-visible {
         outline: functions.rem(2) solid var(--primary-color);
@@ -131,43 +142,33 @@ const rootClass = computed(() => [
     }
 
     &--primary {
+        --btn-ink: var(--brand-rose);
+
         background-color: var(--brand-red);
         color: var(--white);
-
-        &:hover {
-            background-color: var(--brand-rose);
-        }
     }
 
     &--secondary {
+        --btn-ink: var(--surface-warm);
+
         background-color: var(--surface-mute);
         color: var(--ink);
-
-        &:hover {
-            background-color: var(--surface-warm);
-        }
     }
 
     &--outline-light {
-        background-color: transparent;
-        color: var(--ink);
-        border-color: var(--ink);
+        --btn-ink: var(--ink);
+        --btn-ink-label: var(--surface-warm);
+        --btn-border: var(--ink);
 
-        &:hover {
-            background-color: var(--ink);
-            color: var(--surface-warm);
-        }
+        color: var(--ink);
     }
 
     &--outline-dark {
-        background-color: transparent;
-        color: var(--white);
-        border-color: var(--white);
+        --btn-ink: var(--white);
+        --btn-ink-label: var(--surface-ink);
+        --btn-border: var(--white);
 
-        &:hover {
-            background-color: var(--white);
-            color: var(--surface-ink);
-        }
+        color: var(--white);
 
         &:focus-visible {
             outline-color: var(--white);
@@ -176,14 +177,10 @@ const rootClass = computed(() => [
 
     &--ghost {
         --button-px: 0;
+        --btn-ink-label: var(--primary-color);
 
-        background-color: transparent;
         color: var(--ink);
         border-radius: 0;
-
-        &:hover {
-            color: var(--primary-color);
-        }
     }
 
     &--primary-pill {
@@ -192,22 +189,17 @@ const rootClass = computed(() => [
         --button-px-right: #{functions.rem(8)};
         --chip-size: #{functions.rem(44)};
         --chip-icon-size: #{functions.rem(20)};
+        --button-gap: #{functions.rem(16)};
+        --btn-ink: var(--brand-rose);
 
-        gap: functions.rem(16);
-        padding: var(--button-py) var(--button-px-right) var(--button-py) var(--button-px-left);
         background-color: var(--brand-red);
         color: var(--white);
-
-        &:hover {
-            background-color: var(--brand-rose);
-        }
 
         @include bp.down("mobile") {
             --button-px-left: #{functions.rem(20)};
             --chip-size: #{functions.rem(40)};
             --chip-icon-size: #{functions.rem(18)};
-
-            gap: functions.rem(12);
+            --button-gap: #{functions.rem(12)};
         }
     }
 
@@ -215,25 +207,83 @@ const rootClass = computed(() => [
         --button-py: 0;
         --button-px: 0;
         --icon-size: var(--icon-size-md);
+        --btn-ink: var(--surface-mute);
+        --btn-border: var(--border-color);
+        --btn-ink-border: var(--light-primary-color);
 
         width: var(--interactive-height);
         height: var(--interactive-height);
         flex-shrink: 0;
-        background-color: transparent;
         color: var(--ink);
-        border-color: var(--border-color);
         border-radius: 50%;
-
-        &:hover:not(:disabled) {
-            background-color: var(--surface-mute);
-            border-color: var(--light-primary-color);
-        }
     }
 
     &--disabled,
     &--loading {
         opacity: 0.6;
         cursor: not-allowed;
+    }
+
+    &__face {
+        grid-area: 1 / 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--button-gap);
+        padding: var(--button-py) var(--button-px);
+        border: functions.rem(2) solid var(--btn-border, transparent);
+        border-radius: inherit;
+        color: inherit;
+    }
+
+    &__face--ink {
+        background-color: var(--btn-ink);
+        border-color: var(--btn-ink-border, var(--btn-border, transparent));
+        color: var(--btn-ink-label);
+        clip-path: circle(0% at var(--btn-ink-x) var(--btn-ink-y));
+        pointer-events: none;
+        transition: clip-path var(--btn-ink-dur) var(--ease-decel);
+
+        @include bp.reduced-motion {
+            transition: none;
+        }
+    }
+
+    &:hover:not(:disabled) &__face--ink,
+    &:focus-visible &__face--ink {
+        clip-path: circle(150% at var(--btn-ink-x) var(--btn-ink-y));
+    }
+
+    &--disabled &__face--ink,
+    &--loading &__face--ink {
+        visibility: hidden;
+    }
+
+    &--primary-pill &__face {
+        padding: var(--button-py) var(--button-px-right) var(--button-py) var(--button-px-left);
+    }
+
+    &--fullwidth &__face {
+        justify-content: space-between;
+    }
+
+    @include bp.touch {
+        &__face--ink {
+            clip-path: none;
+            opacity: 0;
+            transition: opacity var(--dur-state) var(--ease-decel);
+
+            @include bp.reduced-motion {
+                transition: none;
+            }
+        }
+
+        &:hover:not(:disabled) &__face--ink,
+        &:focus-visible &__face--ink,
+        &:active &__face--ink {
+            clip-path: none;
+            opacity: 1;
+        }
     }
 
     &__spinner {
@@ -256,6 +306,11 @@ const rootClass = computed(() => [
         font-size: inherit;
         font-weight: inherit;
         color: inherit;
+    }
+
+    &--fullwidth &__label {
+        flex-grow: 1;
+        justify-content: space-between;
     }
 
     &__chip {

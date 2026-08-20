@@ -18,10 +18,7 @@
 <script setup lang="ts">
 const { t } = useI18n();
 
-const crumbs = computed(() => [
-    { label: t("nav.home"), to: "/" },
-    { label: t("nav.apartments") },
-]);
+const crumbs = computed(() => [{ label: t("nav.home"), to: "/" }, { label: t("nav.apartments") }]);
 
 const chips = computed(() => [
     t("apartments.hero.chips.walk"),

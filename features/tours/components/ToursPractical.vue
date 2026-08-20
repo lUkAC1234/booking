@@ -9,11 +9,15 @@
             />
 
             <div class="tours-practical__grid">
-                <div v-reveal class="tours-practical__block tours-practical__block--table">
-                    <h3 class="tours-practical__block-title">{{ t("tours.practical.season-title") }}</h3>
+                <div v-reveal class="tours-practical__block tours-practical__block--wide">
+                    <h3 class="tours-practical__block-title">
+                        {{ t("tours.practical.season-title") }}
+                    </h3>
                     <table class="tours-practical__table">
                         <caption class="tours-practical__caption">
-                            {{ t("tours.practical.season-caption") }}
+                            {{
+                                t("tours.practical.season-caption")
+                            }}
                         </caption>
                         <thead>
                             <tr>
@@ -32,26 +36,38 @@
                     </table>
                 </div>
 
-                <div class="tours-practical__block">
-                    <h3 class="tours-practical__block-title">{{ t("tours.practical.bring-title") }}</h3>
-                    <CheckList :items="bring" />
-                </div>
-
-                <div class="tours-practical__block">
-                    <h3 class="tours-practical__block-title">{{ t("tours.practical.drive-title") }}</h3>
-                    <ul v-reveal.stagger class="tours-practical__drive" role="list">
-                        <li v-for="entry in driveTimes" :key="entry" class="tours-practical__drive-item">
-                            <span class="tours-practical__drive-icon" aria-hidden="true">
-                                <SvgClock />
+                <div v-for="list in iconLists" :key="list.id" class="tours-practical__block">
+                    <h3 class="tours-practical__block-title">{{ list.title }}</h3>
+                    <ul v-reveal.stagger class="tours-practical__list" role="list">
+                        <li v-for="entry in list.entries" :key="entry" class="tours-practical__item">
+                            <span class="tours-practical__item-icon" aria-hidden="true">
+                                <SvgIcon :name="list.icon" />
                             </span>
                             {{ entry }}
                         </li>
                     </ul>
                 </div>
 
-                <div v-reveal class="tours-practical__block tours-practical__block--pickup">
-                    <h3 class="tours-practical__block-title">{{ t("tours.practical.pickup-title") }}</h3>
-                    <p class="tours-practical__pickup">{{ t("tours.practical.pickup") }}</p>
+                <div class="tours-practical__block">
+                    <h3 class="tours-practical__block-title">
+                        {{ t("tours.practical.bring-title") }}
+                    </h3>
+                    <CheckList :items="bring" />
+                </div>
+
+                <div class="tours-practical__block">
+                    <h3 class="tours-practical__block-title">
+                        {{ t("tours.practical.car-title") }}
+                    </h3>
+                    <p class="tours-practical__prose">{{ t("tours.practical.car-lead") }}</p>
+                    <CheckList :items="carFeatures" />
+                </div>
+
+                <div v-reveal class="tours-practical__block tours-practical__block--wide">
+                    <h3 class="tours-practical__block-title">
+                        {{ t("tours.practical.pickup-title") }}
+                    </h3>
+                    <p class="tours-practical__prose">{{ t("tours.practical.pickup") }}</p>
                     <div class="tours-practical__links">
                         <BaseButton :to="'/tashkent-city-center-apartments/'" variant="ghost">
                             {{ t("tours.practical.pickup-link-apartments") }}
@@ -69,12 +85,16 @@
 </template>
 
 <script setup lang="ts">
+import type { IconName } from "~/types/models";
+
 const { t } = useI18n();
 const headingId = useId();
 
-const SEASON_IDS = ["amirsoy", "chimgan", "charvak", "beldersay", "city"] as const;
-const BRING_IDS = ["layers", "shoes", "sun", "cash", "water", "passport"] as const;
-const DRIVE_IDS = ["amirsoy", "chimgan", "charvak", "beldersay", "chorsu", "samarkand"] as const;
+const SEASON_IDS = ["amirsoy", "chimgan", "charvak", "gondola", "chinorkent", "metro", "plov"] as const;
+const SCHEDULE_IDS = ["pickup", "drive", "arrival", "lunch", "return", "limit", "city"] as const;
+const DRIVE_IDS = ["amirsoy", "chimgan", "charvak", "chinorkent", "gazalkent"] as const;
+const BRING_IDS = ["layers", "shoes", "sun", "cash", "water", "documents"] as const;
+const CAR_IDS = ["seats", "climate", "boot", "driver"] as const;
 
 const seasons = computed(() =>
     SEASON_IDS.map((id) => ({
@@ -85,8 +105,23 @@ const seasons = computed(() =>
     })),
 );
 
+const iconLists = computed<Array<{ id: string; title: string; icon: IconName; entries: string[] }>>(() => [
+    {
+        id: "schedule",
+        title: t("tours.practical.schedule-title"),
+        icon: "clock",
+        entries: SCHEDULE_IDS.map((id) => t(`tours.practical.schedule.${id}`)),
+    },
+    {
+        id: "drive",
+        title: t("tours.practical.drive-title"),
+        icon: "pin",
+        entries: DRIVE_IDS.map((id) => t(`tours.practical.drive.${id}`)),
+    },
+]);
+
 const bring = computed(() => BRING_IDS.map((id) => t(`tours.practical.bring.${id}`)));
-const driveTimes = computed(() => DRIVE_IDS.map((id) => t(`tours.practical.drive.${id}`)));
+const carFeatures = computed(() => CAR_IDS.map((id) => t(`tours.practical.car.${id}`)));
 </script>
 
 <style scoped lang="scss">
@@ -120,8 +155,7 @@ const driveTimes = computed(() => DRIVE_IDS.map((id) => t(`tours.practical.drive
         border-radius: var(--outer-radius);
         background-color: var(--surface);
 
-        &--table,
-        &--pickup {
+        &--wide {
             grid-column: span 2;
         }
     }
@@ -175,7 +209,7 @@ const driveTimes = computed(() => DRIVE_IDS.map((id) => t(`tours.practical.drive
         @include mixins.visually-hidden;
     }
 
-    &__drive {
+    &__list {
         list-style: none;
         margin: 0;
         padding: 0;
@@ -184,7 +218,7 @@ const driveTimes = computed(() => DRIVE_IDS.map((id) => t(`tours.practical.drive
         gap: functions.rem(14);
     }
 
-    &__drive-item {
+    &__item {
         --icon-size: var(--icon-size-sm);
 
         display: flex;
@@ -195,7 +229,7 @@ const driveTimes = computed(() => DRIVE_IDS.map((id) => t(`tours.practical.drive
         color: var(--ink-60);
     }
 
-    &__drive-icon {
+    &__item-icon {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -206,7 +240,7 @@ const driveTimes = computed(() => DRIVE_IDS.map((id) => t(`tours.practical.drive
         color: var(--primary-color);
     }
 
-    &__pickup {
+    &__prose {
         margin: 0;
         max-width: functions.rem(920);
         font-size: var(--fz-body);
@@ -228,11 +262,8 @@ const driveTimes = computed(() => DRIVE_IDS.map((id) => t(`tours.practical.drive
             grid-template-columns: 1fr;
         }
 
-        &__block {
-            &--table,
-            &--pickup {
-                grid-column: auto;
-            }
+        &__block--wide {
+            grid-column: auto;
         }
     }
 

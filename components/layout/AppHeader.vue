@@ -216,14 +216,8 @@ const isActive = (path: string) => isNavPathActive(route.path, path, localePath(
         gap: functions.rem(12);
     }
 
-    &__cta {
-        @include bp.down("mobile") {
-            display: none;
-        }
-    }
-
     &__lang {
-        @include bp.between("tablet", "laptop") {
+        @include bp.down("laptop") {
             display: none;
         }
     }

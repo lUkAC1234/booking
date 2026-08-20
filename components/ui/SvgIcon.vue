@@ -3,6 +3,7 @@
     <SvgBed v-else-if="name === 'bed'" />
     <SvgBuilding v-else-if="name === 'building'" />
     <SvgCalendar v-else-if="name === 'calendar'" />
+    <SvgCar v-else-if="name === 'car'" />
     <SvgCheck v-else-if="name === 'check'" />
     <SvgClock v-else-if="name === 'clock'" />
     <SvgDocument v-else-if="name === 'document'" />

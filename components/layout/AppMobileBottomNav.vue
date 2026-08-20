@@ -117,7 +117,7 @@ const isActive = (path: string) => isNavPathActive(route.path, path, localePath(
     }
 
     &__item {
-        --icon-size: #{functions.rem(22)};
+        --icon-size: var(--icon-size-lg);
 
         color: var(--ink-60);
         transition: color 220ms var(--ease-decel, cubic-bezier(0.22, 1, 0.36, 1));
@@ -154,7 +154,7 @@ const isActive = (path: string) => isNavPathActive(route.path, path, localePath(
     }
 
     &__book {
-        --icon-size: #{functions.rem(24)};
+        --icon-size: var(--icon-size-lg);
 
         color: var(--ink);
 

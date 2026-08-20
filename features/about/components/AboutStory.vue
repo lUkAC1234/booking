@@ -32,9 +32,7 @@ const headingId = useId();
 
 const PARAGRAPH_IDS = ["start", "second", "third", "fourth", "fifth", "sixth", "seventh"] as const;
 
-const paragraphs = computed(() =>
-    PARAGRAPH_IDS.map((id) => t(`about.story.paragraphs.${id}`)),
-);
+const paragraphs = computed(() => PARAGRAPH_IDS.map((id) => t(`about.story.paragraphs.${id}`)));
 </script>
 
 <style scoped lang="scss">
@@ -52,9 +50,10 @@ const paragraphs = computed(() =>
     }
 
     &__prose {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: functions.rem(24) functions.rem(64);
+        display: flex;
+        flex-direction: column;
+        gap: functions.rem(24);
+        max-width: functions.rem(760);
 
         p {
             margin: 0;
@@ -75,10 +74,6 @@ const paragraphs = computed(() =>
     @include bp.down("tablet") {
         &__inner {
             gap: functions.rem(32);
-        }
-
-        &__prose {
-            grid-template-columns: 1fr;
         }
     }
 

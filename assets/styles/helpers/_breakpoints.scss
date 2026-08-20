@@ -71,3 +71,9 @@ $tier-min: (
         @content;
     }
 }
+
+@mixin touch {
+    @media (hover: none) {
+        @content;
+    }
+}

@@ -10,10 +10,10 @@
         aria-hidden="true"
         focusable="false"
     >
-        <circle cx="9" cy="8" r="3.2" />
-        <path d="M3 19a6 6 0 0 1 12 0" />
-        <path d="M15.6 5.2a3.2 3.2 0 0 1 0 5.6" />
-        <path d="M17.2 13.4a6 6 0 0 1 3.8 5.6" />
+        <circle cx="9" cy="8" r="3.5" />
+        <path d="M3 20a6 6 0 0 1 12 0" />
+        <circle cx="17.5" cy="7.5" r="2.5" />
+        <path d="M16.2 13.6A5 5 0 0 1 21.5 19" />
     </svg>
 </template>
 

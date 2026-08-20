@@ -39,9 +39,7 @@ const headingId = useId();
 const rows = computed(() => [rowOne.value, rowTwo.value]);
 
 if (REVIEWS_ARE_VERIFIED) {
-    useJsonLd().reviewCollection(
-        items.value.map((review) => ({ author: review.name, body: review.quote })),
-    );
+    useJsonLd().reviewCollection(items.value.map((review) => ({ author: review.name, body: review.quote })));
 }
 </script>
 

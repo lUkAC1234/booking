@@ -18,10 +18,7 @@
 <script setup lang="ts">
 const { t } = useI18n();
 
-const crumbs = computed(() => [
-    { label: t("nav.home"), to: "/" },
-    { label: t("nav.transfer") },
-]);
+const crumbs = computed(() => [{ label: t("nav.home"), to: "/" }, { label: t("nav.transfer") }]);
 
 const chips = computed(() => [
     t("transfer.hero.chips.meet"),

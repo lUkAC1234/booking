@@ -18,6 +18,10 @@
                 </li>
             </ul>
 
+            <ul v-if="highlights.length" class="offer-card__highlights" role="list">
+                <li v-for="highlight in highlights" :key="highlight">{{ highlight }}</li>
+            </ul>
+
             <slot />
         </div>
 
@@ -42,6 +46,7 @@ interface Props {
     title: string;
     description?: string;
     facts?: Array<string | CardFact>;
+    highlights?: string[];
     photoBrief: string;
     photoRatio?: string;
     contextKind?: BookingKind;
@@ -51,6 +56,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
     description: "",
     facts: () => [],
+    highlights: () => [],
     photoRatio: "16 / 10",
     contextKind: "general",
     tone: "light",
@@ -129,6 +135,33 @@ const chips = computed(() =>
         display: flex;
         flex-wrap: wrap;
         gap: functions.rem(8);
+    }
+
+    &__highlights {
+        list-style: none;
+        margin: functions.rem(4) 0 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: functions.rem(8);
+
+        li {
+            position: relative;
+            padding-left: functions.rem(18);
+            font-size: var(--fz-body-sm);
+            line-height: var(--lh-base);
+            color: var(--ink-80);
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: functions.rem(8);
+                left: 0;
+                width: functions.rem(8);
+                height: functions.rem(2);
+                background-color: var(--primary-color);
+            }
+        }
     }
 
     &__footer {

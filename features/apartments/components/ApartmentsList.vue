@@ -8,11 +8,7 @@
                 :split="false"
             />
 
-            <article
-                v-for="apartment in items"
-                :key="apartment.id"
-                class="apartments-list__entry"
-            >
+            <article v-for="apartment in items" :key="apartment.id" class="apartments-list__entry">
                 <div v-reveal.scale class="apartments-list__media">
                     <MediaPlaceholder :brief="apartment.photoBrief" />
                 </div>
@@ -47,11 +43,7 @@
                                 {{ t("apartments.nearby-title") }}
                             </h4>
                             <ul v-reveal.stagger class="apartments-list__nearby" role="list">
-                                <li
-                                    v-for="place in apartment.nearby"
-                                    :key="place"
-                                    class="apartments-list__nearby-item"
-                                >
+                                <li v-for="place in apartment.nearby" :key="place" class="apartments-list__nearby-item">
                                     <span class="apartments-list__nearby-icon" aria-hidden="true">
                                         <SvgPin />
                                     </span>

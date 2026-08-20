@@ -8,46 +8,50 @@
                 :split="false"
             />
 
-            <div v-reveal.stagger class="home-contacts__channels">
-                <a
-                    v-for="channel in channels"
-                    :key="channel.key"
-                    :href="channel.href"
-                    class="home-contacts__channel"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span class="home-contacts__channel-icon" aria-hidden="true">
-                        <SvgIcon :name="channel.icon" />
-                    </span>
-                    <span class="home-contacts__channel-body">
-                        <span class="home-contacts__channel-name">{{ channel.name }}</span>
-                        <span class="home-contacts__channel-note">{{ channel.note }}</span>
-                    </span>
-                    <span class="home-contacts__channel-chip" aria-hidden="true">
-                        <SvgArrowUpRight />
-                    </span>
-                </a>
-            </div>
+            <div class="home-contacts__body">
+                <div v-reveal.stagger class="home-contacts__channels">
+                    <a
+                        v-for="channel in channels"
+                        :key="channel.key"
+                        :href="channel.href"
+                        class="home-contacts__channel"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span class="home-contacts__channel-icon" aria-hidden="true">
+                            <SvgIcon :name="channel.icon" />
+                        </span>
+                        <span class="home-contacts__channel-body">
+                            <span class="home-contacts__channel-name">{{ channel.name }}</span>
+                            <span class="home-contacts__channel-note">{{ channel.note }}</span>
+                        </span>
+                        <span class="home-contacts__channel-chip" aria-hidden="true">
+                            <SvgArrowUpRight />
+                        </span>
+                    </a>
+                </div>
 
-            <ul v-reveal class="home-contacts__facts" role="list">
-                <li v-for="fact in facts" :key="fact.key" class="home-contacts__fact">
-                    <span class="home-contacts__fact-icon" aria-hidden="true">
-                        <SvgIcon :name="fact.icon" />
-                    </span>
-                    {{ fact.label }}
-                </li>
-            </ul>
+                <div v-reveal class="home-contacts__aside">
+                    <ul class="home-contacts__facts" role="list">
+                        <li v-for="fact in facts" :key="fact.key" class="home-contacts__fact">
+                            <span class="home-contacts__fact-icon" aria-hidden="true">
+                                <SvgIcon :name="fact.icon" />
+                            </span>
+                            {{ fact.label }}
+                        </li>
+                    </ul>
 
-            <div v-reveal class="home-contacts__links">
-                <BaseButton :to="'/contact-us/'" variant="ghost">
-                    {{ t("home.contacts.contact-link") }}
-                    <SvgArrowRight />
-                </BaseButton>
-                <BaseButton :to="'/about-us/'" variant="ghost">
-                    {{ t("home.contacts.about-link") }}
-                    <SvgArrowRight />
-                </BaseButton>
+                    <div class="home-contacts__links">
+                        <BaseButton :to="'/contact-us/'" variant="outline-light">
+                            {{ t("home.contacts.contact-link") }}
+                            <SvgArrowRight />
+                        </BaseButton>
+                        <BaseButton :to="'/about-us/'" variant="outline-light">
+                            {{ t("home.contacts.about-link") }}
+                            <SvgArrowRight />
+                        </BaseButton>
+                    </div>
+                </div>
             </div>
         </AppContainer>
     </section>
@@ -109,13 +113,20 @@ const facts = computed<Fact[]>(() => [
     &__inner {
         display: flex;
         flex-direction: column;
-        gap: functions.rem(48);
+        gap: functions.rem(56);
+    }
+
+    &__body {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        gap: functions.rem(40) functions.rem(80);
+        align-items: start;
     }
 
     &__channels {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: functions.rem(24);
+        display: flex;
+        flex-direction: column;
+        gap: functions.rem(20);
     }
 
     &__channel {
@@ -123,25 +134,25 @@ const facts = computed<Fact[]>(() => [
 
         display: flex;
         align-items: center;
-        gap: functions.rem(20);
-        padding: functions.rem(28);
+        gap: functions.rem(24);
+        padding: functions.rem(28) functions.rem(32);
         border: functions.rem(2) solid var(--border-color);
         border-radius: var(--outer-radius);
         background-color: var(--surface-warm);
         text-decoration: none;
         transition:
-            border-color 240ms var(--ease-decel),
-            background-color 240ms var(--ease-decel);
+            border-color var(--dur-state) var(--ease-decel),
+            background-color var(--dur-state) var(--ease-decel);
 
         &:hover,
         &:focus-visible {
-            border-color: var(--brand-red);
+            border-color: var(--primary-color);
             background-color: var(--surface-mute);
 
             .home-contacts__channel-chip {
-                background-color: var(--brand-red);
+                background-color: var(--primary-color);
                 color: var(--white);
-                transform: translate(#{functions.rem(2)}, #{functions.rem(-2)});
+                transform: translateX(#{functions.rem(2)});
             }
         }
 
@@ -163,14 +174,14 @@ const facts = computed<Fact[]>(() => [
         width: functions.rem(64);
         height: functions.rem(64);
         border-radius: 50%;
-        background-color: var(--brand-red);
+        background-color: var(--primary-color);
         color: var(--white);
     }
 
     &__channel-body {
         display: flex;
         flex-direction: column;
-        gap: functions.rem(4);
+        gap: functions.rem(6);
         flex: 1;
         min-width: 0;
     }
@@ -178,36 +189,44 @@ const facts = computed<Fact[]>(() => [
     &__channel-name {
         font-size: var(--fz-subsection-title);
         font-weight: var(--font-weight-bold);
+        line-height: var(--lh-snug);
         letter-spacing: var(--ls-heading);
         color: var(--ink);
     }
 
     &__channel-note {
         font-size: var(--fz-body-sm);
-        line-height: var(--lh-base);
+        line-height: var(--lh-relaxed);
         color: var(--ink-60);
+        text-wrap: pretty;
     }
 
     &__channel-chip {
-        --icon-size: var(--icon-size-sm);
+        --icon-size: var(--icon-size-md);
 
         display: inline-flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        width: functions.rem(44);
-        height: functions.rem(44);
+        width: functions.rem(48);
+        height: functions.rem(48);
         border-radius: 50%;
         background-color: var(--surface);
         color: var(--ink-60);
         transition:
-            transform 240ms var(--ease-decel),
-            background-color 240ms var(--ease-decel),
-            color 240ms var(--ease-decel);
+            transform var(--dur-state) var(--ease-decel),
+            background-color var(--dur-state) var(--ease-decel),
+            color var(--dur-state) var(--ease-decel);
 
         @include bp.reduced-motion {
             transition: none;
         }
+    }
+
+    &__aside {
+        display: flex;
+        flex-direction: column;
+        gap: functions.rem(28);
     }
 
     &__facts {
@@ -215,45 +234,82 @@ const facts = computed<Fact[]>(() => [
         margin: 0;
         padding: 0;
         display: flex;
-        flex-wrap: wrap;
-        gap: functions.rem(32);
+        flex-direction: column;
     }
 
     &__fact {
-        --icon-size: var(--icon-size-sm);
+        --icon-size: var(--icon-size-md);
 
         display: flex;
         align-items: center;
-        gap: functions.rem(10);
-        font-size: var(--fz-body-sm);
-        color: var(--ink-60);
+        gap: functions.rem(16);
+        padding-block: functions.rem(20);
+        border-block-start: functions.rem(2) solid var(--border-color);
+        font-size: var(--fz-body);
+        line-height: var(--lh-base);
+        color: var(--ink-80);
+
+        &:first-child {
+            padding-block-start: 0;
+            border-block-start: 0;
+        }
+
+        &:last-child {
+            padding-block-end: 0;
+        }
     }
 
     &__fact-icon {
         display: inline-flex;
-        color: var(--brand-red);
+        flex-shrink: 0;
+        color: var(--primary-color);
     }
 
     &__links {
         display: flex;
         flex-wrap: wrap;
-        gap: functions.rem(32);
+        gap: functions.rem(16);
+        padding-block-start: functions.rem(28);
+        border-block-start: functions.rem(2) solid var(--border-color);
+    }
+
+    @include bp.down("laptop") {
+        &__body {
+            grid-template-columns: minmax(0, 1fr);
+            gap: functions.rem(40);
+        }
+
+        &__aside {
+            max-width: functions.rem(640);
+        }
     }
 
     @include bp.down("tablet") {
         &__inner {
-            gap: functions.rem(32);
+            gap: functions.rem(40);
         }
 
-        &__channels {
-            grid-template-columns: 1fr;
+        &__channel {
+            padding: functions.rem(24);
+            gap: functions.rem(20);
         }
     }
 
     @include bp.down("mobile") {
+        &__inner {
+            gap: functions.rem(32);
+        }
+
+        &__body {
+            gap: functions.rem(32);
+        }
+
         &__channel {
-            padding: functions.rem(20);
+            --icon-size: #{functions.rem(24)};
+
+            align-items: flex-start;
             gap: functions.rem(16);
+            padding: functions.rem(20);
         }
 
         &__channel-icon {
@@ -261,8 +317,18 @@ const facts = computed<Fact[]>(() => [
             height: functions.rem(48);
         }
 
-        &__facts {
+        &__channel-chip {
+            width: functions.rem(44);
+            height: functions.rem(44);
+        }
+
+        &__fact {
+            padding-block: functions.rem(16);
+        }
+
+        &__links {
             flex-direction: column;
+            align-items: flex-start;
             gap: functions.rem(12);
         }
     }
