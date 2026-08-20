@@ -1,3 +1,28 @@
+export type IconName =
+    | "bath"
+    | "bed"
+    | "building"
+    | "calendar"
+    | "check"
+    | "clock"
+    | "document"
+    | "heart"
+    | "key"
+    | "mountain"
+    | "pin"
+    | "plane"
+    | "ruler"
+    | "telegram"
+    | "train"
+    | "users"
+    | "whatsapp"
+    | "wifi";
+
+export interface CardFact {
+    label: string;
+    icon: IconName;
+}
+
 export type FaqPage = "apartments" | "tours" | "transfer" | "contact";
 
 export interface FaqItem {

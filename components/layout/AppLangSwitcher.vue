@@ -116,36 +116,35 @@ if (headerHidden) {
         display: inline-flex;
         align-items: center;
         gap: functions.rem(6);
-        padding: functions.rem(10) functions.rem(12);
-        border: 0;
-        border-radius: functions.rem(8);
+        min-height: functions.rem(44);
+        padding: functions.rem(10) functions.rem(14);
+        border: functions.rem(2) solid var(--border-color);
+        border-radius: var(--pill-radius);
         background-color: transparent;
-        color: inherit;
+        color: var(--ink);
         font-family: var(--font);
         font-size: functions.rem(14);
         font-weight: var(--font-weight-medium);
         letter-spacing: 0.02em;
         line-height: 1;
         cursor: pointer;
-        opacity: 0.72;
         transition:
-            opacity 220ms var(--ease-decel),
+            border-color 220ms var(--ease-decel),
             background-color 220ms var(--ease-decel);
 
         &:hover {
-            opacity: 1;
-            background-color: rgba(127, 127, 127, 0.1);
+            border-color: currentColor;
+            background-color: var(--surface-mute);
         }
 
         &:focus-visible {
-            opacity: 1;
-            outline: functions.rem(2) solid currentColor;
+            outline: functions.rem(2) solid var(--primary-color);
             outline-offset: functions.rem(2);
         }
 
         &--open {
-            opacity: 1;
-            background-color: rgba(127, 127, 127, 0.1);
+            border-color: currentColor;
+            background-color: var(--surface-mute);
         }
     }
 
@@ -156,7 +155,6 @@ if (headerHidden) {
 
     &__caret {
         transition: transform 220ms var(--ease-decel);
-        opacity: 0.7;
 
         &--up {
             transform: rotate(180deg);
@@ -189,13 +187,20 @@ if (headerHidden) {
             background-color 200ms var(--ease-decel),
             color 200ms var(--ease-decel);
 
-        &:hover {
+        &:hover:not(&--active) {
             background-color: var(--surface-mute);
+        }
+
+        &:focus-visible {
+            outline: functions.rem(2) solid var(--primary-color);
+            outline-offset: functions.rem(-2);
         }
 
         &--active {
             background-color: var(--surface-warm);
             color: var(--primary-color);
+            font-weight: var(--font-weight-bold);
+            cursor: default;
         }
     }
 

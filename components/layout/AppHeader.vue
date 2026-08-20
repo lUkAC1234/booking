@@ -4,6 +4,7 @@
         :class="{
             'app-header--hidden': hidden,
             'app-header--scrolled': scrolled,
+            'app-header--over-hero': overHero,
         }"
     >
         <AppContainer size="wide" tag="nav" class="app-header__nav" :aria-label="t('nav.primary')">
@@ -50,10 +51,13 @@ const brandName = useAppConfig().brand?.name ?? "Brand";
 
 const links = NAV_LINKS;
 
+const SCROLL_THRESHOLD = 80;
+
 const { direction, scrollY } = useScrollDirection(8);
-const hidden = computed(() => direction.value === "down" && scrollY.value > 80);
-const SCROLL_REVEAL_THRESHOLD = 40;
-const scrolled = computed(() => scrollY.value > SCROLL_REVEAL_THRESHOLD);
+const scrolled = computed(() => scrollY.value > SCROLL_THRESHOLD);
+const hidden = computed(() => direction.value === "down" && scrolled.value);
+
+const overHero = computed(() => route.meta.darkHeader === true && !scrolled.value);
 
 provide("appHeaderHidden", hidden);
 
@@ -86,6 +90,15 @@ const isActive = (path: string) => isNavPathActive(route.path, path, localePath(
     &--scrolled {
         background-color: var(--surface);
         border-bottom-color: var(--border-color);
+    }
+
+    &--over-hero {
+        --ink: var(--white);
+        --ink-80: rgba(255, 255, 255, 0.88);
+        --ink-60: rgba(255, 255, 255, 0.78);
+        --border-color: rgba(255, 255, 255, 0.4);
+        --surface-mute: rgba(255, 255, 255, 0.16);
+        --primary-color: var(--white);
     }
 
     &--hidden {
@@ -153,7 +166,7 @@ const isActive = (path: string) => isNavPathActive(route.path, path, localePath(
         padding-block: functions.rem(4);
         font-size: functions.rem(16);
         font-weight: var(--font-weight-medium);
-        color: var(--ink-60);
+        color: var(--ink-80);
         text-decoration: none;
         white-space: nowrap;
         transition: color 240ms var(--ease-decel);
@@ -165,7 +178,7 @@ const isActive = (path: string) => isNavPathActive(route.path, path, localePath(
             right: 0;
             bottom: 0;
             height: functions.rem(2);
-            background-color: var(--brand-red);
+            background-color: currentColor;
             transform: scaleX(0);
             transform-origin: left center;
             transition: transform 240ms var(--ease-decel);
@@ -181,7 +194,7 @@ const isActive = (path: string) => isNavPathActive(route.path, path, localePath(
         }
 
         &--active {
-            color: var(--brand-red);
+            color: var(--primary-color);
 
             &::after {
                 transform: scaleX(1);

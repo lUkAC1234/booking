@@ -10,6 +10,8 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({ darkHeader: true });
+
 const { t } = useI18n();
 const localePath = useLocalePath();
 const config = useRuntimeConfig();

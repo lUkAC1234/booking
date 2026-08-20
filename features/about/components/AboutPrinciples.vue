@@ -15,7 +15,7 @@
                     class="about-principles__item"
                 >
                     <span class="about-principles__icon" aria-hidden="true">
-                        <component :is="principle.icon" />
+                        <SvgIcon :name="principle.icon" />
                     </span>
                     <BaseHeading level="h3" class="about-principles__title">
                         {{ principle.title }}
@@ -28,20 +28,14 @@
 </template>
 
 <script setup lang="ts">
-import { markRaw } from "vue";
-import SvgPin from "~/components/svg/SvgPin.vue";
-import SvgWhatsApp from "~/components/svg/SvgWhatsApp.vue";
-import SvgCheck from "~/components/svg/SvgCheck.vue";
-import SvgHeart from "~/components/svg/SvgHeart.vue";
-
 const { t } = useI18n();
 const headingId = useId();
 
 const PRINCIPLE_ENTRIES = [
-    { id: "local", icon: markRaw(SvgPin) },
-    { id: "thread", icon: markRaw(SvgWhatsApp) },
-    { id: "honest", icon: markRaw(SvgCheck) },
-    { id: "fees", icon: markRaw(SvgHeart) },
+    { id: "local", icon: "pin" },
+    { id: "thread", icon: "whatsapp" },
+    { id: "honest", icon: "check" },
+    { id: "fees", icon: "heart" },
 ] as const;
 
 const principles = computed(() =>

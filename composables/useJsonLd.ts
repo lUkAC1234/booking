@@ -10,13 +10,12 @@ interface BreadcrumbEntry {
     url: string;
 }
 
-interface ServiceInput {
+interface TaxiServiceInput {
     name: string;
     description: string;
     url: string;
     provider?: string;
     areaServed?: string;
-    serviceType?: string;
 }
 
 interface FaqEntry {
@@ -63,14 +62,6 @@ interface ReviewInput {
     author: string;
     body: string;
     ratingValue?: number;
-}
-
-interface PersonInput {
-    name: string;
-    jobTitle?: string;
-    description?: string;
-    sameAs?: string[];
-    worksFor?: string;
 }
 
 interface LocalBusinessInput {
@@ -231,28 +222,7 @@ export const useJsonLd = () => {
         });
     };
 
-    const service = (input: ServiceInput) => {
-        const json: Record<string, unknown> = {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            name: input.name,
-            description: input.description,
-            url: input.url,
-            provider: {
-                "@type": "LodgingBusiness",
-                "@id": `${siteUrl}/#localbusiness`,
-                name: input.provider ?? brandName,
-                url: siteUrl,
-            },
-        };
-        if (input.serviceType) json.serviceType = input.serviceType;
-        if (input.areaServed) {
-            json.areaServed = { "@type": "Place", name: input.areaServed };
-        }
-        inject("ld-service", json);
-    };
-
-    const taxiService = (input: ServiceInput) => {
+    const taxiService = (input: TaxiServiceInput) => {
         const json: Record<string, unknown> = {
             "@context": "https://schema.org",
             "@type": "TaxiService",
@@ -463,30 +433,11 @@ export const useJsonLd = () => {
         });
     };
 
-    const person = (input: PersonInput, index = 0) => {
-        const json: Record<string, unknown> = {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: input.name,
-            worksFor: {
-                "@type": "Organization",
-                "@id": `${siteUrl}/#organization`,
-                name: input.worksFor ?? brandName,
-                url: siteUrl,
-            },
-        };
-        if (input.jobTitle) json.jobTitle = input.jobTitle;
-        if (input.description) json.description = input.description;
-        if (input.sameAs?.length) json.sameAs = input.sameAs;
-        inject(`ld-person-${index}`, json);
-    };
-
     return {
         organization,
         website,
         localBusiness,
         breadcrumbList,
-        service,
         taxiService,
         apartmentList,
         touristTripList,
@@ -495,6 +446,5 @@ export const useJsonLd = () => {
         reviewCollection,
         aboutPage,
         contactPage,
-        person,
     };
 };

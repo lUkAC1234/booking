@@ -23,8 +23,8 @@
                     </BaseHeading>
 
                     <ul v-reveal.stagger class="apartments-list__facts" role="list">
-                        <li v-for="fact in apartment.facts" :key="fact">
-                            <FactChip>{{ fact }}</FactChip>
+                        <li v-for="fact in apartment.facts" :key="fact.label">
+                            <FactChip :icon="fact.icon">{{ fact.label }}</FactChip>
                         </li>
                     </ul>
 

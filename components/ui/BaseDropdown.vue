@@ -197,6 +197,7 @@ defineExpose({ open, close, toggle, isOpen });
 <style scoped lang="scss">
 @use "~/assets/styles/helpers/breakpoints" as bp;
 @use "~/assets/styles/helpers/functions" as functions;
+@use "~/assets/styles/helpers/mixins" as mixins;
 
 .base-dropdown {
     position: relative;
@@ -205,6 +206,8 @@ defineExpose({ open, close, toggle, isOpen });
     align-items: stretch;
 
     &__panel {
+        @include mixins.on-light;
+
         position: absolute;
         z-index: var(--z-dropdown);
         margin: 0;

@@ -11,37 +11,35 @@ const localeHead = useLocaleHead({
     seo: true,
 });
 
+const releaseMinHeight = (el: Element) => {
+    const main = el.parentElement;
+    if (main) main.style.minHeight = "";
+};
+
 const pageTransition = {
     name: "page-fade",
     mode: "out-in" as const,
 
     onBeforeLeave(el: Element) {
-        const main = (el as HTMLElement).parentElement;
-        if (main instanceof HTMLElement && lastMainHeight.value > 0) {
+        const main = el.parentElement;
+        if (main && lastMainHeight.value > 0) {
             main.style.minHeight = `${lastMainHeight.value}px`;
         }
     },
 
     onAfterEnter(el: Element) {
-        const main = (el as HTMLElement).parentElement;
-        if (main instanceof HTMLElement) {
-            main.style.minHeight = "";
-            main.focus();
-        }
+        const main = el.parentElement;
+        if (!main) return;
+        main.style.minHeight = "";
+        main.focus();
     },
 
     onLeaveCancelled(el: Element) {
-        const main = (el as HTMLElement).parentElement;
-        if (main instanceof HTMLElement) {
-            main.style.minHeight = "";
-        }
+        releaseMinHeight(el);
     },
 
     onEnterCancelled(el: Element) {
-        const main = (el as HTMLElement).parentElement;
-        if (main instanceof HTMLElement) {
-            main.style.minHeight = "";
-        }
+        releaseMinHeight(el);
     },
 };
 
@@ -57,22 +55,19 @@ useResizeObserver(mainEl, (entries) => {
     const entry = entries[0];
     if (!entry) return;
     const box = entry.borderBoxSize?.[0];
-    lastMainHeight.value = box ? box.blockSize : (entry.target as HTMLElement).offsetHeight;
+    if (box) {
+        lastMainHeight.value = box.blockSize;
+        return;
+    }
+    if (entry.target instanceof HTMLElement) {
+        lastMainHeight.value = entry.target.offsetHeight;
+    }
 });
 
-const headInput = computed(() => {
-    const head = localeHead.value;
-    return {
-        htmlAttrs: {
-            ...(head?.htmlAttrs ?? {}),
-            lang: locale.value,
-        },
-        link: (head?.link as unknown[] | undefined) ?? [],
-        meta: (head?.meta as unknown[] | undefined) ?? [],
-    };
-});
-
-useHead(headInput as never);
+useHead(() => ({
+    ...localeHead.value,
+    htmlAttrs: { ...localeHead.value.htmlAttrs, lang: locale.value },
+}));
 
 useSeoMeta({
     ogSiteName: () => appConfig.brand?.name ?? "Brand",

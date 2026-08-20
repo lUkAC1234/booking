@@ -18,7 +18,7 @@
                     rel="noopener noreferrer"
                 >
                     <span class="contact-channels__icon" aria-hidden="true">
-                        <component :is="channel.icon" />
+                        <SvgIcon :name="channel.icon" />
                     </span>
                     <span class="contact-channels__body">
                         <span class="contact-channels__name">{{ channel.name }}</span>
@@ -35,23 +35,30 @@
 </template>
 
 <script setup lang="ts">
-import { markRaw } from "vue";
-import SvgWhatsApp from "~/components/svg/SvgWhatsApp.vue";
-import SvgTelegram from "~/components/svg/SvgTelegram.vue";
+import type { IconName } from "~/types/models";
+
+interface Channel {
+    id: string;
+    name: string;
+    note: string;
+    number: string;
+    href: string;
+    icon: IconName;
+}
 
 const { t } = useI18n();
 const { whatsappHref, telegramHref } = useBookingLink();
 const contact = useAppConfig().contact;
 const headingId = useId();
 
-const channels = computed(() => [
+const channels = computed<Channel[]>(() => [
     {
         id: "whatsapp",
         name: t("contact.channels.items.whatsapp.name"),
         note: t("contact.channels.items.whatsapp.note"),
         number: formatPhone(contact.whatsapp),
         href: whatsappHref.value,
-        icon: markRaw(SvgWhatsApp),
+        icon: "whatsapp",
     },
     {
         id: "telegram",
@@ -59,7 +66,7 @@ const channels = computed(() => [
         note: t("contact.channels.items.telegram.note"),
         number: formatPhone(contact.telegram),
         href: telegramHref.value,
-        icon: markRaw(SvgTelegram),
+        icon: "telegram",
     },
 ]);
 </script>

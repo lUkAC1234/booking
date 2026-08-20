@@ -32,33 +32,33 @@ All tokens live in `assets/styles/colors.scss`.
 | `--surface-warm` | `#f5eee7` | **Default page background** (`.app-shell`), hero plates, warm sections |
 | `--surface` | `#ffffff` | Cards, white sections, scrolled header, drawer panel |
 | `--surface-mute` | `#ede4da` | Chips, hover fill, media-placeholder fill, step numbers |
-| `--surface-ink` | `#212121` | Dark-contrast sections and the footer |
+| `--surface-ink` | `#241e1c` | Dark-contrast sections and the footer |
 | `--card-cream` | `#f5eee7` | Alias — card on a white surface |
 | `--white` | `#ffffff` | Pure white for labels on `--primary-color` |
-| `--black` | `#212121` | Raw ink source value |
+| `--black` | `#241e1c` | Raw ink source value |
 
 **Ink**
 
 | Token | Value | Use |
 |---|---|---|
-| `--ink` | `#212121` | Headings, strongest body text |
-| `--ink-80` | `rgba(33, 33, 33, 0.8)` | Body copy inside sections |
-| `--ink-60` | `rgba(33, 33, 33, 0.68)` | Secondary copy, captions, card descriptions |
-| `--ink-40` | `rgba(33, 33, 33, 0.4)` | Breadcrumb separators, tertiary hints |
-| `--ink-20` | `rgba(33, 33, 33, 0.16)` | Accordion rules, decorative dividers |
-| `--text-color` | `#212121` | Default document text colour |
-| `--text-color-secondary` | `rgba(33, 33, 33, 0.68)` | Secondary document text |
+| `--ink` | `#241e1c` | Headings, strongest body text |
+| `--ink-80` | `rgba(36, 30, 28, 0.8)` | Body copy inside sections |
+| `--ink-60` | `rgba(36, 30, 28, 0.68)` | Secondary copy, captions, card descriptions |
+| `--ink-40` | `rgba(36, 30, 28, 0.4)` | Breadcrumb separators, tertiary hints |
+| `--ink-20` | `rgba(36, 30, 28, 0.16)` | Accordion rules, decorative dividers |
+| `--text-color` | `#241e1c` | Default document text colour |
+| `--text-color-secondary` | `rgba(36, 30, 28, 0.68)` | Secondary document text |
 
 **Borders and status**
 
 | Token | Value | Use |
 |---|---|---|
-| `--border-color` | `rgba(33, 33, 33, 0.12)` | Every card, tile, table and list hairline |
-| `--hr-border-color` | `rgba(33, 33, 33, 0.08)` | `<hr>` |
+| `--border-color` | `rgba(36, 30, 28, 0.12)` | Every card, tile, table and list hairline |
+| `--hr-border-color` | `rgba(36, 30, 28, 0.08)` | `<hr>` |
 | `--error-color` | `#770101` | Error text (the brand red doubles as the error hue) |
 | `--error-background` | `rgba(119, 1, 1, 0.08)` | Error surface tint |
-| `--success-color` | `#212121` | Success text |
-| `--success-background` | `rgba(33, 33, 33, 0.06)` | Success surface tint |
+| `--success-color` | `#241e1c` | Success text |
+| `--success-background` | `rgba(36, 30, 28, 0.06)` | Success surface tint |
 
 **On-dark inversions** — consumed only by the `on-dark` mixin, never referenced directly by a component.
 
@@ -75,16 +75,18 @@ All tokens live in `assets/styles/colors.scss`.
 
 | Pair | Ratio | Verdict |
 |---|---|---|
-| `#212121` on `#f5eee7` | 14.2:1 | ✓ body text |
-| `#212121` on `#ffffff` | 16.1:1 | ✓ body text |
-| `#770101` on `#f5eee7` | 11.1:1 | ✓ body text and links |
-| `#770101` on `#ffffff` | 12.6:1 | ✓ body text and links |
-| `#ffffff` on `#770101` | 10.9:1 | ✓ CTA labels |
-| `#ffffff` on `#212121` | 15.9:1 | ✓ dark sections |
-| `rgba(255,255,255,0.62)` on `#212121` | 8.4:1 | ✓ muted copy on dark |
-| **`#9f7070` on `#f5eee7`** | **3.4:1** | **✗ fails AA for body text** |
+| `#241e1c` on `#f5eee7` | 14.3:1 | ✓ body text |
+| `#241e1c` on `#ffffff` | 16.4:1 | ✓ body text |
+| `rgba(36, 30, 28, 0.68)` on `#f5eee7` | 5.3:1 | ✓ secondary copy |
+| `#770101` on `#f5eee7` | 10.2:1 | ✓ body text and links |
+| `#770101` on `#ffffff` | 11.7:1 | ✓ body text and links |
+| `#ffffff` on `#770101` | 11.7:1 | ✓ CTA labels |
+| `#ffffff` on `#241e1c` | 16.4:1 | ✓ dark sections |
+| `rgba(255,255,255,0.62)` on `#241e1c` | 7.1:1 | ✓ muted copy on dark |
+| **`#9f7070` on `#f5eee7`** | **3.6:1** | **✗ fails AA for body text** |
+| **`#9f7070` on `#241e1c`** | **3.9:1** | **✗ fails AA for body text** |
 
-`--light-primary-color` on a light surface is permitted **only** for: text ≥ `rem(24)` bold, hairline borders, decorative separators, non-informational icons, and hover states of elements that are already accessible. Never for paragraphs, labels, captions or link text. On `--surface-ink` it measures 5.2:1 and is free to use — which is exactly why the `on-dark` mixin remaps `--primary-color` to it.
+`--light-primary-color` on a light surface is permitted **only** for: text ≥ `rem(24)` bold, hairline borders, decorative separators, non-informational icons, and hover states of elements that are already accessible. Never for paragraphs, labels, captions or link text. On `--surface-ink` it measures 3.9:1 — the `on-dark` mixin remaps `--primary-color` to it for icons, fills, hairlines and large bold type, never for body-sized text.
 
 ### Forbidden palette
 
@@ -290,6 +292,7 @@ Default padding `rem(16) rem(28)` at `rem(16)`; `size="small"` is `rem(12) rem(2
 | `outline-light` | Transparent, `rem(2)` `--ink` border, `--ink` label; hover fills `--ink`, label `--surface-warm` |
 | `outline-dark` | For `--surface-ink` sections: transparent, `rem(2)` white border; hover fills white, label `--surface-ink` |
 | `ghost` | Text + trailing arrow, no fill, no inline padding; hover `--primary-color` |
+| `icon` | Icon-only `--interactive-height` circle, `--border-color` hairline, `--ink` glyph; hover fills `--surface-mute` with a `--light-primary-color` border. Token-driven, so it inverts correctly inside `on-dark` |
 | `primary-pill` | **The signature CTA** — see below |
 
 `to` is resolved through `useLocalePath()` internally, so pass raw paths with a trailing slash. `href` renders a plain `<a>`. States: `disabled`, `loading` (inline spinner, `aria-busy="true"`), `fullwidth`.
@@ -324,15 +327,21 @@ Anatomy top→bottom: `AppBreadcrumbs` → `h1` at `--fz-page-title` / `--lh-tig
 
 ### `OfferCard` — `components/ui/OfferCard.vue`
 
-The one card used by apartments, tours and transfers. `MediaPlaceholder` (16:10, `--inner-radius`) → `h3` at `--fz-subsection-title` → description at `--fz-body-sm` / `--ink-60` → `FactChip` row → default slot → footer with `"Price on request"` left and `BookButton size="small"` right, separated by a `rem(2)` top hairline. Padding `rem(24)` (mobile `rem(16)`), radius `--outer-radius`, border `rem(2) solid var(--border-color)`. `tone="light"` sits on `--surface`; `tone="dark"` sits on `rgba(255,255,255,0.04)` and switches the button to `outline-dark`. Hover moves the border to `--light-primary-color` — no lift, no shadow.
+The one card used by apartments, tours and transfers. `MediaPlaceholder` (16:10, `--inner-radius`) → `h3` at `--fz-subsection-title` → description at `--fz-body-sm` / `--ink-60` → `FactChip` row → default slot → footer with `"Price on request"` left and `BookButton size="small"` right, separated by a `rem(2)` top hairline. Padding `rem(24)` (mobile `rem(16)`), radius `--outer-radius`, border `rem(2) solid var(--border-color)`. `tone="light"` sits on `--surface`; `tone="dark"` sits on `rgba(255,255,255,0.04)` and switches the button to `outline-dark`. `facts` accepts plain strings or `CardFact` objects (`{ label, icon }`) which render the chip icon. Hover moves the border to `--light-primary-color` and the title to `--primary-color`, and lifts a dark card to `--on-dark-surface-hover` — no translate, no shadow.
+
+### `BaseCarousel` — `components/ui/BaseCarousel.vue`
+
+The one horizontal slider. Takes `items` and exposes each through the default slot, so slides stay whatever component the section needs. Native CSS scroll-snap track (`scroll-snap-type: x mandatory`, `scroll-behavior: smooth`, hidden scrollbar) — no carousel dependency. Visible slides step 3 → 2 (≤1279) → 1 (≤639); never a fractional count. Controls are two `BaseButton variant="icon"` circles pinned right below the track, disabled at each end through `useScroll`'s `arrivedState` (throttled), labelled from `common.carousel-prev` / `common.carousel-next`.
+
+Pointer-drag ("grab and pull") is handled with template pointer handlers plus `setPointerCapture`: touch pointers are ignored so the platform keeps its own momentum scrolling, mouse and pen drag the track directly. Snapping is suspended while dragging (`--dragging`) and while the release glides to the nearest slide (`--settling`), otherwise mandatory snap fights the imperative `scrollLeft`. A drag beyond `rem(6)` swallows the following click so a pulled card never fires its link. Under reduced motion every smooth scroll resolves to an instant jump.
 
 ### `MediaPlaceholder` — `components/ui/MediaPlaceholder.vue`
 
-**The single swap point** for real photography. Props `{ brief, ratio, tone, label }`. Renders a `--surface-mute` (or `rgba(255,255,255,0.05)` on dark) block at the given `aspect-ratio`, `--outer-radius`, an inset `rem(2)` dashed hairline at 32% opacity, and the shot brief centred at `--fz-body-sm` with `max-width: rem(420)` and `text-wrap: balance`. Carries `role="img"` and `:aria-label="brief"`. Replacing it with `OptimizedMedia` is a one-component change.
+**The single swap point** for real photography. Props `{ brief, ratio, tone, label, compact }`. `compact` keeps the frame and the label but drops the visible brief and ratio — every card context uses it, large single plates (heroes, detail pages) do not. Renders a `--surface-mute` (or `rgba(255,255,255,0.05)` on dark) block at the given `aspect-ratio`, `--outer-radius`, an inset `rem(2)` dashed hairline at 32% opacity, and the shot brief centred at `--fz-body-sm` with `max-width: rem(420)` and `text-wrap: balance`. Carries `role="img"` and `:aria-label="brief"`. Replacing it with `OptimizedMedia` is a one-component change.
 
 ### `FactChip` — `components/ui/FactChip.vue`
 
-Pill: `--surface-mute` fill, `--pill-radius`, `rem(10) rem(18)` padding, `--fz-body-sm` at weight 500, `line-height: 1.2`, `white-space: nowrap`, optional `#icon` slot at `--icon-size-sm` in `--primary-color`.
+Pill: `--surface-mute` fill, `--pill-radius`, `rem(10) rem(18)` padding, `--fz-body-sm` at weight 500, `line-height: 1.2`, `white-space: nowrap`, optional `icon` prop — an `IconName` rendered through `SvgIcon` at `--icon-size-sm` in `--primary-color`.
 
 ### `SectionHeader` — `components/ui/SectionHeader.vue`
 
@@ -354,11 +363,11 @@ Row separated by a `rem(2)` `--ink-20` top rule. Trigger is a full-width button,
 
 ### `BaseModal` / `BaseDropdown` / `AppMobileMenu`
 
-`BaseModal` — teleported to `body`, backdrop `rgba(33, 33, 33, 0.6)` (no blur), panel `--surface` at `--inner-radius`, `rem(32)` padding, `max-width: rem(520)`, `max-height: 90dvh` with internal scroll, `useScrollLock` + `useFocusTrap`, Escape and backdrop close, symmetric 240ms.
+`BaseModal` — teleported to `body`, backdrop `rgba(36, 30, 28, 0.6)` (no blur), panel `--surface` at `--inner-radius`, `rem(32)` padding, `max-width: rem(520)`, `max-height: 90dvh` with internal scroll, `useScrollLock` + `useFocusTrap`, Escape and backdrop close, symmetric 240ms.
 
 `BaseDropdown` — the only floating primitive. Auto-flips on both axes against real viewport bounds; consumers do not pass `placement` or `align`. Panel `--surface`, `rem(2) solid var(--border-color)`, `rem(12)` radius, `var(--z-dropdown)`, 240ms scale + opacity, CSS only. Closes on click-outside, Escape and route change.
 
-`AppMobileMenu` — right-hand drawer, panel `min(100%, rem(400)) × 100dvh` on `--surface`, backdrop `rgba(33, 33, 33, 0.5)`, scroll lock, focus trap, symmetric `--dur-drawer` slide, auto-closes when the viewport leaves the 640–1279px burger range.
+`AppMobileMenu` — right-hand drawer, panel `min(100%, rem(400)) × 100dvh` on `--surface`, backdrop `rgba(36, 30, 28, 0.5)`, scroll lock, focus trap, symmetric `--dur-drawer` slide, auto-closes when the viewport leaves the 640–1279px burger range.
 
 ### `AppMobileBottomNav` — `components/layout/`
 
@@ -384,7 +393,7 @@ Icons are Vue SFCs in `components/svg/` with a hardcoded `viewBox="0 0 24 24"`, 
 | `--icon-size-2xl` | `rem(48)` | Hero / feature icons |
 | `--icon-size` | alias of `-md` | Fallback |
 
-Shipped set: `SvgArrowRight`, `SvgArrowUpRight`, `SvgBath`, `SvgBed`, `SvgBuilding`, `SvgBurger`, `SvgCheck`, `SvgChevronDown`, `SvgClock`, `SvgClose`, `SvgDocument`, `SvgEmptyInbox`, `SvgGrid`, `SvgHeart`, `SvgInstagram`, `SvgKey`, `SvgLink`, `SvgLinkedIn`, `SvgMail`, `SvgMountain`, `SvgPhone`, `SvgPin`, `SvgPlane`, `SvgQuote`, `SvgRuler`, `SvgSearch`, `SvgSnowflake`, `SvgStar`, `SvgTelegram`, `SvgTrain`, `SvgUsers`, `SvgWhatsApp`, `SvgWifi`, `SvgYouTube`, `SvgZoomIn`, `SvgZoomOut`, plus `nav/SvgNav{Home,Apartments,Tours,Transfer,Contact,More}`.
+Shipped set: `SvgArrowRight`, `SvgArrowUpRight`, `SvgBath`, `SvgBed`, `SvgBuilding`, `SvgBurger`, `SvgCalendar`, `SvgCheck`, `SvgChevronDown`, `SvgClock`, `SvgClose`, `SvgDocument`, `SvgEmptyInbox`, `SvgGrid`, `SvgHeart`, `SvgInstagram`, `SvgKey`, `SvgLink`, `SvgLinkedIn`, `SvgMail`, `SvgMountain`, `SvgPhone`, `SvgPin`, `SvgPlane`, `SvgQuote`, `SvgRuler`, `SvgSearch`, `SvgSnowflake`, `SvgStar`, `SvgTelegram`, `SvgTrain`, `SvgUsers`, `SvgWhatsApp`, `SvgWifi`, `SvgYouTube`, `SvgZoomIn`, `SvgZoomOut`, plus `nav/SvgNav{Home,Apartments,Tours,Transfer,Contact,More}`.
 
 ---
 

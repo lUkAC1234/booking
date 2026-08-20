@@ -21,7 +21,14 @@
 </template>
 
 <script setup lang="ts">
-type Variant = "primary" | "secondary" | "outline-light" | "outline-dark" | "ghost" | "primary-pill";
+type Variant =
+    | "primary"
+    | "secondary"
+    | "outline-light"
+    | "outline-dark"
+    | "ghost"
+    | "primary-pill"
+    | "icon";
 type Size = "default" | "small";
 
 interface Props {
@@ -201,6 +208,25 @@ const rootClass = computed(() => [
             --chip-icon-size: #{functions.rem(18)};
 
             gap: functions.rem(12);
+        }
+    }
+
+    &--icon {
+        --button-py: 0;
+        --button-px: 0;
+        --icon-size: var(--icon-size-md);
+
+        width: var(--interactive-height);
+        height: var(--interactive-height);
+        flex-shrink: 0;
+        background-color: transparent;
+        color: var(--ink);
+        border-color: var(--border-color);
+        border-radius: 50%;
+
+        &:hover:not(:disabled) {
+            background-color: var(--surface-mute);
+            border-color: var(--light-primary-color);
         }
     }
 

@@ -14,6 +14,8 @@
         "book-on-whatsapp": "Book on WhatsApp",
         "message-on-telegram": "Message on Telegram",
         "price-on-request": "Price on request",
-        "photo-brief": "Photo needed"
+        "photo-brief": "Photo needed",
+        "carousel-prev": "Previous slide",
+        "carousel-next": "Next slide"
     }
 }

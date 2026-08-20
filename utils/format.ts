@@ -1,6 +1,3 @@
-
-const NBSP = String.fromCharCode(0x00a0);
-
 const UZ_PHONE_GROUPS = [3, 2, 3, 2, 2];
 
 export const formatPhone = (digits: string): string => {
@@ -14,12 +11,4 @@ export const formatPhone = (digits: string): string => {
         offset += size;
     }
     return `+${parts.join(" ")}`;
-};
-
-export const formatThousands = (value: number, separator: string = NBSP): string => {
-    if (!Number.isFinite(value)) return "";
-    const sign = value < 0 ? "-" : "";
-    const [intPart, fracPart] = Math.abs(value).toString().split(".");
-    const grouped = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, separator);
-    return fracPart ? `${sign}${grouped}.${fracPart}` : `${sign}${grouped}`;
 };

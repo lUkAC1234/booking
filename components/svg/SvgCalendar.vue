@@ -10,7 +10,8 @@
         aria-hidden="true"
         focusable="false"
     >
-        <path d="M2 20 9 7l4 7 3-3 6 9Z" />
+        <rect x="3" y="5" width="18" height="16" rx="3" />
+        <path d="M8 3v4M16 3v4M3 11h18" />
     </svg>
 </template>
 

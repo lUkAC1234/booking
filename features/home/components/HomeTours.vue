@@ -13,18 +13,18 @@
                 </template>
             </SectionHeader>
 
-            <div v-reveal.stagger class="home-tours__grid">
-                <OfferCard
-                    v-for="tour in featured"
-                    :key="tour.id"
-                    :title="tour.title"
-                    :description="tour.summary"
-                    :facts="tour.facts"
-                    :photo-brief="tour.photoBrief"
-                    context-kind="tour"
-                    tone="dark"
-                />
-            </div>
+            <BaseCarousel v-reveal :items="featured">
+                <template #default="{ item }">
+                    <OfferCard
+                        :title="item.title"
+                        :description="item.summary"
+                        :facts="item.facts"
+                        :photo-brief="item.photoBrief"
+                        context-kind="tour"
+                        tone="dark"
+                    />
+                </template>
+            </BaseCarousel>
         </AppContainer>
     </section>
 </template>
@@ -51,25 +51,9 @@ const headingId = useId();
         gap: functions.rem(56);
     }
 
-    &__grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: functions.rem(24);
-    }
-
-    @include bp.down("notebook") {
-        &__grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-    }
-
     @include bp.down("mobile") {
         &__inner {
             gap: functions.rem(40);
-        }
-
-        &__grid {
-            grid-template-columns: 1fr;
         }
     }
 }

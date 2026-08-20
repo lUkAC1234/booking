@@ -5,15 +5,16 @@
             :brief="photoBrief"
             :ratio="photoRatio"
             :tone="tone === 'dark' ? 'dark' : 'warm'"
+            compact
         />
 
         <div class="offer-card__body">
             <BaseHeading level="h3" class="offer-card__title">{{ title }}</BaseHeading>
             <p v-if="description" class="offer-card__description">{{ description }}</p>
 
-            <ul v-if="facts.length" class="offer-card__facts" role="list">
-                <li v-for="fact in facts" :key="fact">
-                    <FactChip>{{ fact }}</FactChip>
+            <ul v-if="chips.length" class="offer-card__facts" role="list">
+                <li v-for="chip in chips" :key="chip.label">
+                    <FactChip :icon="chip.icon">{{ chip.label }}</FactChip>
                 </li>
             </ul>
 
@@ -35,18 +36,19 @@
 
 <script setup lang="ts">
 import type { BookingKind } from "~/features/booking/composables/useBookingLink";
+import type { CardFact } from "~/types/models";
 
 interface Props {
     title: string;
     description?: string;
-    facts?: string[];
+    facts?: Array<string | CardFact>;
     photoBrief: string;
     photoRatio?: string;
     contextKind?: BookingKind;
     tone?: "light" | "dark";
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
     description: "",
     facts: () => [],
     photoRatio: "16 / 10",
@@ -55,6 +57,10 @@ withDefaults(defineProps<Props>(), {
 });
 
 const { t } = useI18n();
+
+const chips = computed(() =>
+    props.facts.map((fact) => (typeof fact === "string" ? { label: fact, icon: undefined } : fact)),
+);
 </script>
 
 <style scoped lang="scss">
@@ -68,7 +74,9 @@ const { t } = useI18n();
     padding: functions.rem(24);
     border: functions.rem(2) solid var(--border-color);
     border-radius: var(--outer-radius);
-    transition: border-color 240ms var(--ease-decel);
+    transition:
+        border-color 240ms var(--ease-decel),
+        background-color 240ms var(--ease-decel);
 
     &--light {
         background-color: var(--surface);
@@ -80,6 +88,10 @@ const { t } = useI18n();
 
     &:hover {
         border-color: var(--light-primary-color);
+    }
+
+    &--dark:hover {
+        background-color: var(--on-dark-surface-hover);
     }
 
     &__media {
@@ -96,6 +108,11 @@ const { t } = useI18n();
     &__title {
         font-size: var(--fz-subsection-title);
         color: var(--ink);
+        transition: color 240ms var(--ease-decel);
+    }
+
+    &:hover &__title {
+        color: var(--primary-color);
     }
 
     &__description {
@@ -145,6 +162,10 @@ const { t } = useI18n();
 
     @include bp.reduced-motion {
         transition: none;
+
+        &__title {
+            transition: none;
+        }
     }
 }
 </style>

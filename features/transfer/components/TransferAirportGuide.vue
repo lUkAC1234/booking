@@ -11,7 +11,7 @@
             <div v-reveal.stagger class="transfer-guide__grid">
                 <article v-for="item in items" :key="item.id" class="transfer-guide__item">
                     <span class="transfer-guide__icon" aria-hidden="true">
-                        <component :is="item.icon" />
+                        <SvgIcon :name="item.icon" />
                     </span>
                     <BaseHeading level="h3" class="transfer-guide__title">{{ item.title }}</BaseHeading>
                     <p class="transfer-guide__text">{{ item.text }}</p>
@@ -33,24 +33,16 @@
 </template>
 
 <script setup lang="ts">
-import { markRaw } from "vue";
-import SvgPlane from "~/components/svg/SvgPlane.vue";
-import SvgWifi from "~/components/svg/SvgWifi.vue";
-import SvgDocument from "~/components/svg/SvgDocument.vue";
-import SvgPin from "~/components/svg/SvgPin.vue";
-import SvgUsers from "~/components/svg/SvgUsers.vue";
-import SvgClock from "~/components/svg/SvgClock.vue";
-
 const { t } = useI18n();
 const headingId = useId();
 
 const GUIDE_ENTRIES = [
-    { id: "arrivals", icon: markRaw(SvgPlane) },
-    { id: "sim", icon: markRaw(SvgWifi) },
-    { id: "money", icon: markRaw(SvgDocument) },
-    { id: "drive", icon: markRaw(SvgPin) },
-    { id: "luggage", icon: markRaw(SvgUsers) },
-    { id: "departure", icon: markRaw(SvgClock) },
+    { id: "arrivals", icon: "plane" },
+    { id: "sim", icon: "wifi" },
+    { id: "money", icon: "document" },
+    { id: "drive", icon: "pin" },
+    { id: "luggage", icon: "users" },
+    { id: "departure", icon: "clock" },
 ] as const;
 
 const items = computed(() =>

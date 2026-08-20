@@ -11,7 +11,7 @@
             <ul v-reveal.stagger class="contact-hours__rows" role="list">
                 <li v-for="row in rows" :key="row.id" class="contact-hours__row">
                     <span class="contact-hours__row-icon" aria-hidden="true">
-                        <component :is="row.icon" />
+                        <SvgIcon :name="row.icon" />
                     </span>
                     {{ row.label }}
                 </li>
@@ -24,20 +24,14 @@
 </template>
 
 <script setup lang="ts">
-import { markRaw } from "vue";
-import SvgClock from "~/components/svg/SvgClock.vue";
-import SvgWhatsApp from "~/components/svg/SvgWhatsApp.vue";
-import SvgUsers from "~/components/svg/SvgUsers.vue";
-import SvgPlane from "~/components/svg/SvgPlane.vue";
-
 const { t } = useI18n();
 const headingId = useId();
 
 const ROW_ENTRIES = [
-    { id: "hours", icon: markRaw(SvgClock) },
-    { id: "reply", icon: markRaw(SvgWhatsApp) },
-    { id: "languages", icon: markRaw(SvgUsers) },
-    { id: "night", icon: markRaw(SvgPlane) },
+    { id: "hours", icon: "clock" },
+    { id: "reply", icon: "whatsapp" },
+    { id: "languages", icon: "users" },
+    { id: "night", icon: "plane" },
 ] as const;
 
 const STEP_IDS = ["dates", "flight", "plans"] as const;

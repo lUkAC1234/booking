@@ -19,6 +19,21 @@
     color: var(--on-dark-text);
 }
 
+@mixin on-light {
+    --text-color: var(--black);
+    --text-color-secondary: rgba(36, 30, 28, 0.68);
+    --ink: var(--black);
+    --ink-80: rgba(36, 30, 28, 0.8);
+    --ink-60: rgba(36, 30, 28, 0.68);
+    --ink-40: rgba(36, 30, 28, 0.4);
+    --ink-20: rgba(36, 30, 28, 0.16);
+    --border-color: rgba(36, 30, 28, 0.12);
+    --hr-border-color: rgba(36, 30, 28, 0.08);
+    --surface: var(--white);
+    --surface-mute: #ede4da;
+    --primary-color: var(--brand-red);
+}
+
 @mixin visually-hidden {
     position: absolute;
     width: functions.rem(2);

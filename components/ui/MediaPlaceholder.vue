@@ -3,8 +3,10 @@
         <span class="media-placeholder__frame" aria-hidden="true" />
         <span class="media-placeholder__body">
             <span class="media-placeholder__label">{{ label ?? t("common.photo-brief") }}</span>
-            <span class="media-placeholder__brief">{{ brief }}</span>
-            <span class="media-placeholder__ratio">{{ ratio }}</span>
+            <template v-if="!compact">
+                <span class="media-placeholder__brief">{{ brief }}</span>
+                <span class="media-placeholder__ratio">{{ ratio }}</span>
+            </template>
         </span>
     </div>
 </template>
@@ -17,12 +19,14 @@ interface Props {
     ratio?: string;
     tone?: "warm" | "dark";
     label?: string;
+    compact?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
     ratio: "16 / 10",
     tone: "warm",
     label: undefined,
+    compact: false,
 });
 
 const { t } = useI18n();

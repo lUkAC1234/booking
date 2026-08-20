@@ -7,8 +7,8 @@
         </main>
         <AppFooter />
         <AppMobileMenu />
+        <AppMobileBottomNav />
         <ClientOnly>
-            <AppMobileBottomNav v-if="isMobile" />
             <AppAlerts />
             <AppRouteLoader />
             <LazySocialProofToaster v-if="!prefersReducedMotion" />
@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 const { t } = useI18n();
-const { isMobile, prefersReducedMotion } = useBreakpoints();
+const { prefersReducedMotion } = useBreakpoints();
 
 useJsonLd().organization();
 </script>

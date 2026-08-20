@@ -1,3 +1,5 @@
+import type { CardFact, IconName } from "~/types/models";
+
 export type TourCategory = "mountains" | "city" | "winter" | "day-trips";
 
 export interface Tour {
@@ -6,7 +8,7 @@ export interface Tour {
     title: string;
     summary: string;
     highlights: string[];
-    facts: string[];
+    facts: CardFact[];
     photoBrief: string;
 }
 
@@ -28,6 +30,12 @@ const TOUR_INDEX: ReadonlyArray<{ id: string; category: TourCategory }> = [
 const HIGHLIGHT_KEYS = ["one", "two", "three"] as const;
 const FACT_KEYS = ["duration", "group", "season"] as const;
 
+const FACT_ICONS: Record<(typeof FACT_KEYS)[number], IconName> = {
+    duration: "clock",
+    group: "users",
+    season: "calendar",
+};
+
 export const useTours = () => {
     const { t } = useI18n();
 
@@ -38,7 +46,10 @@ export const useTours = () => {
             title: t(`tours.items.${entry.id}.title`),
             summary: t(`tours.items.${entry.id}.summary`),
             highlights: HIGHLIGHT_KEYS.map((key) => t(`tours.items.${entry.id}.highlights.${key}`)),
-            facts: FACT_KEYS.map((key) => t(`tours.items.${entry.id}.facts.${key}`)),
+            facts: FACT_KEYS.map((key) => ({
+                label: t(`tours.items.${entry.id}.facts.${key}`),
+                icon: FACT_ICONS[key],
+            })),
             photoBrief: t(`tours.items.${entry.id}.photo`),
         })),
     );

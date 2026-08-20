@@ -9,7 +9,7 @@
                 aria-atomic="true"
             >
                 <span class="social-proof__icon" aria-hidden="true">
-                    <component :is="ICONS[visibleToast.service]" />
+                    <SvgIcon :name="ICON_BY_SERVICE[visibleToast.service]" />
                 </span>
                 <span class="social-proof__body">
                     <span class="social-proof__message">{{ messageOf(visibleToast) }}</span>
@@ -30,12 +30,7 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { markRaw } from "vue";
-import type { Component } from "vue";
-import SvgKey from "~/components/svg/SvgKey.vue";
-import SvgMountain from "~/components/svg/SvgMountain.vue";
-import SvgPlane from "~/components/svg/SvgPlane.vue";
-import type { SocialProofService, SocialProofToast } from "~/types/models";
+import type { IconName, SocialProofService, SocialProofToast } from "~/types/models";
 
 const SESSION_KEY = "cca-social-proof-shown";
 const FIRST_DELAY_MS = 20000;
@@ -45,10 +40,10 @@ const MAX_CYCLE_MS = 55000;
 const SCROLL_TRIGGER = 0.25;
 const JUST_NOW_BELOW = 2;
 
-const ICONS: Record<SocialProofService, Component> = {
-    apartments: markRaw(SvgKey),
-    tours: markRaw(SvgMountain),
-    transfer: markRaw(SvgPlane),
+const ICON_BY_SERVICE: Record<SocialProofService, IconName> = {
+    apartments: "key",
+    tours: "mountain",
+    transfer: "plane",
 };
 
 const { t } = useI18n();

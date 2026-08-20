@@ -18,7 +18,7 @@
                     rel="noopener noreferrer"
                 >
                     <span class="home-contacts__channel-icon" aria-hidden="true">
-                        <component :is="channel.icon" />
+                        <SvgIcon :name="channel.icon" />
                     </span>
                     <span class="home-contacts__channel-body">
                         <span class="home-contacts__channel-name">{{ channel.name }}</span>
@@ -33,7 +33,7 @@
             <ul v-reveal class="home-contacts__facts" role="list">
                 <li v-for="fact in facts" :key="fact.key" class="home-contacts__fact">
                     <span class="home-contacts__fact-icon" aria-hidden="true">
-                        <component :is="fact.icon" />
+                        <SvgIcon :name="fact.icon" />
                     </span>
                     {{ fact.label }}
                 </li>
@@ -54,38 +54,47 @@
 </template>
 
 <script setup lang="ts">
-import { markRaw } from "vue";
-import SvgWhatsApp from "~/components/svg/SvgWhatsApp.vue";
-import SvgTelegram from "~/components/svg/SvgTelegram.vue";
-import SvgPin from "~/components/svg/SvgPin.vue";
-import SvgClock from "~/components/svg/SvgClock.vue";
-import SvgUsers from "~/components/svg/SvgUsers.vue";
+import type { IconName } from "~/types/models";
+
+interface Channel {
+    key: string;
+    name: string;
+    note: string;
+    href: string;
+    icon: IconName;
+}
+
+interface Fact {
+    key: string;
+    label: string;
+    icon: IconName;
+}
 
 const { t } = useI18n();
 const { whatsappHref, telegramHref } = useBookingLink();
 const headingId = useId();
 
-const channels = computed(() => [
+const channels = computed<Channel[]>(() => [
     {
         key: "whatsapp",
         name: "WhatsApp",
         note: t("home.contacts.whatsapp-note"),
         href: whatsappHref.value,
-        icon: markRaw(SvgWhatsApp),
+        icon: "whatsapp",
     },
     {
         key: "telegram",
         name: "Telegram",
         note: t("home.contacts.telegram-note"),
         href: telegramHref.value,
-        icon: markRaw(SvgTelegram),
+        icon: "telegram",
     },
 ]);
 
-const facts = computed(() => [
-    { key: "location", label: t("home.contacts.facts.location"), icon: markRaw(SvgPin) },
-    { key: "hours", label: t("home.contacts.facts.hours"), icon: markRaw(SvgClock) },
-    { key: "languages", label: t("home.contacts.facts.languages"), icon: markRaw(SvgUsers) },
+const facts = computed<Fact[]>(() => [
+    { key: "location", label: t("home.contacts.facts.location"), icon: "pin" },
+    { key: "hours", label: t("home.contacts.facts.hours"), icon: "clock" },
+    { key: "languages", label: t("home.contacts.facts.languages"), icon: "users" },
 ]);
 </script>
 

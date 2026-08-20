@@ -1,13 +1,25 @@
 <template>
     <span class="fact-chip">
-        <span v-if="$slots.icon" class="fact-chip__icon" aria-hidden="true">
-            <slot name="icon" />
+        <span v-if="icon" class="fact-chip__icon" aria-hidden="true">
+            <SvgIcon :name="icon" />
         </span>
         <span class="fact-chip__label">
             <slot />
         </span>
     </span>
 </template>
+
+<script setup lang="ts">
+import type { IconName } from "~/types/models";
+
+interface Props {
+    icon?: IconName;
+}
+
+withDefaults(defineProps<Props>(), {
+    icon: undefined,
+});
+</script>
 
 <style scoped lang="scss">
 @use "~/assets/styles/helpers/functions" as functions;

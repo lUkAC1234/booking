@@ -95,7 +95,7 @@ const year = new Date().getFullYear();
     overflow: hidden;
 
     @include bp.down("mobile") {
-        padding-block: functions.rem(64) functions.rem(20);
+        padding-block: functions.rem(64) functions.rem(48);
     }
 
     &__top {
@@ -269,7 +269,8 @@ const year = new Date().getFullYear();
         @include bp.down("mobile") {
             flex-direction: column;
             align-items: flex-start;
-            padding-top: functions.rem(16);
+            gap: functions.rem(16);
+            padding-top: functions.rem(24);
         }
     }
 

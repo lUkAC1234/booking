@@ -9,7 +9,8 @@
             :aria-current="isActive(item.path) ? 'page' : undefined"
         >
             <span class="app-bottom-nav__icon" aria-hidden="true">
-                <component :is="item.icon" />
+                <SvgNavHome v-if="item.icon === 'home'" />
+                <SvgNavApartments v-else />
             </span>
             <span class="app-bottom-nav__label">{{ t(item.label) }}</span>
         </NuxtLink>
@@ -28,17 +29,15 @@
         </a>
 
         <NuxtLink
-            v-for="item in trailingItems"
-            :key="item.path"
-            :to="localePath(item.path)"
+            :to="localePath(TOURS_PATH)"
             class="app-bottom-nav__item"
-            :class="{ 'app-bottom-nav__item--active': isActive(item.path) }"
-            :aria-current="isActive(item.path) ? 'page' : undefined"
+            :class="{ 'app-bottom-nav__item--active': isActive(TOURS_PATH) }"
+            :aria-current="isActive(TOURS_PATH) ? 'page' : undefined"
         >
             <span class="app-bottom-nav__icon" aria-hidden="true">
-                <component :is="item.icon" />
+                <SvgNavTours />
             </span>
-            <span class="app-bottom-nav__label">{{ t(item.label) }}</span>
+            <span class="app-bottom-nav__label">{{ t("nav.tours") }}</span>
         </NuxtLink>
 
         <button
@@ -51,7 +50,7 @@
             @click="mobileMenu.open"
         >
             <span class="app-bottom-nav__icon" aria-hidden="true">
-                <SvgNavMore />
+                <SvgBurger />
             </span>
             <span class="app-bottom-nav__label">{{ t("nav.more") }}</span>
         </button>
@@ -59,40 +58,18 @@
 </template>
 
 <script setup lang="ts">
-import { markRaw } from "vue";
-import type { Component } from "vue";
-import SvgNavHome from "~/components/svg/nav/SvgNavHome.vue";
-import SvgNavApartments from "~/components/svg/nav/SvgNavApartments.vue";
-import SvgNavTours from "~/components/svg/nav/SvgNavTours.vue";
+const TOURS_PATH = "/tashkent-tours-amirsoy-chimgan/";
 
-interface BottomNavItem {
-    path: string;
-    label: string;
-    icon: Component;
-}
+const leadingItems = [
+    { path: HOME_LINK.path, label: HOME_LINK.label, icon: "home" },
+    { path: "/tashkent-city-center-apartments/", label: "nav.apartments", icon: "apartments" },
+] as const;
 
 const { t } = useI18n();
 const localePath = useLocalePath();
 const route = useRoute();
 const mobileMenu = useMobileMenuStore();
 const { whatsappHref } = useBookingLink();
-
-const leadingItems: BottomNavItem[] = [
-    { path: HOME_LINK.path, label: HOME_LINK.label, icon: markRaw(SvgNavHome) },
-    {
-        path: "/tashkent-city-center-apartments/",
-        label: "nav.apartments",
-        icon: markRaw(SvgNavApartments),
-    },
-];
-
-const trailingItems: BottomNavItem[] = [
-    {
-        path: "/tashkent-tours-amirsoy-chimgan/",
-        label: "nav.tours",
-        icon: markRaw(SvgNavTours),
-    },
-];
 
 const isActive = (path: string) => isNavPathActive(route.path, path, localePath(path));
 </script>
@@ -102,6 +79,7 @@ const isActive = (path: string) => isNavPathActive(route.path, path, localePath(
 @use "~/assets/styles/helpers/breakpoints" as bp;
 
 .app-bottom-nav {
+    display: none;
     position: fixed;
     left: 0;
     right: 0;
@@ -110,8 +88,11 @@ const isActive = (path: string) => isNavPathActive(route.path, path, localePath(
     background-color: var(--surface);
     border-top: functions.rem(2) solid var(--border-color);
     padding: functions.rem(8) functions.rem(6) max(functions.rem(8), env(safe-area-inset-bottom));
-    display: flex;
     align-items: flex-start;
+
+    @include bp.down("mobile") {
+        display: flex;
+    }
 
     &__item,
     &__book {

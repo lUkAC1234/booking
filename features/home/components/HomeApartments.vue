@@ -7,7 +7,7 @@
                 :lead="t('apartments.section-lead')"
             >
                 <template #action>
-                    <BaseButton :to="'/tashkent-city-center-apartments/'" variant="ghost">
+                    <BaseButton :to="'/tashkent-city-center-apartments/'" variant="primary">
                         {{ t("apartments.all-link") }}
                         <SvgArrowRight />
                     </BaseButton>
@@ -20,7 +20,7 @@
                     :key="apartment.id"
                     :title="apartment.title"
                     :description="apartment.summary"
-                    :facts="apartment.facts"
+                    :facts="apartment.facts.slice(0, 3)"
                     :photo-brief="apartment.photoBrief"
                     context-kind="apartment"
                 />
@@ -40,7 +40,7 @@ const headingId = useId();
 @use "~/assets/styles/helpers/breakpoints" as bp;
 
 .home-apartments {
-    background-color: var(--surface);
+    background-color: var(--surface-warm);
     padding-block: var(--section-py);
 
     &__inner {

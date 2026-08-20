@@ -56,7 +56,7 @@ The repo currently holds a **generic Nuxt 3 SSG template** whose read path was w
 
 ### D1. Colour
 
-Exactly four brand colours. Everything else is an **alpha step of `#212121`** or pure white. Rewrite `assets/styles/colors.scss` wholesale; do not patch components.
+Exactly four brand colours. Everything else is an **alpha step of `#241e1c`** or pure white. Rewrite `assets/styles/colors.scss` wholesale; do not patch components.
 
 **Brand**
 | Token | Value | Use |
@@ -70,35 +70,35 @@ Exactly four brand colours. Everything else is an **alpha step of `#212121`** or
 | `--surface-warm` | `#F5EEE7` | **Default page background** (`.app-shell`) |
 | `--surface` | `#FFFFFF` | Cards, scrolled header, drawer panel, toast |
 | `--surface-mute` | `#EDE4DA` | Chips, hover fill, input-ish blocks, media-placeholder fill (10% deeper cream) |
-| `--surface-ink` | `#212121` | Dark-contrast sections + footer |
+| `--surface-ink` | `#241e1c` | Dark-contrast sections + footer |
 | `--card-cream` | `#F5EEE7` | Alias — card on white surface |
 
 **Ink**
 | Token | Value |
 |---|---|
-| `--ink` | `#212121` |
-| `--ink-80` | `rgba(33, 33, 33, 0.8)` |
-| `--ink-60` | `rgba(33, 33, 33, 0.62)` |
-| `--ink-40` | `rgba(33, 33, 33, 0.4)` |
-| `--ink-20` | `rgba(33, 33, 33, 0.16)` |
-| `--text-color` | `#212121` |
-| `--text-color-secondary` | `rgba(33, 33, 33, 0.62)` |
+| `--ink` | `#241e1c` |
+| `--ink-80` | `rgba(36, 30, 28, 0.8)` |
+| `--ink-60` | `rgba(36, 30, 28, 0.62)` |
+| `--ink-40` | `rgba(36, 30, 28, 0.4)` |
+| `--ink-20` | `rgba(36, 30, 28, 0.16)` |
+| `--text-color` | `#241e1c` |
+| `--text-color-secondary` | `rgba(36, 30, 28, 0.62)` |
 
 **Borders / status**
 | Token | Value |
 |---|---|
-| `--border-color` | `rgba(33, 33, 33, 0.12)` |
-| `--hr-border-color` | `rgba(33, 33, 33, 0.08)` |
+| `--border-color` | `rgba(36, 30, 28, 0.12)` |
+| `--hr-border-color` | `rgba(36, 30, 28, 0.08)` |
 | `--error-color` | `#770101` |
 | `--error-background` | `rgba(119, 1, 1, 0.08)` |
-| `--success-color` | `#212121` |
-| `--success-background` | `rgba(33, 33, 33, 0.06)` |
+| `--success-color` | `#241e1c` |
+| `--success-background` | `rgba(36, 30, 28, 0.06)` |
 
 **Contrast law — enforce, do not skip.**
-- `#212121` on `#F5EEE7` = **14.2:1** ✓ body text
+- `#241e1c` on `#F5EEE7` = **14.2:1** ✓ body text
 - `#770101` on `#F5EEE7` = **11.1:1** ✓ body text and links
 - `#FFFFFF` on `#770101` = **10.9:1** ✓ CTA labels
-- `#FFFFFF` on `#212121` = **15.9:1** ✓ dark sections
+- `#FFFFFF` on `#241e1c` = **15.9:1** ✓ dark sections
 - **`#9F7070` on `#F5EEE7` = 3.4:1 → FAILS AA for body text.** `--light-primary-color` on a light surface is permitted **only** for: text ≥ `rem(24)` bold, hairline borders, decorative separators, non-informational icons, and hover states of already-accessible elements. Never for paragraphs, labels, captions, or link text. On `--surface-ink` it is 5.2:1 and is free to use.
 
 **Forbidden palette:** any fifth hue; any gradient (`linear-`/`radial-`/`conic-`, incl. removing the inherited `--card-mint` / `--linear-background` gradient tokens); any `box-shadow` for depth; `backdrop-filter`; drop-shadow "elevation". Depth = `rem(2)` alpha hairline + tonal contrast only.
@@ -461,7 +461,7 @@ NUXT_PUBLIC_GA_ID=
 Confirm `.gitignore` covers `.vercel`, `.output`, `.nuxt`, `node_modules`, `.env`.
 
 ### 0.7 OG image
-`public/og-image.svg` is not a valid social share asset (1200×630 PNG is mandatory). Add `scripts/build-og-image.mjs` that rasterises a brand SVG (`#F5EEE7` field, `#212121` wordmark, `#770101` rule) to `public/og-default.png` at exactly 1200×630 using the already-installed `sharp`, and prepend it to the `build` script. Point `useSeo`'s `DEFAULT_OG_IMAGE` at `/og-default.png`. Delete `public/og-image.svg` and fix the three `og-image.png` references inside `composables/useJsonLd.ts`.
+`public/og-image.svg` is not a valid social share asset (1200×630 PNG is mandatory). Add `scripts/build-og-image.mjs` that rasterises a brand SVG (`#F5EEE7` field, `#241e1c` wordmark, `#770101` rule) to `public/og-default.png` at exactly 1200×630 using the already-installed `sharp`, and prepend it to the `build` script. Point `useSeo`'s `DEFAULT_OG_IMAGE` at `/og-default.png`. Delete `public/og-image.svg` and fix the three `og-image.png` references inside `composables/useJsonLd.ts`.
 
 ### 0.8 `useJsonLd.ts` adjustments
 - Replace every `["ru", "en", "uz"]` / `["ru-RU","en-US","uz-UZ"]` list with the two live locales; default `inLanguage` becomes `"en-US"`.

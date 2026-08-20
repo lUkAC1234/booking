@@ -11,7 +11,7 @@
             <div v-reveal.stagger class="about-services__grid">
                 <article v-for="service in services" :key="service.id" class="about-services__item">
                     <span class="about-services__icon" aria-hidden="true">
-                        <component :is="service.icon" />
+                        <SvgIcon :name="service.icon" />
                     </span>
                     <BaseHeading level="h3" class="about-services__title">
                         {{ service.title }}
@@ -28,18 +28,13 @@
 </template>
 
 <script setup lang="ts">
-import { markRaw } from "vue";
-import SvgBuilding from "~/components/svg/SvgBuilding.vue";
-import SvgMountain from "~/components/svg/SvgMountain.vue";
-import SvgPlane from "~/components/svg/SvgPlane.vue";
-
 const { t } = useI18n();
 const headingId = useId();
 
 const SERVICE_ENTRIES = [
-    { id: "apartments", to: "/tashkent-city-center-apartments/", icon: markRaw(SvgBuilding) },
-    { id: "tours", to: "/tashkent-tours-amirsoy-chimgan/", icon: markRaw(SvgMountain) },
-    { id: "transfer", to: "/tashkent-airport-transfer/", icon: markRaw(SvgPlane) },
+    { id: "apartments", to: "/tashkent-city-center-apartments/", icon: "building" },
+    { id: "tours", to: "/tashkent-tours-amirsoy-chimgan/", icon: "mountain" },
+    { id: "transfer", to: "/tashkent-airport-transfer/", icon: "plane" },
 ] as const;
 
 const services = computed(() =>

@@ -14,6 +14,8 @@
         "book-on-whatsapp": "Забронировать в WhatsApp",
         "message-on-telegram": "Написать в Telegram",
         "price-on-request": "Цена по запросу",
-        "photo-brief": "Нужно фото"
+        "photo-brief": "Нужно фото",
+        "carousel-prev": "Предыдущий слайд",
+        "carousel-next": "Следующий слайд"
     }
 }

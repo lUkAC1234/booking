@@ -1,5 +1,27 @@
 <template>
     <section ref="root" class="home-hero" data-hero="root" :aria-labelledby="headingId">
+        <picture class="home-hero__media" data-hero="media">
+            <source
+                v-for="source in sources"
+                :key="source.media ?? 'base'"
+                :media="source.media"
+                :type="source.type"
+                :srcset="source.srcset"
+                sizes="100vw"
+            >
+            <img
+                class="home-hero__image"
+                :src="fallback.src"
+                :srcset="fallback.srcset"
+                sizes="100vw"
+                :alt="t('home.hero.photo')"
+                width="1672"
+                height="941"
+                fetchpriority="high"
+                decoding="async"
+            >
+        </picture>
+
         <AppContainer size="wide" class="home-hero__inner">
             <div class="home-hero__copy">
                 <BaseHeading :id="headingId" level="h1" data-hero="title" class="home-hero__title">
@@ -10,77 +32,125 @@
 
                 <div data-hero="actions" class="home-hero__actions">
                     <BookButton />
-                    <BaseButton
-                        :to="'/tashkent-city-center-apartments/'"
-                        variant="outline-light"
-                    >
+                    <BaseButton :to="'/tashkent-city-center-apartments/'" variant="outline-dark">
                         {{ t("home.hero.cta-secondary") }}
                     </BaseButton>
                 </div>
-
-                <ul class="home-hero__chips" role="list">
-                    <li v-for="chip in chips" :key="chip.key" data-hero="card">
-                        <FactChip>
-                            <template #icon>
-                                <component :is="chip.icon" />
-                            </template>
-                            {{ chip.label }}
-                        </FactChip>
-                    </li>
-                </ul>
             </div>
 
-            <div class="home-hero__media">
-                <MediaPlaceholder
-                    data-hero="media"
-                    :brief="t('home.hero.photo')"
-                    ratio="4 / 5"
-                />
-            </div>
+            <ul class="home-hero__facts" role="list">
+                <li
+                    v-for="fact in facts"
+                    :key="fact.key"
+                    data-hero="card"
+                    class="home-hero__fact"
+                >
+                    <SvgIcon :name="fact.icon" />
+                    <span class="home-hero__fact-label">{{ fact.label }}</span>
+                </li>
+            </ul>
         </AppContainer>
     </section>
 </template>
 
 <script setup lang="ts">
-import { markRaw } from "vue";
-import SvgBuilding from "~/components/svg/SvgBuilding.vue";
-import SvgMountain from "~/components/svg/SvgMountain.vue";
-import SvgPlane from "~/components/svg/SvgPlane.vue";
-import SvgClock from "~/components/svg/SvgClock.vue";
+import type { IconName } from "~/types/models";
+
+interface HeroFact {
+    key: string;
+    label: string;
+    icon: IconName;
+}
+
+const DESKTOP_SRC = "/images/heroImage.png";
+const MOBILE_SRC = "/images/heroImageMobile.png";
+const MOBILE_MEDIA = "(max-width: 639px)";
+const DESKTOP_WIDTHS = [640, 960, 1280, 1672];
+const MOBILE_WIDTHS = [360, 480, 640, 941];
+const QUALITY = 70;
 
 const { t } = useI18n();
 const headingId = useId();
 const root = ref<HTMLElement | null>(null);
+const img = useImage();
 
 useHeroIntro(root);
 
-const chips = computed(() => [
-    { key: "apartments", label: t("home.hero.chips.apartments"), icon: markRaw(SvgBuilding) },
-    { key: "tours", label: t("home.hero.chips.tours"), icon: markRaw(SvgMountain) },
-    { key: "transfer", label: t("home.hero.chips.transfer"), icon: markRaw(SvgPlane) },
-    { key: "reply", label: t("home.hero.chips.reply"), icon: markRaw(SvgClock) },
+const url = (src: string, format: string, width: number) =>
+    img(src, { format, quality: QUALITY, width, fit: "cover" });
+
+const srcset = (src: string, format: string, widths: number[]) =>
+    widths.map((width) => `${url(src, format, width)} ${width}w`).join(", ");
+
+const sources = computed(() => [
+    { media: MOBILE_MEDIA, type: "image/webp", srcset: srcset(MOBILE_SRC, "webp", MOBILE_WIDTHS) },
+    { media: undefined, type: "image/webp", srcset: srcset(DESKTOP_SRC, "webp", DESKTOP_WIDTHS) },
+]);
+
+const fallback = computed(() => ({
+    src: url(DESKTOP_SRC, "jpeg", 1280),
+    srcset: srcset(DESKTOP_SRC, "jpeg", DESKTOP_WIDTHS),
+}));
+
+const facts = computed<HeroFact[]>(() => [
+    { key: "apartments", label: t("home.hero.chips.apartments"), icon: "building" },
+    { key: "tours", label: t("home.hero.chips.tours"), icon: "mountain" },
+    { key: "transfer", label: t("home.hero.chips.transfer"), icon: "plane" },
+    { key: "reply", label: t("home.hero.chips.reply"), icon: "clock" },
 ]);
 </script>
 
 <style scoped lang="scss">
 @use "~/assets/styles/helpers/functions" as functions;
 @use "~/assets/styles/helpers/breakpoints" as bp;
+@use "~/assets/styles/helpers/mixins" as mixins;
 
 .home-hero {
-    background-color: var(--surface-warm);
-    padding-block: functions.rem(80) var(--section-py);
+    @include mixins.on-dark;
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    margin-top: calc(-1 * var(--app-header-height));
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background-color: rgba(36, 30, 28, 0.56);
+    }
+
+    &__media {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        display: block;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 
     &__inner {
-        display: grid;
-        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-        gap: functions.rem(72);
-        align-items: center;
+        position: relative;
+        z-index: 2;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: functions.rem(64);
+        padding-block: calc(var(--app-header-height) + #{functions.rem(72)}) functions.rem(96);
     }
 
     &__copy {
         display: flex;
         flex-direction: column;
         gap: functions.rem(32);
+        max-width: functions.rem(880);
     }
 
     &__title {
@@ -100,43 +170,75 @@ const chips = computed(() => [
     }
 
     &__actions {
+        --primary-color: var(--white);
+
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         gap: functions.rem(16);
     }
 
-    &__chips {
+    &__facts {
+        --icon-size: var(--icon-size-lg);
+
         list-style: none;
         margin: 0;
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-        gap: functions.rem(10);
+        padding: functions.rem(8);
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        background-color: rgba(255, 255, 255, 0.08);
+        border: functions.rem(2) solid rgba(255, 255, 255, 0.18);
+        border-radius: var(--outer-radius);
     }
 
-    &__media {
-        position: relative;
-        overflow: hidden;
-        border-radius: var(--outer-radius);
+    &__fact {
+        display: flex;
+        align-items: center;
+        gap: functions.rem(14);
+        padding: functions.rem(18) functions.rem(22);
+        color: var(--ink);
+
+        &:not(:last-child) {
+            border-right: functions.rem(2) solid rgba(255, 255, 255, 0.14);
+        }
+    }
+
+    &__fact-label {
+        font-size: var(--fz-body-sm);
+        font-weight: var(--font-weight-medium);
+        line-height: var(--lh-base);
+        text-wrap: balance;
     }
 
     @include bp.down("laptop") {
         &__inner {
-            grid-template-columns: 1fr;
             gap: functions.rem(48);
+            padding-block: calc(var(--app-header-height) + #{functions.rem(56)}) functions.rem(72);
         }
 
-        &__media {
-            max-width: functions.rem(560);
+        &__facts {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        &__fact {
+            &:not(:last-child) {
+                border-right: 0;
+            }
+
+            &:nth-child(odd) {
+                border-right: functions.rem(2) solid rgba(255, 255, 255, 0.14);
+            }
+
+            &:nth-child(-n + 2) {
+                border-bottom: functions.rem(2) solid rgba(255, 255, 255, 0.14);
+            }
         }
     }
 
     @include bp.down("mobile") {
-        padding-block: functions.rem(48) var(--section-py);
-
         &__inner {
-            gap: functions.rem(32);
+            gap: functions.rem(40);
+            padding-block: calc(var(--app-header-height) + #{functions.rem(40)}) functions.rem(56);
         }
 
         &__copy {
@@ -146,6 +248,32 @@ const chips = computed(() => [
         &__actions {
             flex-direction: column;
             align-items: stretch;
+        }
+
+        &__facts {
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        &__fact {
+            padding: functions.rem(14) functions.rem(16);
+
+            &:nth-child(odd) {
+                border-right: 0;
+            }
+
+            &:nth-child(-n + 2) {
+                border-bottom: 0;
+            }
+
+            &:not(:last-child) {
+                border-bottom: functions.rem(2) solid rgba(255, 255, 255, 0.14);
+            }
+        }
+    }
+
+    @include bp.short {
+        &__inner {
+            min-height: auto;
         }
     }
 }
