@@ -16,14 +16,16 @@
 </template>
 
 <script setup lang="ts">
+import type { CardFact } from "~/types/models";
+
 const { t } = useI18n();
 
 const crumbs = computed(() => [{ label: t("nav.home"), to: "/" }, { label: t("nav.transfer") }]);
 
-const chips = computed(() => [
-    t("transfer.hero.chips.meet"),
-    t("transfer.hero.chips.tracking"),
-    t("transfer.hero.chips.waiting"),
-    t("transfer.hero.chips.night"),
+const chips = computed<CardFact[]>(() => [
+    { label: t("transfer.hero.chips.meet"), icon: "users" },
+    { label: t("transfer.hero.chips.tracking"), icon: "plane" },
+    { label: t("transfer.hero.chips.waiting"), icon: "clock" },
+    { label: t("transfer.hero.chips.night"), icon: "car" },
 ]);
 </script>

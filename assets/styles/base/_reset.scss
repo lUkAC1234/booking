@@ -65,6 +65,10 @@ img {
 }
 
 button {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: 0;
     cursor: pointer;
 }
 

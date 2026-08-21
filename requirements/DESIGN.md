@@ -302,7 +302,7 @@ Because the fill, the label and the hairline all live in **one clipped layer**, 
 | `outline-light` | Transparent, `rem(2)` `--ink` border, `--ink` label; hover fills `--ink`, label `--surface-warm` |
 | `outline-dark` | For `--surface-ink` sections: transparent, `rem(2)` white border; hover fills white, label `--surface-ink` |
 | `ghost` | Text + trailing arrow, no fill, no inline padding; hover `--primary-color` |
-| `icon` | Icon-only `--interactive-height` circle, `--border-color` hairline, `--ink` glyph; hover fills `--surface-mute` with a `--light-primary-color` border. Token-driven, so it inverts correctly inside `on-dark` |
+| `icon` | Icon-only `--interactive-height` circle, borderless: a flat `--surface-mute` disc with an `--ink` glyph; hover inks `--primary-color` over `--dur-state` with a `--white` glyph. `disabled` keeps full opacity and the same disc, dropping the glyph to `--ink-40`. Token-driven, so it inverts correctly inside `on-dark` |
 | `primary-pill` | **The signature CTA** — see below |
 
 `to` is resolved through `useLocalePath()` internally, so pass raw paths with a trailing slash. `href` renders a plain `<a>`. States: `disabled`, `loading` (inline spinner, `aria-busy="true"`), `fullwidth`.
@@ -333,7 +333,7 @@ The one file that owns the WhatsApp contract. Wraps `BaseButton` (`primary-pill`
 
 The one hero for all five inner pages. `--surface-warm`, `padding-block: rem(48) var(--section-py)` (mobile `rem(32)`), `AppContainer size="wide"`.
 
-Anatomy top→bottom: `AppBreadcrumbs` → `h1` at `--fz-page-title` / `--lh-tight` / `--ls-heading` → lead at `--fz-lead` / `--lh-relaxed` / `--ink-80`, max-width `rem(680)` → `#actions` slot → `FactChip` row. With `photoBrief` set it becomes a two-column grid (`1.1fr / 0.9fr`) with a `MediaPlaceholder` on the right, collapsing to one column at ≤1279px. Root ref drives `useHeroIntro`, so the parts carry `data-hero` and the media is **never** opacity-hidden — it stays LCP-eligible.
+Anatomy top→bottom: `AppBreadcrumbs` → `h1` at `--fz-page-title` / `--lh-tight` / `--ls-heading` → lead at `--fz-lead` / `--lh-relaxed` / `--ink-80`, max-width `rem(680)` → `#actions` slot → fact panel. The panel is the light-surface twin of the home hero's: `chips` takes `CardFact[]` (`{ label, icon }`) and renders one `--surface` plate at `--outer-radius` with a `rem(2)` `--border-color` hairline and `rem(8)` inner padding, split into equal cells by the same hairline — icon at `--icon-size-lg` in `--primary-color`, label at `--fz-body-sm` weight 500. Cells step 4 → 2 (≤1279, or any width when `photoBrief` narrows the copy column) → 1 (≤639). With `photoBrief` set it becomes a two-column grid (`1.1fr / 0.9fr`) with a `MediaPlaceholder` on the right, collapsing to one column at ≤1279px. Root ref drives `useHeroIntro`, so the parts carry `data-hero` and the media is **never** opacity-hidden — it stays LCP-eligible.
 
 ### `OfferCard` — `components/ui/OfferCard.vue`
 
@@ -366,6 +366,10 @@ Pill: `--surface-mute` fill, `--pill-radius`, `rem(10) rem(18)` padding, `--fz-b
 ### `StatBand` — `components/ui/StatBand.vue`
 
 `<dl>` of 3–4 figures, 4 columns → 2 at ≤1279px. Numbers `clamp(rem(40), 4vw, rem(64))` at weight 700, `line-height: 1`, `--ls-display`, tabular numerals, wired to `useStatsCounter`. `tone="dark"` (default) applies `on-dark`; `tone="light"` uses `--surface-mute`. Radius `--outer-radius`, padding `rem(56) rem(40)`.
+
+### `TransferRoutesTable` — `features/transfer/components/TransferRoutesTable.vue`
+
+**The one routes table**, rendered identically by the home transfer section and the transfer page — never re-implemented as a list. A `--surface` plate at `--outer-radius` with a `rem(2)` `--border-color` hairline and `rem(8)` padding, holding an optional `title` `h3` (which also labels the table), the table itself, and an optional `#actions` footer separated by a top hairline. Columns are route / journey time / price, the header row all-caps at `--fz-caption` over a `rem(2)` `--ink` rule; each row opens with a `rem(44)` `--surface-mute` medallion carrying the route `IconName`, then `from` → `to` around a `--primary-color` arrow. Hover tints the row `--surface-warm`, turns the medallion `--surface` and nudges the arrow `rem(2)`. At ≤1023px the table becomes stacked cards: medallion beside a vertical `from` ↓ `to` stack, with journey time and price on one line below, price pinned right.
 
 ### `BaseAccordion` — `components/ui/BaseAccordion.vue`
 

@@ -12,7 +12,7 @@
                 <span class="app-header__wordmark">{{ brandName }}</span>
             </NuxtLink>
 
-            <ul class="app-header__menu">
+            <ul ref="menu" class="app-header__menu" :class="{ 'app-header__menu--ready': indicatorReady }">
                 <li v-for="link in links" :key="link.path">
                     <NuxtLink
                         :to="localePath(link.path)"
@@ -62,6 +62,32 @@ const overHero = computed(() => route.meta.darkHeader === true && !scrolled.valu
 provide("appHeaderHidden", hidden);
 
 const isActive = (path: string) => isNavPathActive(route.path, path, localePath(path));
+
+const menu = ref<HTMLElement | null>(null);
+const indicatorReady = ref(false);
+
+const syncIndicator = () => {
+    const element = menu.value;
+    if (!element?.offsetWidth) return;
+
+    const active = element.querySelector<HTMLElement>(".app-header__link--active");
+
+    if (active) {
+        element.style.setProperty("--nav-indicator-x", `${active.offsetLeft}px`);
+        element.style.setProperty("--nav-indicator-scale", `${active.offsetWidth / element.offsetWidth}`);
+    } else {
+        element.style.setProperty("--nav-indicator-scale", "0");
+    }
+
+    indicatorReady.value = true;
+};
+
+watch(
+    () => route.path,
+    () => nextTick(syncIndicator),
+);
+
+useResizeObserver(menu, syncIndicator);
 </script>
 
 <style scoped lang="scss">
@@ -148,6 +174,7 @@ const isActive = (path: string) => isNavPathActive(route.path, path, localePath(
     }
 
     &__menu {
+        position: relative;
         display: flex;
         align-items: center;
         gap: functions.rem(24);
@@ -155,13 +182,35 @@ const isActive = (path: string) => isNavPathActive(route.path, path, localePath(
         padding: 0;
         list-style: none;
 
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: functions.rem(2);
+            background-color: var(--primary-color);
+            transform: translate3d(var(--nav-indicator-x, 0), 0, 0) scaleX(var(--nav-indicator-scale, 0));
+            transform-origin: left center;
+            will-change: transform;
+        }
+
+        &--ready::after {
+            transition: transform var(--dur-state) var(--ease-decel);
+        }
+
         @include bp.down("laptop") {
             display: none;
+        }
+
+        @include bp.reduced-motion {
+            &::after {
+                transition: none;
+            }
         }
     }
 
     &__link {
-        position: relative;
         display: inline-block;
         padding-block: functions.rem(4);
         font-size: functions.rem(16);
@@ -169,20 +218,7 @@ const isActive = (path: string) => isNavPathActive(route.path, path, localePath(
         color: var(--ink-80);
         text-decoration: none;
         white-space: nowrap;
-        transition: color 240ms var(--ease-decel);
-
-        &::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: functions.rem(2);
-            background-color: currentColor;
-            transform: scaleX(0);
-            transform-origin: left center;
-            transition: transform 240ms var(--ease-decel);
-        }
+        transition: color var(--dur-state) var(--ease-decel);
 
         &:not(&--active):hover {
             color: var(--ink);
@@ -195,18 +231,10 @@ const isActive = (path: string) => isNavPathActive(route.path, path, localePath(
 
         &--active {
             color: var(--primary-color);
-
-            &::after {
-                transform: scaleX(1);
-            }
         }
 
         @include bp.reduced-motion {
             transition: none;
-
-            &::after {
-                transition: none;
-            }
         }
     }
 

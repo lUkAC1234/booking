@@ -20,9 +20,12 @@
                     <slot name="actions" />
                 </div>
 
-                <ul v-if="chips.length" class="page-hero__chips" role="list">
-                    <li v-for="chip in chips" :key="chip" data-hero="card">
-                        <FactChip>{{ chip }}</FactChip>
+                <ul v-if="chips.length" class="page-hero__facts" role="list">
+                    <li v-for="chip in chips" :key="chip.label" data-hero="card" class="page-hero__fact">
+                        <span class="page-hero__fact-icon" aria-hidden="true">
+                            <SvgIcon :name="chip.icon" />
+                        </span>
+                        <span class="page-hero__fact-label">{{ chip.label }}</span>
                     </li>
                 </ul>
             </div>
@@ -35,6 +38,8 @@
 </template>
 
 <script setup lang="ts">
+import type { CardFact } from "~/types/models";
+
 interface Crumb {
     label: string;
     to?: string;
@@ -44,7 +49,7 @@ interface Props {
     title: string;
     lead: string;
     crumbs: Crumb[];
-    chips?: string[];
+    chips?: CardFact[];
     photoBrief?: string;
     photoRatio?: string;
 }
@@ -64,6 +69,44 @@ useHeroIntro(root);
 <style scoped lang="scss">
 @use "~/assets/styles/helpers/functions" as functions;
 @use "~/assets/styles/helpers/breakpoints" as bp;
+
+@mixin facts-one-column {
+    grid-template-columns: minmax(0, 1fr);
+
+    .page-hero__fact {
+        padding: functions.rem(14) functions.rem(16);
+
+        &:nth-child(odd) {
+            border-right: 0;
+        }
+
+        &:nth-child(-n + 2) {
+            border-bottom: 0;
+        }
+
+        &:not(:last-child) {
+            border-bottom: functions.rem(2) solid var(--border-color);
+        }
+    }
+}
+
+@mixin facts-two-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    .page-hero__fact {
+        &:not(:last-child) {
+            border-right: 0;
+        }
+
+        &:nth-child(odd) {
+            border-right: functions.rem(2) solid var(--border-color);
+        }
+
+        &:nth-child(-n + 2) {
+            border-bottom: functions.rem(2) solid var(--border-color);
+        }
+    }
+}
 
 .page-hero {
     background-color: var(--surface-warm);
@@ -114,19 +157,54 @@ useHeroIntro(root);
         gap: functions.rem(16);
     }
 
-    &__chips {
+    &__facts {
+        --icon-size: var(--icon-size-lg);
+
         list-style: none;
         margin: 0;
-        padding: 0;
+        padding: functions.rem(8);
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        background-color: var(--surface);
+        border: functions.rem(2) solid var(--border-color);
+        border-radius: var(--outer-radius);
+    }
+
+    &__fact {
         display: flex;
-        flex-wrap: wrap;
-        gap: functions.rem(10);
+        align-items: center;
+        gap: functions.rem(14);
+        padding: functions.rem(18) functions.rem(22);
+        color: var(--ink);
+
+        &:not(:last-child) {
+            border-right: functions.rem(2) solid var(--border-color);
+        }
+    }
+
+    &__fact-icon {
+        display: inline-flex;
+        flex-shrink: 0;
+        color: var(--primary-color);
+    }
+
+    &__fact-label {
+        font-size: var(--fz-body-sm);
+        font-weight: var(--font-weight-medium);
+        line-height: var(--lh-base);
+        text-wrap: balance;
     }
 
     &__media {
         position: relative;
         overflow: hidden;
         border-radius: var(--outer-radius);
+    }
+
+    @include bp.up("notebook") {
+        &--with-media &__facts {
+            @include facts-two-columns;
+        }
     }
 
     @include bp.down("laptop") {
@@ -137,6 +215,10 @@ useHeroIntro(root);
 
         &__media {
             max-width: functions.rem(560);
+        }
+
+        &__facts {
+            @include facts-two-columns;
         }
     }
 
@@ -150,6 +232,10 @@ useHeroIntro(root);
         &__actions {
             flex-direction: column;
             align-items: stretch;
+        }
+
+        &__facts {
+            @include facts-one-column;
         }
     }
 }

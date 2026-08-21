@@ -207,14 +207,15 @@ const rootClass = computed(() => [
         --button-py: 0;
         --button-px: 0;
         --icon-size: var(--icon-size-md);
-        --btn-ink: var(--surface-mute);
-        --btn-border: var(--border-color);
-        --btn-ink-border: var(--light-primary-color);
+        --btn-ink: var(--primary-color);
+        --btn-ink-label: var(--white);
+        --btn-ink-dur: var(--dur-state);
 
         width: var(--interactive-height);
         height: var(--interactive-height);
         flex-shrink: 0;
         color: var(--ink);
+        background-color: var(--surface-mute);
         border-radius: 50%;
     }
 
@@ -222,6 +223,11 @@ const rootClass = computed(() => [
     &--loading {
         opacity: 0.6;
         cursor: not-allowed;
+    }
+
+    &--icon#{&}--disabled {
+        opacity: 1;
+        color: var(--ink-40);
     }
 
     &__face {

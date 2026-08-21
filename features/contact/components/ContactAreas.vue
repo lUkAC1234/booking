@@ -17,9 +17,12 @@
                 </li>
             </ul>
 
-            <div v-reveal class="contact-areas__links">
-                <BaseButton v-for="link in links" :key="link.to" :to="link.to" variant="ghost">
-                    {{ link.label }}
+            <div v-reveal.stagger class="contact-areas__links">
+                <BaseButton v-for="link in links" :key="link.to" :to="link.to" variant="outline-light" fullwidth>
+                    <span class="contact-areas__link-label">
+                        <SvgIcon :name="link.icon" />
+                        {{ link.label }}
+                    </span>
                     <SvgArrowRight />
                 </BaseButton>
             </div>
@@ -34,15 +37,15 @@ const headingId = useId();
 const AREA_IDS = ["center", "city", "old", "airport", "mountains", "trips"] as const;
 
 const LINK_ENTRIES = [
-    { to: "/tashkent-city-center-apartments/", label: "contact.areas.link-apartments" },
-    { to: "/tashkent-tours-amirsoy-chimgan/", label: "contact.areas.link-tours" },
-    { to: "/tashkent-airport-transfer/", label: "contact.areas.link-transfer" },
-    { to: "/about-us/", label: "contact.areas.link-about" },
+    { to: "/tashkent-city-center-apartments/", label: "contact.areas.link-apartments", icon: "building" },
+    { to: "/tashkent-tours-amirsoy-chimgan/", label: "contact.areas.link-tours", icon: "mountain" },
+    { to: "/tashkent-airport-transfer/", label: "contact.areas.link-transfer", icon: "car" },
+    { to: "/about-us/", label: "contact.areas.link-about", icon: "users" },
 ] as const;
 
 const areas = computed(() => AREA_IDS.map((id) => t(`contact.areas.items.${id}`)));
 
-const links = computed(() => LINK_ENTRIES.map((entry) => ({ to: entry.to, label: t(entry.label) })));
+const links = computed(() => LINK_ENTRIES.map((entry) => ({ to: entry.to, icon: entry.icon, label: t(entry.label) })));
 </script>
 
 <style scoped lang="scss">
@@ -90,11 +93,18 @@ const links = computed(() => LINK_ENTRIES.map((entry) => ({ to: entry.to, label:
     }
 
     &__links {
-        --icon-size: var(--icon-size-sm);
+        --icon-size: var(--icon-size-md);
 
-        display: flex;
-        flex-wrap: wrap;
-        gap: functions.rem(32);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: functions.rem(16);
+    }
+
+    &__link-label {
+        display: inline-flex;
+        align-items: center;
+        gap: functions.rem(12);
+        text-align: left;
     }
 
     @include bp.down("laptop") {
@@ -108,13 +118,9 @@ const links = computed(() => LINK_ENTRIES.map((entry) => ({ to: entry.to, label:
             gap: functions.rem(32);
         }
 
-        &__grid {
-            grid-template-columns: 1fr;
-        }
-
+        &__grid,
         &__links {
-            flex-direction: column;
-            gap: functions.rem(16);
+            grid-template-columns: 1fr;
         }
     }
 }

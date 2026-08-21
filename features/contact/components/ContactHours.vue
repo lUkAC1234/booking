@@ -75,7 +75,7 @@ const steps = computed(() =>
         padding: 0;
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: functions.rem(16) functions.rem(48);
+        gap: functions.rem(16);
     }
 
     &__row {
@@ -84,8 +84,12 @@ const steps = computed(() =>
         display: flex;
         align-items: center;
         gap: functions.rem(12);
+        padding: functions.rem(18) functions.rem(20);
+        border: functions.rem(2) solid var(--border-color);
+        border-radius: var(--inner-radius);
+        background-color: var(--surface);
         font-size: var(--fz-body);
-        line-height: var(--lh-relaxed);
+        line-height: var(--lh-base);
         color: var(--text-color);
     }
 
