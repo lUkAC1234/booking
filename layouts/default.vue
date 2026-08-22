@@ -1,6 +1,5 @@
 <template>
     <div class="app-shell">
-        <a class="skip-link" href="#main">{{ t("common.skip-to-content") }}</a>
         <AppHeader />
         <main id="main" tabindex="-1" class="app-shell__main">
             <slot />
@@ -17,7 +16,6 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n();
 const { prefersReducedMotion } = useBreakpoints();
 
 useJsonLd().organization();

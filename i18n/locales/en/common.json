@@ -1,14 +1,9 @@
 {
     "common": {
-        "no-internet": "No internet connection",
         "error": "Something went wrong, please try again later",
         "loading": "Loading",
         "page-title": "City Center Apartments",
-        "read-more": "Read more",
-        "view-all": "View all",
-        "learn-more": "Learn more",
         "breadcrumb": "Breadcrumb",
-        "skip-to-content": "Skip to content",
         "book": "Book",
         "book-now": "Book now",
         "book-on-whatsapp": "Book on WhatsApp",
@@ -16,6 +11,11 @@
         "price-on-request": "Price on request",
         "photo-brief": "Photo needed",
         "carousel-prev": "Previous slide",
-        "carousel-next": "Next slide"
+        "carousel-next": "Next slide",
+        "close": "Close",
+        "open-gallery": "Open the photo gallery",
+        "gallery-modal": "You can close this photo gallery with the Esc key",
+        "gallery-thumbs": "Toggle thumbnails",
+        "gallery-error": "This photo could not be loaded. Please try again later."
     }
 }

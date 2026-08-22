@@ -4,11 +4,11 @@
         :lead="t('tours.lead')"
         :crumbs="crumbs"
         :chips="chips"
-        :photo-brief="t('tours.hero.photo')"
+        :photo="photo"
     >
         <template #actions>
             <BookButton context-kind="tour" />
-            <BaseButton :to="'/tashkent-city-center-apartments/'" variant="outline-light">
+            <BaseButton :to="'/tashkent-city-center-apartments/'" variant="outline-dark">
                 {{ t("apartments.all-link") }}
             </BaseButton>
         </template>
@@ -17,6 +17,9 @@
 
 <script setup lang="ts">
 import type { CardFact } from "~/types/models";
+
+const PHOTO_WIDTH = 1672;
+const PHOTO_HEIGHT = 941;
 
 const { t } = useI18n();
 
@@ -28,4 +31,12 @@ const chips = computed<CardFact[]>(() => [
     { label: t("tours.hero.chips.drive"), icon: "clock" },
     { label: t("tours.hero.chips.car"), icon: "car" },
 ]);
+
+const photo = computed(() => ({
+    desktop: "/images/excursions/heroImage.webp",
+    mobile: "/images/excursions/heroImageMobile.webp",
+    alt: t("tours.hero.photo"),
+    width: PHOTO_WIDTH,
+    height: PHOTO_HEIGHT,
+}));
 </script>

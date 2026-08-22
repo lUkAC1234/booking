@@ -45,15 +45,15 @@ npm run dev                # → http://localhost:3000
 
 No backend required for development: the payload JSON files are committed to the repository.
 
-| Script | Purpose |
-|---|---|
-| `npm run dev` | Dev server with HMR, bound to `--host` so you can open it from your phone |
-| `npm run build` | **Production build** — `nuxt build` + `strip-leaked-paths` + `inline-critical-css` → `.output/public/` |
-| `npm run generate` | Plain `nuxt generate` without post-processing — prefer `build` |
-| `npm run preview` | Serve the built output |
-| `npm run lint` · `lint:fix` | ESLint, `--max-warnings=0` |
-| `npm run format` · `check-format` | Prettier |
-| `npm run typecheck` | `vue-tsc`, strict |
+| Script                            | Purpose                                                                                                |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `npm run dev`                     | Dev server with HMR, bound to `--host` so you can open it from your phone                              |
+| `npm run build`                   | **Production build** — `nuxt build` + `strip-leaked-paths` + `inline-critical-css` → `.output/public/` |
+| `npm run generate`                | Plain `nuxt generate` without post-processing — prefer `build`                                         |
+| `npm run preview`                 | Serve the built output                                                                                 |
+| `npm run lint` · `lint:fix`       | ESLint, `--max-warnings=0`                                                                             |
+| `npm run format` · `check-format` | Prettier                                                                                               |
+| `npm run typecheck`               | `vue-tsc`, strict                                                                                      |
 
 **Requires Node ≥ 20.11.**
 
@@ -139,8 +139,8 @@ frontend/
 ```ts
 // types/payload.ts
 export interface StaticPayload {
-    site_config: SiteConfig;      // singleton: contacts, socials, address, OG image
-    faq: FaqPayloadItem[];        // translated, categorized, ordered
+    site_config: SiteConfig; // singleton: contacts, socials, address, OG image
+    faq: FaqPayloadItem[]; // translated, categorized, ordered
 }
 export type PayloadLocale = "ru" | "en" | "uz";
 ```
@@ -191,7 +191,7 @@ export const useFaq = () => ({
 
 ```vue
 <script setup lang="ts">
-const { items } = useFaq();          // Ref<FaqPayloadItem[]>, SSR-safe, reactive
+const { items } = useFaq(); // Ref<FaqPayloadItem[]>, SSR-safe, reactive
 </script>
 ```
 
@@ -214,11 +214,11 @@ const { items } = useFaq();          // Ref<FaqPayloadItem[]>, SSR-safe, reactiv
 
 ### URL scheme
 
-| Locale | Prefix | Home | Contact |
-|---|---|---|---|
-| 🇷🇺 `ru` *(default)* | none | `/` | `/kontakty/` |
-| 🇬🇧 `en` | `/en` | `/en/` | `/en/kontakty/` |
-| 🇺🇿 `uz` | `/uz` | `/uz/` | `/uz/kontakty/` |
+| Locale              | Prefix | Home   | Contact         |
+| ------------------- | ------ | ------ | --------------- |
+| 🇷🇺 `ru` _(default)_ | none   | `/`    | `/kontakty/`    |
+| 🇬🇧 `en`             | `/en`  | `/en/` | `/en/kontakty/` |
+| 🇺🇿 `uz`             | `/uz`  | `/uz/` | `/uz/kontakty/` |
 
 Strategy: `prefix_except_default`. Trailing slashes are enforced by `useSeo()` on canonicals and by `site.trailingSlash: true` in the sitemap, so the two never disagree.
 
@@ -242,7 +242,7 @@ With `lazy: true` each namespace becomes its own chunk per locale, and only the 
 
 ### Page transition
 
-Defined in `app.vue` (not `nuxt.config.ts` — it needs real JS callbacks). An opacity-only cross-fade, `out-in` mode, 180 ms leave / 380 ms enter — *instant departure, gentle arrival*.
+Defined in `app.vue` (not `nuxt.config.ts` — it needs real JS callbacks). An opacity-only cross-fade, `out-in` mode, 180 ms leave / 380 ms enter — _instant departure, gentle arrival_.
 
 The `onBeforeLeave` hook freezes `<main>`'s height using a `ResizeObserver`-maintained ref. Without it, the brief moment when no page is mounted collapses the document, the browser clamps the scroll position, and the user sees an upward jump. The height comes from a ref rather than `offsetHeight` because reading layout in the leave hook forces a synchronous reflow on every navigation.
 
@@ -270,16 +270,16 @@ That produces: `<title>`, meta description and keywords, the full Open Graph set
 
 ### Coverage
 
-| Signal | Source |
-|---|---|
-| Canonical | `useSeo` — `${siteUrl}${path}/` |
-| `hreflang` × 3 + `x-default` | `useLocaleHead` in `app.vue` |
-| `og:image` | Page cover → `SiteConfig.hero_image` for the current locale → `/og-image.svg` |
-| `og:site_name` | `useAppConfig().brand.name` |
-| JSON-LD | `useJsonLd()` — organization, website, breadcrumbs, FAQ, service, article, creative work |
-| `sitemap_index.xml` | `@nuxtjs/sitemap`, `zeroRuntime: true` — no server needed |
-| `robots.txt` | `@nuxtjs/robots`, points at `/sitemap_index.xml` |
-| `llms.txt` | `public/llms.txt` |
+| Signal                       | Source                                                                                   |
+| ---------------------------- | ---------------------------------------------------------------------------------------- |
+| Canonical                    | `useSeo` — `${siteUrl}${path}/`                                                          |
+| `hreflang` × 3 + `x-default` | `useLocaleHead` in `app.vue`                                                             |
+| `og:image`                   | Page cover → `SiteConfig.hero_image` for the current locale → `/og-image.svg`            |
+| `og:site_name`               | `useAppConfig().brand.name`                                                              |
+| JSON-LD                      | `useJsonLd()` — organization, website, breadcrumbs, FAQ, service, article, creative work |
+| `sitemap_index.xml`          | `@nuxtjs/sitemap`, `zeroRuntime: true` — no server needed                                |
+| `robots.txt`                 | `@nuxtjs/robots`, points at `/sitemap_index.xml`                                         |
+| `llms.txt`                   | `public/llms.txt`                                                                        |
 
 > [!TIP]
 > The OG image is resolved **per locale** — `/uz/` pages get the Uzbek image from Site settings, `/en/` the English one. Fill all three in the admin, or the RU one is used everywhere.
@@ -302,29 +302,37 @@ Component styles live in `<style scoped lang="scss">` blocks. Global CSS custom 
 
 Five tiers, defined once in `helpers/_breakpoints.scss` and used by both SCSS and the DOM:
 
-| Tier | Range |
-|---|---|
-| `mobile` | ≤ 639 px |
-| `tablet` | 640 – 1023 px |
-| `laptop` | 1024 – 1279 px |
+| Tier       | Range          |
+| ---------- | -------------- |
+| `mobile`   | ≤ 639 px       |
+| `tablet`   | 640 – 1023 px  |
+| `laptop`   | 1024 – 1279 px |
 | `notebook` | 1280 – 1365 px |
-| `desktop` | ≥ 1366 px |
+| `desktop`  | ≥ 1366 px      |
 
 ```scss
 @use "~/assets/styles/helpers/breakpoints" as bp;
 
 .card {
     padding: 32px;
-    @include bp.down("mobile") { padding: 16px; }
-    @include bp.up("desktop")  { padding: 48px; }
+    @include bp.down("mobile") {
+        padding: 16px;
+    }
+    @include bp.up("desktop") {
+        padding: 48px;
+    }
 }
 ```
 
 An inline `<script>` with `tagPriority: "critical"` in `<head>` stamps `data-tier="…"` onto `<html>` **before first paint**, so CSS can branch on device class with no flash and no JS-driven layout shift:
 
 ```scss
-:root[data-tier="mobile"] .app-bottom-nav { display: flex; }
-:root[data-tier="desktop"] .app-header__burger { display: none; }
+:root[data-tier="mobile"] .app-bottom-nav {
+    display: flex;
+}
+:root[data-tier="desktop"] .app-header__burger {
+    display: none;
+}
 ```
 
 ### Fluid typography
@@ -333,14 +341,14 @@ An inline `<script>` with `tagPriority: "critical"` in `<head>` stamps `data-tie
 
 ### Where to change the look
 
-| File | Controls |
-|---|---|
-| `colors.scss` | Palette |
-| `base/_typography.scss` | Type scale, headings |
-| `base/_afonts.scss` | Font family and `@font-face` |
-| `helpers/_variables.scss` | Spacing, radii, shadows |
-| `variables/_transitions.scss` | Easing curves and durations |
-| `main.scss` | Per-tier custom properties, header/nav heights |
+| File                          | Controls                                       |
+| ----------------------------- | ---------------------------------------------- |
+| `colors.scss`                 | Palette                                        |
+| `base/_typography.scss`       | Type scale, headings                           |
+| `base/_afonts.scss`           | Font family and `@font-face`                   |
+| `helpers/_variables.scss`     | Spacing, radii, shadows                        |
+| `variables/_transitions.scss` | Easing curves and durations                    |
+| `main.scss`                   | Per-tier custom properties, header/nav heights |
 
 ---
 
@@ -348,13 +356,13 @@ An inline `<script>` with `tagPriority: "critical"` in `<head>` stamps `data-tie
 
 Auto-imported with `pathPrefix: false` — the directory is organizational, the tag is just the filename.
 
-| Directory | Contents |
-|---|---|
-| `ui/` | `BaseButton` `BaseHeading` `BaseLead` `BaseAccordion` `BaseModal` `BaseDropdown` `BaseSkeleton` `BaseEmptyState` `BasePhoneInput` `InlineContactForm` `ContactPhoneCard` `OptimizedMedia` |
-| `layout/` | `AppHeader` `AppFooter` `AppContainer` `AppBreadcrumbs` `AppLangSwitcher` `AppMobileMenu` `AppMobileBottomNav` `AppAlerts` |
-| `feedback/` | `AppNotFound` `AppRouteLoader` |
-| `sections/` | `FaqSection` |
-| `svg/` | 26 inline icons (`SvgArrowRight`, `SvgTelegram`, …) + 3 more in `svg/nav/` |
+| Directory   | Contents                                                                                                                                                                                                                                                      |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ui/`       | `BaseButton` `BaseHeading` `BaseLead` `BaseAccordion` `BaseCarousel` `BaseDropdown` `BookButton` `CheckList` `FactChip` `HeroMedia` `MediaGallery` `MediaPlaceholder` `OfferCard` `OptimizedMedia` `PageHero` `SectionHeader` `StatBand` `StepList` `SvgIcon` |
+| `layout/`   | `AppHeader` `AppFooter` `AppContainer` `AppBreadcrumbs` `AppLangSwitcher` `AppMobileMenu` `AppMobileBottomNav` `AppAlerts`                                                                                                                                    |
+| `feedback/` | `AppNotFound` `AppRouteLoader`                                                                                                                                                                                                                                |
+| `sections/` | `FaqSection`                                                                                                                                                                                                                                                  |
+| `svg/`      | 26 inline icons (`SvgArrowRight`, `SvgTelegram`, …) + the `SvgLogo` brand mark + 3 more in `svg/nav/`                                                                                                                                                         |
 
 ```vue
 <template>
@@ -371,20 +379,20 @@ Icons are Vue components rather than sprite references or `<img>`: they inherit 
 
 ## 9 · Composables
 
-| Composable | Purpose |
-|---|---|
-| `usePayload` | Payload plumbing: `useStaticSlice`, `ensureClientPayload`, locale helpers |
-| `useSiteConfigData` | Site settings slice, mirrored into the Pinia store |
-| `useFaq` | FAQ slice |
-| `useSeo` | Meta, Open Graph, Twitter, canonical |
-| `useJsonLd` | Structured data builders |
-| `useLeadForm` | Lead submission: state, alerts, error handling |
-| `useBreakpoints` | Reactive tier detection in JS |
-| `useScrollDirection` | Up/down detection (header hide-on-scroll) |
-| `useFocusTrap` | Accessible modal/menu focus containment |
-| `useGsap` | Lazy GSAP loader — never on the critical path |
-| `useHeroIntro` | Hero entrance animation |
-| `useStatsCounter` | Animated number counters |
+| Composable           | Purpose                                                                   |
+| -------------------- | ------------------------------------------------------------------------- |
+| `usePayload`         | Payload plumbing: `useStaticSlice`, `ensureClientPayload`, locale helpers |
+| `useSiteConfigData`  | Site settings slice, mirrored into the Pinia store                        |
+| `useFaq`             | FAQ slice                                                                 |
+| `useSeo`             | Meta, Open Graph, Twitter, canonical                                      |
+| `useJsonLd`          | Structured data builders                                                  |
+| `useLeadForm`        | Lead submission: state, alerts, error handling                            |
+| `useBreakpoints`     | Reactive tier detection in JS                                             |
+| `useScrollDirection` | Up/down detection (header hide-on-scroll)                                 |
+| `useFocusTrap`       | Accessible modal/menu focus containment                                   |
+| `useGsap`            | Lazy GSAP loader — never on the critical path                             |
+| `useHeroIntro`       | Hero entrance animation                                                   |
+| `useStatsCounter`    | Animated number counters                                                  |
 
 Auto-imported from `composables/`, `composables/**`, and `features/*/composables`.
 
@@ -392,11 +400,11 @@ Auto-imported from `composables/`, `composables/**`, and `features/*/composables
 
 ## 10 · Stores
 
-| Store | State |
-|---|---|
-| `site-config` | Contacts, socials, address — fed by `useSiteConfigData`, with a safe empty fallback so components never crash on a missing payload |
-| `ui-alerts` | Toast queue (`push(type, message)`) |
-| `ui-mobile-menu` | Mobile menu open/closed |
+| Store            | State                                                                                                                              |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `site-config`    | Contacts, socials, address — fed by `useSiteConfigData`, with a safe empty fallback so components never crash on a missing payload |
+| `ui-alerts`      | Toast queue (`push(type, message)`)                                                                                                |
+| `ui-mobile-menu` | Mobile menu open/closed                                                                                                            |
 
 Stores hold state; they never fetch. Data enters through composables.
 
@@ -406,14 +414,14 @@ Stores hold state; they never fetch. Data enters through composables.
 
 Filenames are numbered because order matters.
 
-| Order | Plugin | Side | Role |
-|---|---|---|---|
-| `00` | `static-payload.server.ts` | server | Imports the three payload JSONs and provides them to the app |
-| `00` | `payload-bootstrap.client.ts` | client | Prefetches the *other* locales at browser idle |
-| `05` | `viewport-tier.client.ts` | client | Keeps `data-tier` current on resize |
-| — | `scroll-reveal.ts` | both | Scroll-triggered reveal directive |
-| `zz` | `analytics.client.ts` | client | Deferred GTM/GA4 loader (first interaction or post-load idle) |
-| `zz` | `payload-fix.ts` | both | Hydration edge-case guard |
+| Order | Plugin                        | Side   | Role                                                          |
+| ----- | ----------------------------- | ------ | ------------------------------------------------------------- |
+| `00`  | `static-payload.server.ts`    | server | Imports the three payload JSONs and provides them to the app  |
+| `00`  | `payload-bootstrap.client.ts` | client | Prefetches the _other_ locales at browser idle                |
+| `05`  | `viewport-tier.client.ts`     | client | Keeps `data-tier` current on resize                           |
+| —     | `scroll-reveal.ts`            | both   | Scroll-triggered reveal directive                             |
+| `zz`  | `analytics.client.ts`         | client | Deferred GTM/GA4 loader (first interaction or post-load idle) |
+| `zz`  | `payload-fix.ts`              | both   | Hydration edge-case guard                                     |
 
 ---
 

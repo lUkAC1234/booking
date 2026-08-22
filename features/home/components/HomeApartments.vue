@@ -22,6 +22,8 @@
                     :description="apartment.summary"
                     :facts="apartment.facts.slice(0, 3)"
                     :photo-brief="apartment.photoBrief"
+                    :photos="apartment.photos"
+                    photo-sizes="92vw md:46vw xl:44vw xxl:38vw"
                     context-kind="apartment"
                 />
             </div>

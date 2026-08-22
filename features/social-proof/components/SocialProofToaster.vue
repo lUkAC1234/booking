@@ -1,14 +1,20 @@
 <template>
     <Teleport to="body">
         <Transition name="social-proof">
-            <aside v-if="visibleToast" class="social-proof" role="status" aria-live="polite" aria-atomic="true">
+            <aside
+                v-if="visibleToast"
+                :key="visibleToast.id"
+                class="social-proof"
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+            >
                 <span class="social-proof__icon" aria-hidden="true">
                     <SvgIcon :name="ICON_BY_SERVICE[visibleToast.service]" />
                 </span>
-                <span class="social-proof__body">
-                    <span class="social-proof__message">{{ messageOf(visibleToast) }}</span>
-                    <span class="social-proof__time">{{ timeOf(visibleToast) }}</span>
-                </span>
+
+                <p class="social-proof__message">{{ messageOf(visibleToast) }}</p>
+
                 <button
                     type="button"
                     class="social-proof__close"
@@ -17,6 +23,8 @@
                 >
                     <SvgClose />
                 </button>
+
+                <span class="social-proof__timer" aria-hidden="true" @animationend="onTimerEnd" />
             </aside>
         </Transition>
     </Teleport>
@@ -26,13 +34,9 @@
 import { storeToRefs } from "pinia";
 import type { IconName, SocialProofService, SocialProofToast } from "~/types/models";
 
-const SESSION_KEY = "cca-social-proof-shown";
-const FIRST_DELAY_MS = 20000;
-const AUTO_DISMISS_MS = 6000;
-const MIN_CYCLE_MS = 35000;
-const MAX_CYCLE_MS = 55000;
-const SCROLL_TRIGGER = 0.25;
-const JUST_NOW_BELOW = 2;
+const FIRST_DELAY_MS = 30000;
+const MIN_GAP_MS = 45000;
+const MAX_GAP_MS = 75000;
 
 const ICON_BY_SERVICE: Record<SocialProofService, IconName> = {
     apartments: "key",
@@ -44,59 +48,38 @@ const { t } = useI18n();
 const route = useRoute();
 const store = useSocialProofStore();
 const { current } = storeToRefs(store);
-const { buildQueue } = useSocialProof();
+const { buildQueue, markSeen } = useSocialProof();
 
 const suppressedRoute = computed(() => route.path.includes("/contact-us"));
 const visibleToast = computed(() => (suppressedRoute.value ? null : current.value));
 
 const messageOf = (toast: SocialProofToast) => t(toast.messageKey, { count: toast.count, item: toast.item });
 
-const timeOf = (toast: SocialProofToast) =>
-    toast.minutesAgo < JUST_NOW_BELOW
-        ? t("social-proof.just-now")
-        : t("social-proof.minutes-ago", { count: toast.minutesAgo });
+const gapDelay = ref(FIRST_DELAY_MS);
 
-const cycleDelay = ref(MIN_CYCLE_MS);
+const { start: startGap, stop: stopGap } = useTimeoutFn(() => showNext(), gapDelay, { immediate: false });
 
-const { y } = useWindowScroll();
-const scrollDepth = computed(() => {
-    const root = document.documentElement;
-    const scrollable = root.scrollHeight - window.innerHeight;
-    return scrollable > 0 ? y.value / scrollable : 0;
-});
-
-const { start: startFirstTimer, stop: stopFirstTimer } = useTimeoutFn(() => showNext(), FIRST_DELAY_MS, {
-    immediate: false,
-});
-const { start: startCycle, stop: stopCycle } = useTimeoutFn(() => showNext(), cycleDelay, {
-    immediate: false,
-});
-const { start: startAutoDismiss, stop: stopAutoDismiss } = useTimeoutFn(() => store.dismiss(), AUTO_DISMISS_MS, {
-    immediate: false,
-});
-
-let stopScrollWatch: (() => void) | null = null;
+const scheduleNext = () => {
+    gapDelay.value = MIN_GAP_MS + Math.floor(Math.random() * (MAX_GAP_MS - MIN_GAP_MS + 1));
+    startGap();
+};
 
 const showNext = () => {
-    stopFirstTimer();
-    stopCycle();
-    stopScrollWatch?.();
-    stopScrollWatch = null;
-    const shown = store.next();
-    if (shown === 0) return;
-    window.sessionStorage.setItem(SESSION_KEY, String(shown));
-    startAutoDismiss();
-    if (store.canShow) {
-        cycleDelay.value = MIN_CYCLE_MS + Math.floor(Math.random() * (MAX_CYCLE_MS - MIN_CYCLE_MS + 1));
-        startCycle();
-    }
+    if (store.stopped) return;
+    if (store.queue.length === 0) store.setQueue(buildQueue());
+    const toast = store.next();
+    if (!toast) return;
+    markSeen(toast.id);
+};
+
+const onTimerEnd = () => {
+    store.dismiss();
+    scheduleNext();
 };
 
 const close = () => {
-    stopAutoDismiss();
-    stopCycle();
-    stopFirstTimer();
-    store.dismiss(true);
+    stopGap();
+    store.stop();
 };
 
 onKeyStroke("Escape", () => {
@@ -104,20 +87,11 @@ onKeyStroke("Escape", () => {
 });
 
 onMounted(() => {
-    const stored = Number.parseInt(window.sessionStorage.getItem(SESSION_KEY) ?? "", 10);
-    store.start(buildQueue(), Number.isFinite(stored) ? stored : 0);
-    if (!store.canShow) return;
-
-    startFirstTimer();
-    stopScrollWatch = watch(scrollDepth, (depth) => {
-        if (depth >= SCROLL_TRIGGER) showNext();
-    });
+    store.setQueue(buildQueue());
+    startGap();
 });
 
-onBeforeUnmount(() => {
-    stopScrollWatch?.();
-    stopScrollWatch = null;
-});
+onBeforeUnmount(() => stopGap());
 </script>
 
 <style scoped lang="scss">
@@ -128,24 +102,19 @@ onBeforeUnmount(() => {
     --icon-size: var(--icon-size-md);
 
     position: fixed;
-    left: functions.rem(24);
+    right: functions.rem(24);
     bottom: calc(var(--bottom-nav-height) + #{functions.rem(24)});
     z-index: var(--z-toast);
-    display: flex;
-    align-items: flex-start;
-    gap: functions.rem(12);
-    max-width: functions.rem(360);
-    padding: functions.rem(16);
+    width: min(#{functions.rem(380)}, calc(100vw - #{functions.rem(48)}));
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: functions.rem(14);
+    padding: functions.rem(14) functions.rem(16);
+    overflow: hidden;
     background-color: var(--surface);
     border: functions.rem(2) solid var(--border-color);
-    border-radius: var(--outer-radius);
-
-    @include bp.down("mobile") {
-        left: functions.rem(12);
-        right: functions.rem(12);
-        max-width: none;
-        bottom: calc(var(--bottom-nav-height) + #{functions.rem(12)});
-    }
+    border-radius: var(--inner-radius);
 
     &__icon {
         display: inline-flex;
@@ -159,25 +128,12 @@ onBeforeUnmount(() => {
         color: var(--white);
     }
 
-    &__body {
-        display: flex;
-        flex-direction: column;
-        gap: functions.rem(4);
-        flex: 1;
-        min-width: 0;
-    }
-
     &__message {
+        margin: 0;
         font-size: var(--fz-body-sm);
         line-height: var(--lh-base);
-        color: var(--ink-80);
+        color: var(--ink);
         text-wrap: pretty;
-    }
-
-    &__time {
-        font-size: var(--fz-caption);
-        line-height: var(--lh-base);
-        color: var(--ink-60);
     }
 
     &__close {
@@ -189,13 +145,13 @@ onBeforeUnmount(() => {
         flex-shrink: 0;
         width: functions.rem(44);
         height: functions.rem(44);
-        margin: functions.rem(-10) functions.rem(-10) functions.rem(-10) 0;
+        margin: functions.rem(-8) functions.rem(-8) functions.rem(-8) 0;
         padding: 0;
         appearance: none;
         border: 0;
         background-color: transparent;
         border-radius: var(--pill-radius);
-        color: var(--ink-60);
+        color: var(--ink-40);
         cursor: pointer;
         transition: color var(--dur-micro) var(--ease-decel);
 
@@ -206,14 +162,41 @@ onBeforeUnmount(() => {
 
         &:focus-visible {
             outline: functions.rem(2) solid var(--primary-color);
-            outline-offset: functions.rem(2);
+            outline-offset: functions.rem(-2);
+        }
+
+        @include bp.reduced-motion {
+            transition: none;
         }
     }
 
-    @include bp.reduced-motion {
-        &__close {
-            transition: none;
-        }
+    &__timer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: functions.rem(2);
+        background-color: var(--primary-color);
+        transform-origin: left center;
+        animation: social-proof-timer 7s linear forwards;
+    }
+
+    @include bp.down("mobile") {
+        right: functions.rem(12);
+        left: functions.rem(12);
+        bottom: calc(var(--bottom-nav-height) + #{functions.rem(12)});
+        width: auto;
+        gap: functions.rem(12);
+    }
+}
+
+@keyframes social-proof-timer {
+    from {
+        transform: scaleX(1);
+    }
+
+    to {
+        transform: scaleX(0);
     }
 }
 

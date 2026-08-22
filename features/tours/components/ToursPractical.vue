@@ -90,7 +90,7 @@ import type { IconName } from "~/types/models";
 const { t } = useI18n();
 const headingId = useId();
 
-const SEASON_IDS = ["amirsoy", "chimgan", "charvak", "gondola", "chinorkent", "metro", "plov"] as const;
+const SEASON_IDS = ["amirsoy", "chimgan", "charvak", "chinorkent", "metro", "plov", "magic-city"] as const;
 const SCHEDULE_IDS = ["pickup", "drive", "arrival", "lunch", "return", "limit", "city"] as const;
 const DRIVE_IDS = ["amirsoy", "chimgan", "charvak", "chinorkent", "gazalkent"] as const;
 const BRING_IDS = ["layers", "shoes", "sun", "cash", "water", "documents"] as const;

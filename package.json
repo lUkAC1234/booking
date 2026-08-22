@@ -17,6 +17,7 @@
         "typecheck": "nuxt typecheck"
     },
     "dependencies": {
+        "@fancyapps/ui": "^6.1.14",
         "@nuxt/image": "^1.8.0",
         "@nuxtjs/i18n": "^9.1.0",
         "@nuxtjs/robots": "^5.0.0",

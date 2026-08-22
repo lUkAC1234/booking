@@ -4,7 +4,6 @@
         :lead="t('apartments.lead')"
         :crumbs="crumbs"
         :chips="chips"
-        :photo-brief="t('apartments.hero.photo')"
     >
         <template #actions>
             <BookButton context-kind="apartment" />

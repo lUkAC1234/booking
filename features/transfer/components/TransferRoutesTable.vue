@@ -53,9 +53,10 @@ const titleId = useId();
 @use "~/assets/styles/helpers/breakpoints" as bp;
 
 .routes-table {
+    overflow: hidden;
     padding: functions.rem(8);
     border: functions.rem(2) solid var(--border-color);
-    border-radius: var(--outer-radius);
+    border-radius: var(--inner-radius);
     background-color: var(--surface);
 
     &__title {
@@ -86,7 +87,7 @@ const titleId = useId();
             text-transform: uppercase;
             color: var(--ink-60);
             white-space: nowrap;
-            border-bottom: functions.rem(2) solid var(--ink);
+            border-bottom: functions.rem(2) solid var(--border-color);
         }
 
         thead th:last-child,

@@ -2,10 +2,10 @@
     <article class="page-apartments">
         <ApartmentsHero />
         <ApartmentsList />
-        <ApartmentsLocation />
-        <ApartmentsHowItWorks />
-        <FaqSection page="apartments" bg="surface" />
-        <BookingCtaBand context-kind="apartment" />
+        <LazyApartmentsLocation :hydrate-on-visible="{ rootMargin: '800px' }" />
+        <LazyApartmentsHowItWorks :hydrate-on-visible="{ rootMargin: '800px' }" />
+        <LazyFaqSection page="apartments" bg="surface" :hydrate-on-visible="{ rootMargin: '800px' }" />
+        <LazyBookingCtaBand context-kind="apartment" :hydrate-on-visible="{ rootMargin: '800px' }" />
     </article>
 </template>
 

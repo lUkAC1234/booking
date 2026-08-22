@@ -305,21 +305,31 @@ const facts = computed<Fact[]>(() => [
         }
 
         &__channel {
-            --icon-size: #{functions.rem(24)};
+            --icon-size: #{functions.rem(22)};
 
-            align-items: flex-start;
-            gap: functions.rem(16);
-            padding: functions.rem(20);
+            align-items: center;
+            gap: functions.rem(14);
+            padding: functions.rem(16);
         }
 
         &__channel-icon {
-            width: functions.rem(48);
-            height: functions.rem(48);
+            width: functions.rem(44);
+            height: functions.rem(44);
+        }
+
+        &__channel-body {
+            gap: functions.rem(4);
+        }
+
+        &__channel-name {
+            font-size: var(--fz-body);
         }
 
         &__channel-chip {
-            width: functions.rem(44);
-            height: functions.rem(44);
+            --icon-size: var(--icon-size-sm);
+
+            width: functions.rem(36);
+            height: functions.rem(36);
         }
 
         &__fact {
@@ -328,7 +338,7 @@ const facts = computed<Fact[]>(() => [
 
         &__links {
             flex-direction: column;
-            align-items: flex-start;
+            align-items: stretch;
             gap: functions.rem(12);
         }
     }

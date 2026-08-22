@@ -19,6 +19,12 @@ export type IconName =
     | "whatsapp"
     | "wifi";
 
+export interface GalleryPhoto {
+    id: string;
+    src: string;
+    alt: string;
+}
+
 export interface CardFact {
     label: string;
     icon: IconName;
@@ -41,5 +47,4 @@ export interface SocialProofToast {
     messageKey: string;
     count: number;
     item: string;
-    minutesAgo: number;
 }

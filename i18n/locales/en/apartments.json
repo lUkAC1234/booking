@@ -7,7 +7,6 @@
         "amenities-title": "In every apartment",
         "nearby-title": "Around the corner",
         "hero": {
-            "photo": "Cream-plastered residential facade in central Tashkent photographed in late afternoon light, deep-red architectural accents around the balconies, a low camera angle, clean geometric composition, warm grading, faint film grain, no people, 4:3 landscape.",
             "chips": {
                 "walk": "Metro within a few minutes",
                 "checkin": "Check-in and check-out 24/7",
@@ -92,11 +91,6 @@
                     "wifi": "Wi-Fi 20–100 Mbps",
                     "checkin": "Check-in 24/7"
                 },
-                "paragraphs": {
-                    "intro": "Buyuk Turon street, 75. Fifty-five square metres arranged as a separate bedroom and a living room, in what is probably the calmest and safest pocket of the city centre for a visitor. It is neat, clean and set up to feel like a good small hotel rather than somebody's spare flat — which is exactly what guests tell us afterwards.",
-                    "space": "Everything in it was chosen for people who are here for a week rather than a lifetime: high-speed Wi-Fi that holds a video call, two smart TVs, a large kitchen with a refrigerator and a microwave, two air conditioners, a hairdryer and an iron. It is fully furnished and stocked with the basics, so the only thing you need to arrive with is your luggage.",
-                    "area": "You step out of the door into the middle of everything. The Golubye Kupola park is ten metres away, a Smart supermarket twenty, the restaurant of the same name a hundred, and Kosmonavtlar metro station a hundred and fifty. The Museum of History and the Central Exhibition Hall are both about four hundred metres, which is a five to ten minute walk. Banks and government offices are on the same few streets, which matters more than it sounds if you are here for work."
-                },
                 "nearby": {
                     "metro": "Kosmonavtlar metro station — 150 m",
                     "park": "Golubye Kupola park — 10 m",
@@ -119,11 +113,6 @@
                     "wifi": "Wi-Fi 20–100 Mbps",
                     "checkin": "Check-in 24/7"
                 },
-                "paragraphs": {
-                    "intro": "Amir Temur Avenue, 48. Sixty-two square metres, the larger of the two, laid out as a separate bedroom and a generous living room. The avenue is the axis of modern Tashkent — wide, tree-lined and lit late — and the flat sits far enough back from it to stay quiet at night.",
-                    "space": "The fit-out is identical to the other apartment because we furnished both ourselves: high-speed Wi-Fi, two smart TVs, a large kitchen with a refrigerator and a microwave, two air conditioners, a hairdryer and an iron. Seven extra square metres go into the living room, which is why groups of three and four usually take this one.",
-                    "area": "Amir Temur Square, the Broadway pedestrian street and the Hotel Uzbekistan are a straight walk down the avenue, and the nearest metro station is about four hundred metres from the entrance. Cafes, bakeries and a supermarket are on the same block, the Tashkent TV Tower and the Japanese Garden are a short drive north, and the airport is roughly twenty-five minutes by car."
-                },
                 "nearby": {
                     "metro": "Nearest metro station — 400 m",
                     "park": "Amir Temur Square and its chinar trees — 1.5 km",
@@ -134,6 +123,7 @@
                     "station": "North railway station (Afrosiyob) — 3 km"
                 }
             }
-        }
+        },
+        "photo-alt": "{title} — photo {index}"
     }
 }

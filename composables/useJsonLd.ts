@@ -38,6 +38,7 @@ interface TouristTripInput {
     name: string;
     description: string;
     url: string;
+    image?: string[];
     itinerary?: string[];
     touristType?: string[];
 }
@@ -286,6 +287,7 @@ export const useJsonLd = () => {
                 url: siteUrl,
             },
         };
+        if (input.image?.length) node.image = input.image;
         if (input.itinerary?.length) {
             node.itinerary = {
                 "@type": "ItemList",

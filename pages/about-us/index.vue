@@ -3,10 +3,10 @@
         <AboutHero />
         <AboutStory />
         <AboutStats />
-        <AboutPrinciples />
-        <AboutServices />
-        <AboutStay />
-        <BookingCtaBand />
+        <LazyAboutPrinciples :hydrate-on-visible="{ rootMargin: '800px' }" />
+        <LazyAboutServices :hydrate-on-visible="{ rootMargin: '800px' }" />
+        <LazyAboutStay :hydrate-on-visible="{ rootMargin: '800px' }" />
+        <LazyBookingCtaBand :hydrate-on-visible="{ rootMargin: '800px' }" />
     </article>
 </template>
 

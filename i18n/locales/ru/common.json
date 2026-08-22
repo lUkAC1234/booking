@@ -1,14 +1,9 @@
 {
     "common": {
-        "no-internet": "Нет подключения к интернету",
         "error": "Что-то пошло не так, попробуйте позже",
         "loading": "Загрузка",
         "page-title": "City Center Apartments",
-        "read-more": "Подробнее",
-        "view-all": "Смотреть все",
-        "learn-more": "Узнать больше",
         "breadcrumb": "Хлебные крошки",
-        "skip-to-content": "Перейти к содержимому",
         "book": "Бронь",
         "book-now": "Забронировать",
         "book-on-whatsapp": "Забронировать в WhatsApp",
@@ -16,6 +11,11 @@
         "price-on-request": "Цена по запросу",
         "photo-brief": "Нужно фото",
         "carousel-prev": "Предыдущий слайд",
-        "carousel-next": "Следующий слайд"
+        "carousel-next": "Следующий слайд",
+        "close": "Закрыть",
+        "open-gallery": "Открыть галерею фотографий",
+        "gallery-modal": "Закрыть галерею можно клавишей Esc",
+        "gallery-thumbs": "Показать миниатюры",
+        "gallery-error": "Не удалось загрузить фотографию. Попробуйте позже."
     }
 }

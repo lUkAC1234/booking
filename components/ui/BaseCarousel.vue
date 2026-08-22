@@ -1,5 +1,5 @@
 <template>
-    <div class="base-carousel">
+    <div class="base-carousel" :class="{ 'base-carousel--single': single }">
         <div ref="viewport" class="base-carousel__viewport" @focusin="onFocusIn">
             <ul
                 ref="track"
@@ -13,8 +13,8 @@
                 @dragstart.prevent
                 @click.capture="onClickCapture"
             >
-                <li v-for="item in items" :key="item.id" class="base-carousel__slide">
-                    <slot :item="item" />
+                <li v-for="(item, position) in items" :key="item.id" class="base-carousel__slide">
+                    <slot :item="item" :index="position" />
                 </li>
             </ul>
         </div>
@@ -42,11 +42,12 @@
 </template>
 
 <script setup lang="ts" generic="T extends { id: string }">
-defineProps<{ items: T[] }>();
+const props = withDefaults(defineProps<{ items: T[]; single?: boolean }>(), { single: false });
 
-defineSlots<{ default(props: { item: T }): unknown }>();
+defineSlots<{ default(props: { item: T; index: number }): unknown }>();
 
 const DRAG_THRESHOLD = 6;
+const SWIPE_THRESHOLD = 40;
 const FLICK_DURATION = 320;
 const FLICK_DISTANCE = 8;
 const EDGE_RESISTANCE = 0.82;
@@ -62,6 +63,7 @@ let slideStarts: number[] = [0];
 let tracking = false;
 let dragged = false;
 let pointerId = -1;
+let downX = 0;
 let startX = 0;
 let startY = 0;
 let startTime = 0;
@@ -137,9 +139,13 @@ const onPointerDown = (event: PointerEvent) => {
     tracking = true;
     dragged = false;
     pointerId = event.pointerId;
+    downX = event.clientX;
     startX = event.clientX;
     startY = event.clientY;
     startTime = event.timeStamp;
+
+    if (props.single) return;
+
     startOffset = readOffset(element);
     applyOffset(startOffset, false);
 };
@@ -165,6 +171,8 @@ const onPointerMove = (event: PointerEvent) => {
         return;
     }
 
+    if (props.single) return;
+
     applyOffset(resist(startOffset - shift), false);
 };
 
@@ -177,6 +185,12 @@ const onPointerUp = (event: PointerEvent) => {
 
     dragging.value = false;
     if (element?.hasPointerCapture(pointerId)) element.releasePointerCapture(pointerId);
+
+    if (props.single) {
+        const travel = event.clientX - downX;
+        if (Math.abs(travel) >= SWIPE_THRESHOLD) goTo(index.value - Math.sign(travel));
+        return;
+    }
 
     const shift = event.clientX - startX;
     const flicked = event.timeStamp - startTime < FLICK_DURATION && Math.abs(shift) > FLICK_DISTANCE;
@@ -218,6 +232,7 @@ useResizeObserver(viewport, measure);
 <style scoped lang="scss">
 @use "~/assets/styles/helpers/functions" as functions;
 @use "~/assets/styles/helpers/breakpoints" as bp;
+@use "~/assets/styles/helpers/mixins" as mixins;
 
 .base-carousel {
     --carousel-speed: var(--dur-drawer);
@@ -254,6 +269,34 @@ useResizeObserver(viewport, measure);
         display: grid;
     }
 
+    &--single {
+        position: relative;
+        gap: 0;
+    }
+
+    &--single &__track {
+        grid-auto-columns: 100%;
+        gap: functions.rem(12);
+        cursor: default;
+    }
+
+    &--single &__controls {
+        @include mixins.on-light;
+
+        --surface-mute: var(--white);
+
+        position: absolute;
+        inset: 0;
+        align-items: center;
+        justify-content: space-between;
+        padding-inline: functions.rem(16);
+        pointer-events: none;
+
+        > * {
+            pointer-events: auto;
+        }
+    }
+
     &__controls {
         display: flex;
         justify-content: flex-end;
@@ -276,6 +319,14 @@ useResizeObserver(viewport, measure);
         &__track {
             grid-auto-columns: 100%;
             gap: functions.rem(16);
+        }
+
+        &--single {
+            gap: 0;
+        }
+
+        &--single &__controls {
+            padding-inline: functions.rem(8);
         }
     }
 

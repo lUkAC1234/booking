@@ -3,14 +3,16 @@
         <TransferHero />
         <TransferRoutes />
         <TransferFeatures />
-        <TransferHowItWorks />
-        <TransferAirportGuide />
-        <FaqSection page="transfer" bg="warm" />
-        <BookingCtaBand context-kind="transfer" />
+        <LazyTransferHowItWorks :hydrate-on-visible="{ rootMargin: '800px' }" />
+        <LazyTransferAirportGuide :hydrate-on-visible="{ rootMargin: '800px' }" />
+        <LazyFaqSection page="transfer" bg="warm" :hydrate-on-visible="{ rootMargin: '800px' }" />
+        <LazyBookingCtaBand context-kind="transfer" :hydrate-on-visible="{ rootMargin: '800px' }" />
     </article>
 </template>
 
 <script setup lang="ts">
+definePageMeta({ darkHeader: true });
+
 const { t } = useI18n();
 const localePath = useLocalePath();
 const config = useRuntimeConfig();
@@ -46,5 +48,7 @@ jsonLd.faqPage(faqItems.value);
 <style scoped lang="scss">
 .page-transfer {
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 </style>

@@ -1,6 +1,8 @@
 <template>
     <article class="offer-card" :class="`offer-card--${tone}`">
+        <MediaGallery v-if="photos.length" :photos="photos" :sizes="photoSizes" />
         <MediaPlaceholder
+            v-else
             class="offer-card__media"
             :brief="photoBrief"
             :ratio="photoRatio"
@@ -40,7 +42,7 @@
 
 <script setup lang="ts">
 import type { BookingKind } from "~/features/booking/composables/useBookingLink";
-import type { CardFact } from "~/types/models";
+import type { CardFact, GalleryPhoto } from "~/types/models";
 
 interface Props {
     title: string;
@@ -49,6 +51,8 @@ interface Props {
     highlights?: string[];
     photoBrief: string;
     photoRatio?: string;
+    photos?: GalleryPhoto[];
+    photoSizes?: string;
     contextKind?: BookingKind;
     tone?: "light" | "dark";
 }
@@ -58,6 +62,8 @@ const props = withDefaults(defineProps<Props>(), {
     facts: () => [],
     highlights: () => [],
     photoRatio: "16 / 10",
+    photos: () => [],
+    photoSizes: undefined,
     contextKind: "general",
     tone: "light",
 });

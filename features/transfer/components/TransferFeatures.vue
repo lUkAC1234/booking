@@ -1,21 +1,26 @@
 <template>
     <section class="transfer-features" :aria-labelledby="headingId">
         <AppContainer size="wide" class="transfer-features__inner">
-            <SectionHeader
-                :heading-id="headingId"
-                :title="t('transfer.features-title')"
-                :lead="t('transfer.features-lead')"
-                :split="false"
-            />
+            <div class="transfer-features__copy">
+                <SectionHeader
+                    :heading-id="headingId"
+                    :title="t('transfer.features-title')"
+                    :lead="t('transfer.features-lead')"
+                    :split="false"
+                />
 
-            <div class="transfer-features__grid">
                 <CheckList :items="featureLabels" />
-                <MediaPlaceholder
-                    v-reveal.scale
-                    class="transfer-features__media"
-                    :brief="t('transfer.hero.photo')"
-                    ratio="16 / 10"
-                    tone="dark"
+            </div>
+
+            <div v-reveal.scale class="transfer-features__media">
+                <OptimizedMedia
+                    class="transfer-features__car"
+                    src="/images/car/car.webp"
+                    :alt="t('transfer.car-photo')"
+                    :width="CAR_WIDTH"
+                    :height="CAR_HEIGHT"
+                    sizes="90vw xl:50vw"
+                    object-fit="contain"
                 />
             </div>
         </AppContainer>
@@ -23,6 +28,9 @@
 </template>
 
 <script setup lang="ts">
+const CAR_WIDTH = 1672;
+const CAR_HEIGHT = 941;
+
 const { t } = useI18n();
 const { features } = useTransferRoutes();
 const headingId = useId();
@@ -33,38 +41,44 @@ const featureLabels = computed(() => features.value.map((feature) => feature.lab
 <style scoped lang="scss">
 @use "~/assets/styles/helpers/functions" as functions;
 @use "~/assets/styles/helpers/breakpoints" as bp;
-@use "~/assets/styles/helpers/mixins" as mixins;
 
 .transfer-features {
-    @include mixins.on-dark;
-
+    background-color: var(--surface);
     padding-block: var(--section-py);
 
     &__inner {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
         gap: functions.rem(56);
+        align-items: center;
     }
 
-    &__grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: functions.rem(64);
-        align-items: center;
+    &__copy {
+        display: flex;
+        flex-direction: column;
+        gap: functions.rem(32);
+    }
+
+    &__car {
+        width: 100%;
+        height: auto;
     }
 
     @include bp.down("laptop") {
         &__inner {
-            gap: functions.rem(40);
-        }
-
-        &__grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1fr);
             gap: functions.rem(40);
         }
 
         &__media {
-            max-width: functions.rem(640);
+            max-width: functions.rem(720);
+            margin-left: auto;
+        }
+    }
+
+    @include bp.down("mobile") {
+        &__copy {
+            gap: functions.rem(24);
         }
     }
 }

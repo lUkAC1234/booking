@@ -15,6 +15,8 @@
                         :facts="item.facts"
                         :highlights="item.highlights"
                         :photo-brief="item.photoBrief"
+                        :photos="item.photos"
+                        photo-sizes="90vw md:45vw xl:30vw xxl:28vw"
                         context-kind="tour"
                         :tone="tone === 'dark' ? 'dark' : 'light'"
                     />

@@ -1,8 +1,6 @@
 {
     "social-proof": {
         "dismiss": "Dismiss notification",
-        "just-now": "Just now",
-        "minutes-ago": "{count} minutes ago",
         "messages": {
             "apartment-viewing": "{count} people are viewing {item} right now",
             "apartment-booked": "{count} guests booked {item} this week",

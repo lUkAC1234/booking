@@ -60,17 +60,17 @@ const armElement = (
     if (duration) el.style.setProperty("--rv-dur", duration);
 };
 
-interface TextRevealItem {
+interface RevealQueueItem {
     el: HTMLElement;
     apply: (inView: boolean) => void;
 }
 
-const textRevealQueue: TextRevealItem[] = [];
-let textFlushScheduled = false;
+const revealQueue: RevealQueueItem[] = [];
+let flushScheduled = false;
 
-const flushTextReveals = (): void => {
-    textFlushScheduled = false;
-    const batch = textRevealQueue.splice(0, textRevealQueue.length);
+const flushReveals = (): void => {
+    flushScheduled = false;
+    const batch = revealQueue.splice(0, revealQueue.length);
     const decisions = batch.map((item) => {
         const rect = item.el.getBoundingClientRect();
         return { item, inView: rect.top < window.innerHeight && rect.bottom > 0 };
@@ -78,11 +78,11 @@ const flushTextReveals = (): void => {
     for (const { item, inView } of decisions) item.apply(inView);
 };
 
-const queueTextReveal = (el: HTMLElement, apply: (inView: boolean) => void): void => {
-    textRevealQueue.push({ el, apply });
-    if (!textFlushScheduled) {
-        textFlushScheduled = true;
-        requestAnimationFrame(flushTextReveals);
+const queueReveal = (el: HTMLElement, apply: (inView: boolean) => void): void => {
+    revealQueue.push({ el, apply });
+    if (!flushScheduled) {
+        flushScheduled = true;
+        requestAnimationFrame(flushReveals);
     }
 };
 
@@ -96,40 +96,30 @@ export default defineNuxtPlugin((nuxtApp) => {
 
             if (modifiers.text) {
                 const mode = modifiers.chars ? "chars" : "words";
-                el.classList.add("tr", "tr--pending");
-                if (typeof value?.stagger === "number") {
-                    el.style.setProperty("--tr-stagger", `${value.stagger}s`);
-                }
-                if (typeof value?.duration === "number") {
-                    el.style.setProperty("--tr-dur", `${value.duration}s`);
-                }
 
                 let split: ReturnType<typeof splitText> | null = null;
-                const doSplit = () => {
-                    if (split) return;
-                    split = splitText(el, mode);
-                    el.classList.remove("tr--pending");
-                };
-
                 let observerCleanup: (() => void) | null = null;
                 let cancelled = false;
 
-                const apply = (inView: boolean) => {
-                    if (cancelled) return;
-                    if (inView) {
-                        doSplit();
-                        observerCleanup = observeReveal(el, (target) => target.classList.add("is-in"));
-                    } else {
-                        observerCleanup = observeReveal(el, (target) => {
-                            doSplit();
-                            requestAnimationFrame(() =>
-                                requestAnimationFrame(() => target.classList.add("is-in")),
-                            );
-                        });
-                    }
-                };
+                queueReveal(el, (inView) => {
+                    if (cancelled || inView) return;
 
-                queueTextReveal(el, apply);
+                    el.classList.add("tr", "tr--pending");
+                    if (typeof value?.stagger === "number") {
+                        el.style.setProperty("--tr-stagger", `${value.stagger}s`);
+                    }
+                    if (typeof value?.duration === "number") {
+                        el.style.setProperty("--tr-dur", `${value.duration}s`);
+                    }
+
+                    observerCleanup = observeReveal(el, (target) => {
+                        split = splitText(el, mode);
+                        el.classList.remove("tr--pending");
+                        requestAnimationFrame(() =>
+                            requestAnimationFrame(() => target.classList.add("is-in")),
+                        );
+                    });
+                });
 
                 el.__motionCleanup = () => {
                     cancelled = true;
@@ -140,26 +130,37 @@ export default defineNuxtPlugin((nuxtApp) => {
             }
 
             const variant = resolveVariant(modifiers, value);
+            let observerCleanup: (() => void) | null = null;
+            let cancelled = false;
 
-            if (typeof value?.stagger === "number") {
-                el.style.setProperty("--rv-stagger", `${value.stagger}s`);
-            }
+            queueReveal(el, (inView) => {
+                if (cancelled || inView) return;
 
-            if (modifiers.stagger || el.hasAttribute("data-reveal-stagger")) {
-                const children = Array.from(el.children).filter(
-                    (child): child is HTMLElement => child instanceof HTMLElement,
-                );
-                if (!children.length) return;
-                el.classList.add("motion-stagger");
-                children.forEach((child, index) => {
-                    armElement(child, variant, value, modifiers);
-                    child.style.setProperty("--reveal-i", String(index));
-                });
-            } else {
-                armElement(el, variant, value, modifiers);
-            }
+                if (typeof value?.stagger === "number") {
+                    el.style.setProperty("--rv-stagger", `${value.stagger}s`);
+                }
 
-            el.__motionCleanup = observeReveal(el, (target) => target.classList.add("is-in"));
+                if (modifiers.stagger || el.hasAttribute("data-reveal-stagger")) {
+                    const children = Array.from(el.children).filter(
+                        (child): child is HTMLElement => child instanceof HTMLElement,
+                    );
+                    if (!children.length) return;
+                    el.classList.add("motion-stagger");
+                    children.forEach((child, index) => {
+                        armElement(child, variant, value, modifiers);
+                        child.style.setProperty("--reveal-i", String(index));
+                    });
+                } else {
+                    armElement(el, variant, value, modifiers);
+                }
+
+                observerCleanup = observeReveal(el, (target) => target.classList.add("is-in"));
+            });
+
+            el.__motionCleanup = () => {
+                cancelled = true;
+                observerCleanup?.();
+            };
         },
 
         unmounted(el: MotionEl) {

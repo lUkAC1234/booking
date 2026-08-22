@@ -3,9 +3,9 @@
         <ContactHero />
         <ContactChannels />
         <ContactHours />
-        <ContactAreas />
-        <FaqSection page="contact" bg="surface" />
-        <BookingCtaBand />
+        <LazyContactAreas :hydrate-on-visible="{ rootMargin: '800px' }" />
+        <LazyFaqSection page="contact" bg="surface" :hydrate-on-visible="{ rootMargin: '800px' }" />
+        <LazyBookingCtaBand :hydrate-on-visible="{ rootMargin: '800px' }" />
     </article>
 </template>
 

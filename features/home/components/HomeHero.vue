@@ -1,26 +1,13 @@
 <template>
     <section ref="root" class="home-hero" data-hero="root" :aria-labelledby="headingId">
-        <picture class="home-hero__media" data-hero="media">
-            <source
-                v-for="source in sources"
-                :key="source.media ?? 'base'"
-                :media="source.media"
-                :type="source.type"
-                :srcset="source.srcset"
-                sizes="100vw"
-            />
-            <img
-                class="home-hero__image"
-                :src="fallback.src"
-                :srcset="fallback.srcset"
-                sizes="100vw"
-                :alt="t('home.hero.photo')"
-                width="1672"
-                height="941"
-                fetchpriority="high"
-                decoding="async"
-            />
-        </picture>
+        <HeroMedia
+            data-hero="media"
+            :desktop-src="DESKTOP_SRC"
+            :mobile-src="MOBILE_SRC"
+            :alt="t('home.hero.photo')"
+            :width="PHOTO_WIDTH"
+            :height="PHOTO_HEIGHT"
+        />
 
         <AppContainer size="wide" class="home-hero__inner">
             <div class="home-hero__copy">
@@ -59,32 +46,14 @@ interface HeroFact {
 
 const DESKTOP_SRC = "/images/heroImage.png";
 const MOBILE_SRC = "/images/heroImageMobile.png";
-const MOBILE_MEDIA = "(max-width: 639px)";
-const DESKTOP_WIDTHS = [640, 960, 1280, 1672];
-const MOBILE_WIDTHS = [360, 480, 640, 941];
-const QUALITY = 70;
+const PHOTO_WIDTH = 1672;
+const PHOTO_HEIGHT = 941;
 
 const { t } = useI18n();
 const headingId = useId();
 const root = ref<HTMLElement | null>(null);
-const img = useImage();
 
 useHeroIntro(root);
-
-const url = (src: string, format: string, width: number) => img(src, { format, quality: QUALITY, width, fit: "cover" });
-
-const srcset = (src: string, format: string, widths: number[]) =>
-    widths.map((width) => `${url(src, format, width)} ${width}w`).join(", ");
-
-const sources = computed(() => [
-    { media: MOBILE_MEDIA, type: "image/webp", srcset: srcset(MOBILE_SRC, "webp", MOBILE_WIDTHS) },
-    { media: undefined, type: "image/webp", srcset: srcset(DESKTOP_SRC, "webp", DESKTOP_WIDTHS) },
-]);
-
-const fallback = computed(() => ({
-    src: url(DESKTOP_SRC, "jpeg", 1280),
-    srcset: srcset(DESKTOP_SRC, "jpeg", DESKTOP_WIDTHS),
-}));
 
 const facts = computed<HeroFact[]>(() => [
     { key: "apartments", label: t("home.hero.chips.apartments"), icon: "building" },
@@ -113,20 +82,6 @@ const facts = computed<HeroFact[]>(() => [
         inset: 0;
         z-index: 1;
         background-color: rgba(36, 30, 28, 0.56);
-    }
-
-    &__media {
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-        display: block;
-    }
-
-    &__image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
     }
 
     &__inner {

@@ -116,8 +116,8 @@ if (headerHidden) {
         display: inline-flex;
         align-items: center;
         gap: functions.rem(6);
-        min-height: functions.rem(44);
-        padding: functions.rem(10) functions.rem(14);
+        min-height: var(--control-height-sm);
+        padding: functions.rem(10) functions.rem(18);
         border: functions.rem(2) solid var(--border-color);
         border-radius: var(--pill-radius);
         background-color: transparent;

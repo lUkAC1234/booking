@@ -2,10 +2,10 @@
     <article class="page-home">
         <HomeHero />
         <HomeApartments />
-        <HomeTours />
-        <HomeTransfer />
-        <HomeContacts />
-        <LazyReviewsMarquee />
+        <LazyHomeTours :hydrate-on-visible="{ rootMargin: '800px' }" />
+        <LazyHomeTransfer :hydrate-on-visible="{ rootMargin: '800px' }" />
+        <LazyHomeContacts :hydrate-on-visible="{ rootMargin: '800px' }" />
+        <LazyReviewsMarquee :hydrate-on-visible="{ rootMargin: '800px' }" />
     </article>
 </template>
 

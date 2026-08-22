@@ -13,6 +13,15 @@
         "story": {
             "title": "Who you are actually writing to",
             "lead": "There is no call centre behind this website and no agency taking a cut. When you send a message, it reaches a phone belonging to one of three people, and one of those three will be the person who meets you.",
+            "titles": {
+                "start": "How it started",
+                "second": "Why we stopped at two",
+                "third": "Why we drive the routes ourselves",
+                "fourth": "Why the airport run matters",
+                "fifth": "One conversation, start to finish",
+                "sixth": "Who stays with us",
+                "seventh": "What we are not"
+            },
             "paragraphs": {
                 "start": "This started the ordinary way. A family flat in the centre of Tashkent stood empty for most of the year, friends kept asking whether visiting colleagues could use it, and by the end of the first summer we had hosted more strangers than friends. What surprised us was not that people wanted somewhere to stay. It was how often they arrived having been told almost nothing useful about the city, and how much of a good trip came down to small, unglamorous logistics: someone at the airport at four in the morning, a driver who knows which road to Chimgan is closed, an honest answer about whether the bazaar is worth an early start.",
                 "second": "So we added the second apartment, and then we stopped. Two is the number we can genuinely look after. We clean them ourselves between guests, we replace the kettle when the kettle dies, and we know without checking which one has the better light in the afternoon and which one is quieter at night. An operator with forty listings cannot answer those questions, and most of them do not pretend to. We would rather be the small option that knows its own inventory than the big one that manages a spreadsheet.",
@@ -20,7 +29,7 @@
                 "fourth": "Airport transfers were the last piece, and the one guests thank us for most. Most flights into Tashkent land between two and five in the morning, which is exactly when arriving in an unfamiliar country is hardest and when the taxi rank is least forgiving. Having a driver with your name on a sign, who has watched your flight and will wait an hour if passport control is slow, removes the single worst hour of the trip. We run the transfers for guests staying with us and for people staying elsewhere, because it is a good service whether or not you rent our apartment.",
                 "fifth": "What ties all of it together is that there is one thread. You write once, on WhatsApp, and the apartment, the driver and the mountain day are arranged by the same person in the same conversation. Nothing is confirmed by an automated email you have to dig out of a spam folder at midnight, and nobody is going to hand you off to a partner agency. That is the whole model, and it is the reason we have never built a booking engine: a booking engine would be faster for us and worse for you.",
                 "sixth": "The people who stay with us are not one type. In spring and autumn it is mostly couples and small groups doing Uzbekistan properly, with Tashkent as the first and last stop around Samarkand and Bukhara. In winter it is skiers, who want an early car to Amirsoy and a warm flat to come back to. Through the summer it is families escaping the heat towards Charvak, and a steady stream of people here for work who discover halfway through the week that the mountains are ninety minutes away. We have learned to ask a couple of questions at the start rather than assume, because a family with a small child and a snowboarder on a solo trip need almost nothing in common from us.",
-                "seventh": "We are also honest about what we are not. We are not a hotel: there is no reception desk, no restaurant and nobody in the building at three in the morning except the security guard in the lobby. We do not run tours to every corner of the country, because we only sell the five routes we drive ourselves and know in every season. And we will tell you when something is not worth it, whether that is a mountain day in heavy cloud or a cable car on an afternoon when the ridge is invisible from fifty metres. Losing a booking that way costs us less than a guest who felt sold to."
+                "seventh": "We are also honest about what we are not. We are not a hotel: there is no reception desk, no restaurant and nobody in the building at three in the morning except the security guard in the lobby. We do not run tours to every corner of the country, because we only sell the seven routes we drive ourselves and know in every season. And we will tell you when something is not worth it, whether that is a mountain day in heavy cloud or a cable car on an afternoon when the ridge is invisible from fifty metres. Losing a booking that way costs us less than a guest who felt sold to."
             },
             "link-apartments": "See the two apartments",
             "link-contact": "Write to us directly"
@@ -106,7 +115,7 @@
                 },
                 "tours": {
                     "title": "Excursions to the mountains and the city",
-                    "text": "Seven routes we drive personally. Five are full days in the Western Tian Shan — the Amirsoy resort, Greater Chimgan, the Charvak reservoir, the Amirsoy gondola and the Chinorkent cable car — with pickup from your door at 9:00 and back by 18:00. Two are half-days inside Tashkent: the metro stations and the Besh Qozon plov centre with the bazaars. Every one of them runs in our own Kia Sportage, four seats, same driver all day.",
+                    "text": "Seven routes we drive personally. Four are full days in the Western Tian Shan — the Amirsoy resort, Greater Chimgan, the Charvak reservoir and the Chinorkent cable car — with pickup from your door at 9:00 and back by 18:00. Three are shorter and inside Tashkent: the metro stations, the Besh Qozon plov centre with the bazaars, and Magic City after dark. Every one of them runs in our own Kia Sportage, four seats, same driver all day.",
                     "link": "See all 7 excursions"
                 },
                 "transfer": {

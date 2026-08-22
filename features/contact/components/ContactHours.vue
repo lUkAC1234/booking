@@ -1,24 +1,31 @@
 <template>
     <section class="contact-hours" :aria-labelledby="headingId">
         <AppContainer size="wide" class="contact-hours__inner">
-            <SectionHeader
-                :heading-id="headingId"
-                :title="t('contact.hours.title')"
-                :lead="t('contact.hours.lead')"
-                :split="false"
-            />
+            <div class="contact-hours__top">
+                <SectionHeader
+                    :heading-id="headingId"
+                    :title="t('contact.hours.title')"
+                    :lead="t('contact.hours.lead')"
+                    :split="false"
+                />
 
-            <ul v-reveal.stagger class="contact-hours__rows" role="list">
-                <li v-for="row in rows" :key="row.id" class="contact-hours__row">
-                    <span class="contact-hours__row-icon" aria-hidden="true">
-                        <SvgIcon :name="row.icon" />
-                    </span>
-                    {{ row.label }}
-                </li>
-            </ul>
+                <ul v-reveal class="contact-hours__panel" role="list">
+                    <li v-for="row in rows" :key="row.id" class="contact-hours__row">
+                        <span class="contact-hours__row-icon" aria-hidden="true">
+                            <SvgIcon :name="row.icon" />
+                        </span>
+                        <span class="contact-hours__row-label">{{ row.label }}</span>
+                    </li>
+                </ul>
+            </div>
 
-            <h3 class="contact-hours__steps-title">{{ t("contact.hours.include-title") }}</h3>
-            <StepList :steps="steps" />
+            <div class="contact-hours__steps">
+                <BaseHeading level="h3" class="contact-hours__steps-title">
+                    {{ t("contact.hours.include-title") }}
+                </BaseHeading>
+
+                <StepList :steps="steps" />
+            </div>
         </AppContainer>
     </section>
 </template>
@@ -66,60 +73,102 @@ const steps = computed(() =>
     &__inner {
         display: flex;
         flex-direction: column;
-        gap: functions.rem(40);
+        gap: functions.rem(72);
     }
 
-    &__rows {
+    &__top {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+        gap: functions.rem(64);
+        align-items: start;
+    }
+
+    &__panel {
         list-style: none;
         margin: 0;
-        padding: 0;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: functions.rem(16);
+        padding: functions.rem(8);
+        display: flex;
+        flex-direction: column;
+        border: functions.rem(2) solid var(--border-color);
+        border-radius: var(--outer-radius);
+        background-color: var(--surface);
     }
 
     &__row {
-        --icon-size: var(--icon-size-sm);
-
         display: flex;
         align-items: center;
-        gap: functions.rem(12);
-        padding: functions.rem(18) functions.rem(20);
-        border: functions.rem(2) solid var(--border-color);
-        border-radius: var(--inner-radius);
-        background-color: var(--surface);
-        font-size: var(--fz-body);
-        line-height: var(--lh-base);
-        color: var(--text-color);
+        gap: functions.rem(16);
+        padding: functions.rem(20);
+
+        &:not(:last-child) {
+            border-bottom: functions.rem(2) solid var(--border-color);
+        }
     }
 
     &__row-icon {
+        --icon-size: var(--icon-size-md);
+
         display: inline-flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        width: functions.rem(24);
-        height: functions.rem(24);
+        width: functions.rem(44);
+        height: functions.rem(44);
+        border-radius: var(--pill-radius);
+        background-color: var(--surface-mute);
         color: var(--primary-color);
     }
 
+    &__row-label {
+        font-size: var(--fz-body);
+        line-height: var(--lh-base);
+        color: var(--text-color);
+        text-wrap: balance;
+    }
+
+    &__steps {
+        display: flex;
+        flex-direction: column;
+        gap: functions.rem(40);
+    }
+
     &__steps-title {
-        margin: functions.rem(16) 0 0;
+        margin: 0;
+        padding-bottom: functions.rem(24);
+        border-bottom: functions.rem(2) solid var(--border-color);
         font-size: var(--fz-subsection-title);
         line-height: var(--lh-snug);
         letter-spacing: var(--ls-heading);
         color: var(--text-color);
     }
 
-    @include bp.down("tablet") {
-        &__rows {
-            grid-template-columns: 1fr;
+    @include bp.down("laptop") {
+        &__inner {
+            gap: functions.rem(56);
+        }
+
+        &__top {
+            grid-template-columns: minmax(0, 1fr);
+            gap: functions.rem(40);
+        }
+
+        &__steps {
+            gap: functions.rem(32);
         }
     }
 
     @include bp.down("mobile") {
         &__inner {
-            gap: functions.rem(28);
+            gap: functions.rem(40);
+        }
+
+        &__row {
+            padding: functions.rem(16);
+            gap: functions.rem(12);
+        }
+
+        &__steps-title {
+            padding-bottom: functions.rem(16);
         }
     }
 }

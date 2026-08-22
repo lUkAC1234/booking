@@ -1,8 +1,6 @@
 {
     "social-proof": {
         "dismiss": "Скрыть уведомление",
-        "just-now": "Только что",
-        "minutes-ago": "{count} минут назад",
         "messages": {
             "apartment-viewing": "{count} человека сейчас смотрят «{item}»",
             "apartment-booked": "{count} гостя забронировали «{item}» на этой неделе",

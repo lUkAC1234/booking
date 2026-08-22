@@ -9,6 +9,7 @@
     >
         <AppContainer size="wide" tag="nav" class="app-header__nav" :aria-label="t('nav.primary')">
             <NuxtLink :to="localePath('/')" class="app-header__brand">
+                <SvgLogo class="app-header__logo" />
                 <span class="app-header__wordmark">{{ brandName }}</span>
             </NuxtLink>
 
@@ -145,8 +146,11 @@ useResizeObserver(menu, syncIndicator);
     }
 
     &__brand {
+        --logo-size: #{functions.rem(34)};
+
         display: inline-flex;
         align-items: center;
+        gap: functions.rem(12);
         flex-shrink: 0;
         text-decoration: none;
         color: var(--ink);
@@ -155,6 +159,16 @@ useResizeObserver(menu, syncIndicator);
             outline: functions.rem(2) solid var(--primary-color);
             outline-offset: functions.rem(4);
         }
+
+        @include bp.down("mobile") {
+            --logo-size: #{functions.rem(26)};
+
+            gap: functions.rem(8);
+        }
+    }
+
+    &__logo {
+        color: var(--ink);
     }
 
     &__wordmark {
@@ -254,8 +268,8 @@ useResizeObserver(menu, syncIndicator);
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: functions.rem(44);
-        height: functions.rem(44);
+        width: var(--control-height-sm);
+        height: var(--control-height-sm);
         padding: 0;
         border: functions.rem(2) solid var(--border-color);
         border-radius: functions.rem(999);

@@ -14,6 +14,8 @@
 
     --section-py: #{functions.rem(120)};
     --interactive-height: #{functions.rem(56)};
+    --control-height: #{functions.rem(60)};
+    --control-height-sm: #{functions.rem(48)};
 
     --fz-hero: clamp(#{functions.rem(44)}, 7vw, #{functions.rem(96)});
     --fz-page-title: clamp(#{functions.rem(32)}, 4.6vw, #{functions.rem(64)});
@@ -48,6 +50,7 @@
 @include bp.down("mobile") {
     :root {
         --section-py: #{functions.rem(72)};
+        --control-height: #{functions.rem(56)};
         --small-margin: #{functions.rem(16)};
         --large-margin: #{functions.rem(24)};
         --outer-radius: #{functions.rem(24)};

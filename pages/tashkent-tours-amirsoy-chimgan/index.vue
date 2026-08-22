@@ -2,13 +2,15 @@
     <article class="page-tours">
         <ToursHero />
         <ToursCatalog />
-        <ToursPractical />
-        <FaqSection page="tours" bg="surface" />
-        <BookingCtaBand context-kind="tour" />
+        <LazyToursPractical :hydrate-on-visible="{ rootMargin: '800px' }" />
+        <LazyFaqSection page="tours" bg="surface" :hydrate-on-visible="{ rootMargin: '800px' }" />
+        <LazyBookingCtaBand context-kind="tour" :hydrate-on-visible="{ rootMargin: '800px' }" />
     </article>
 </template>
 
 <script setup lang="ts">
+definePageMeta({ darkHeader: true });
+
 const { t } = useI18n();
 const localePath = useLocalePath();
 const config = useRuntimeConfig();
@@ -35,6 +37,7 @@ jsonLd.touristTripList(
         name: tour.title,
         description: tour.summary,
         url: pageUrl.value,
+        image: tour.photos.map((photo) => `${siteUrl}${photo.src}`),
         itinerary: tour.highlights,
     })),
     t("tours.title"),
@@ -46,5 +49,7 @@ jsonLd.faqPage(faqItems.value);
 <style scoped lang="scss">
 .page-tours {
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 </style>

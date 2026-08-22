@@ -19,13 +19,11 @@
             </div>
 
             <div v-reveal class="transfer-guide__links">
-                <BaseButton :to="'/tashkent-city-center-apartments/'" variant="ghost">
+                <BaseButton :to="'/tashkent-city-center-apartments/'" variant="primary">
                     {{ t("apartments.all-link") }}
-                    <SvgArrowRight />
                 </BaseButton>
-                <BaseButton :to="'/contact-us/'" variant="ghost">
+                <BaseButton :to="'/contact-us/'" variant="outline-light">
                     {{ t("home.contacts.contact-link") }}
-                    <SvgArrowRight />
                 </BaseButton>
             </div>
         </AppContainer>
@@ -114,11 +112,10 @@ const items = computed(() =>
     }
 
     &__links {
-        --icon-size: var(--icon-size-sm);
-
         display: flex;
         flex-wrap: wrap;
-        gap: functions.rem(32);
+        align-items: center;
+        gap: functions.rem(16);
     }
 
     @include bp.down("tablet") {
@@ -139,7 +136,7 @@ const items = computed(() =>
 
         &__links {
             flex-direction: column;
-            gap: functions.rem(16);
+            align-items: stretch;
         }
     }
 }

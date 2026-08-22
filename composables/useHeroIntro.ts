@@ -8,8 +8,6 @@ export const useHeroIntro = (rootRef: Ref<HTMLElement | null>) => {
             return;
         }
 
-        root.classList.add("hero--js");
-
         const title = root.querySelector<HTMLElement>('[data-hero="title"]');
         let split: ReturnType<typeof splitText> | null = null;
 

@@ -108,10 +108,11 @@ const rootClass = computed(() => [
     --btn-ink-x: 50%;
     --btn-ink-y: 50%;
     --btn-ink-dur: 680ms;
+    --button-h: var(--control-height);
 
-    overflow: hidden;
     display: inline-grid;
     grid-template-columns: 1fr;
+    min-height: var(--button-h);
     border-radius: var(--pill-radius);
     font-family: var(--font);
     font-size: var(--button-fz);
@@ -131,6 +132,7 @@ const rootClass = computed(() => [
         --button-py: #{functions.rem(12)};
         --button-px: #{functions.rem(20)};
         --button-fz: #{functions.rem(14)};
+        --button-h: var(--control-height-sm);
     }
 
     &--fullwidth {
@@ -178,15 +180,16 @@ const rootClass = computed(() => [
     &--ghost {
         --button-px: 0;
         --btn-ink-label: var(--primary-color);
+        --button-h: auto;
 
         color: var(--ink);
         border-radius: 0;
     }
 
     &--primary-pill {
-        --button-py: #{functions.rem(8)};
+        --button-py: #{functions.rem(6)};
         --button-px-left: #{functions.rem(28)};
-        --button-px-right: #{functions.rem(8)};
+        --button-px-right: #{functions.rem(6)};
         --chip-size: #{functions.rem(44)};
         --chip-icon-size: #{functions.rem(20)};
         --button-gap: #{functions.rem(16)};
@@ -203,9 +206,18 @@ const rootClass = computed(() => [
         }
     }
 
+    &--primary-pill#{&}--small {
+        --button-py: #{functions.rem(4)};
+        --chip-size: #{functions.rem(36)};
+        --chip-icon-size: #{functions.rem(16)};
+        --button-px-left: #{functions.rem(20)};
+        --button-gap: #{functions.rem(12)};
+    }
+
     &--icon {
         --button-py: 0;
         --button-px: 0;
+        --button-h: var(--interactive-height);
         --icon-size: var(--icon-size-md);
         --btn-ink: var(--primary-color);
         --btn-ink-label: var(--white);

@@ -23,9 +23,9 @@ const MESSAGE_TEMPLATES: ReadonlyArray<MessageTemplate> = [
     { key: "transfer-times", service: "transfer", withItem: false },
 ];
 
+const SEEN_KEY = "cca-social-proof-seen";
 const MIN_COUNT = 2;
 const MAX_COUNT = 5;
-const MAX_MINUTES_AGO = 9;
 
 const randomInt = (min: number, max: number) => min + Math.floor(Math.random() * (max - min + 1));
 
@@ -40,6 +40,26 @@ const shuffle = <T>(source: readonly T[]): T[] => {
     return items;
 };
 
+const readSeen = (): string[] => {
+    if (!import.meta.client) return [];
+    try {
+        const stored: unknown = JSON.parse(window.localStorage.getItem(SEEN_KEY) ?? "[]");
+        if (!Array.isArray(stored)) return [];
+        return stored.filter((entry): entry is string => typeof entry === "string");
+    } catch {
+        return [];
+    }
+};
+
+const writeSeen = (keys: string[]): void => {
+    if (!import.meta.client) return;
+    try {
+        window.localStorage.setItem(SEEN_KEY, JSON.stringify(keys));
+    } catch {
+        return;
+    }
+};
+
 export const useSocialProof = () => {
     const { items: apartments } = useApartments();
     const { items: tours } = useTours();
@@ -50,18 +70,32 @@ export const useSocialProof = () => {
         return [];
     };
 
-    const buildQueue = (): SocialProofToast[] =>
-        shuffle(MESSAGE_TEMPLATES).map((template, index) => {
-            const titles = template.withItem ? titlesFor(template.service) : [];
-            return {
-                id: `${template.key}-${index}`,
-                service: template.service,
-                messageKey: `social-proof.messages.${template.key}`,
-                count: randomInt(MIN_COUNT, MAX_COUNT),
-                item: titles.length > 0 ? titles[randomInt(0, titles.length - 1)] : "",
-                minutesAgo: randomInt(0, MAX_MINUTES_AGO),
-            };
-        });
+    const toastFor = (template: MessageTemplate): SocialProofToast => {
+        const titles = template.withItem ? titlesFor(template.service) : [];
+        return {
+            id: template.key,
+            service: template.service,
+            messageKey: `social-proof.messages.${template.key}`,
+            count: randomInt(MIN_COUNT, MAX_COUNT),
+            item: titles.length > 0 ? titles[randomInt(0, titles.length - 1)] : "",
+        };
+    };
 
-    return { buildQueue };
+    const buildQueue = (): SocialProofToast[] => {
+        const seen = new Set(readSeen());
+        const unseen = MESSAGE_TEMPLATES.filter((template) => !seen.has(template.key));
+        if (unseen.length === 0) {
+            writeSeen([]);
+            return shuffle(MESSAGE_TEMPLATES).map(toastFor);
+        }
+        return shuffle(unseen).map(toastFor);
+    };
+
+    const markSeen = (key: string): void => {
+        const seen = readSeen();
+        if (seen.includes(key)) return;
+        writeSeen([...seen, key]);
+    };
+
+    return { buildQueue, markSeen };
 };

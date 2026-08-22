@@ -96,7 +96,7 @@ export default defineNuxtConfig({
                     tagPosition: "head",
                     tagPriority: "critical",
                     innerHTML:
-                        ";(function(){try{var d=document.documentElement;var v=window.innerWidth||d.clientWidth||0;d.setAttribute('data-tier',v&&v<=639?'mobile':v<=1023?'tablet':v<=1279?'laptop':v<=1365?'notebook':'desktop');}catch(e){}})();",
+                        ";(function(){try{var d=document.documentElement;d.classList.add('js');var v=window.innerWidth||d.clientWidth||0;d.setAttribute('data-tier',v&&v<=639?'mobile':v<=1023?'tablet':v<=1279?'laptop':v<=1365?'notebook':'desktop');}catch(e){}})();",
                 },
                 ...GA_HEAD_SCRIPTS,
             ],
@@ -253,7 +253,7 @@ export default defineNuxtConfig({
             },
         },
         build: {
-            cssCodeSplit: true,
+            cssCodeSplit: false,
             target: "es2020",
         },
         optimizeDeps: {
@@ -267,7 +267,7 @@ export default defineNuxtConfig({
     },
 
     features: {
-        inlineStyles: true,
+        inlineStyles: false,
     },
 
     experimental: {
