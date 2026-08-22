@@ -57,12 +57,11 @@ for await (const file of walk(ROOT)) {
     if (cssParts.length === 0) continue;
 
     const styleTag = `<style>${cssParts.join("")}</style>`;
-    let injected = false;
-    const after = before.replace(STYLESHEET_LINK_RE, () => {
-        if (injected) return "";
-        injected = true;
-        return styleTag;
-    });
+    const stripped = before.replace(STYLESHEET_LINK_RE, "");
+    const headClose = stripped.indexOf("</head>");
+    if (headClose < 0) continue;
+
+    const after = stripped.slice(0, headClose) + styleTag + stripped.slice(headClose);
     if (after === before) continue;
 
     await writeFile(file, after, "utf8");

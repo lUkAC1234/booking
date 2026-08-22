@@ -79,7 +79,7 @@ $tier-min: (
 }
 
 @mixin mouse {
-    @media (hover: hover) and (pointer: fine) {
+    @media (hover: hover) {
         @content;
     }
 }

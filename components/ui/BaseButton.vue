@@ -218,7 +218,7 @@ const rootClass = computed(() => [
         --button-py: 0;
         --button-px: 0;
         --button-h: var(--interactive-height);
-        --icon-size: var(--icon-size-lg);
+        --icon-size: var(--icon-size-md);
         --btn-ink: var(--primary-color);
         --btn-ink-label: var(--white);
         --btn-ink-dur: var(--dur-state);
@@ -229,10 +229,6 @@ const rootClass = computed(() => [
         color: var(--ink);
         background-color: var(--surface-mute);
         border-radius: 50%;
-
-        @include bp.down("mobile") {
-            --icon-size: var(--icon-size-xl);
-        }
     }
 
     &--disabled,
