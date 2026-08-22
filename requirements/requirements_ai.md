@@ -441,7 +441,7 @@ Validate every page with [Schema.org Rich Results test](https://search.google.co
 
 Every page must have an `og:image` 1200×630 — either via:
 - `useSeo({ image })` passing a route-specific URL, OR
-- Falling back to `public/og-default.png` (the brand wordmark on `--surface-warm`) if no specific image is provided.
+- Falling back to `public/og-default.jpg` if no specific image is provided. Keep it **exactly 1200×630 and under 300 KB** — WhatsApp drops previews above that, and Telegram times out on multi-megabyte files. A PNG of a photographic board cannot hit that budget; ship JPEG and keep `og:image:type` in step with the extension.
 
 Forbidden: empty `og:image`, broken URL, image < 1200×630.
 

@@ -184,7 +184,7 @@ onBeforeUnmount(() => stopGap());
     @include bp.down("mobile") {
         right: functions.rem(12);
         left: functions.rem(12);
-        bottom: calc(var(--bottom-nav-height) + #{functions.rem(12)});
+        bottom: calc(var(--bottom-nav-height) + #{functions.rem(24)});
         width: auto;
         gap: functions.rem(12);
     }

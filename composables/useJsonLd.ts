@@ -101,7 +101,7 @@ export const useJsonLd = () => {
     const siteUrl = config.public.siteUrl;
     const brandName = app.brand.name;
     const contact = app.contact;
-    const logoUrl = `${siteUrl}/og-default.png`;
+    const logoUrl = `${siteUrl}/og-default.jpg`;
 
     const languageTag = () => (locale.value === "ru" ? "ru-RU" : "en-US");
 

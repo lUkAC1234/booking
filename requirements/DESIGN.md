@@ -179,7 +179,7 @@ Every sizing value is even and expressed with `functions.rem()` at the token lay
 | `--outer-radius`       | `rem(32)`              | `rem(24)`                                     | Cards, tiles, media plates, modals                                                |
 | `--pill-radius`        | `rem(999)`             | —                                             | Buttons, chips, circular markers                                                  |
 | `--section-py`         | `rem(120)`             | `rem(72)` (`rem(96)` ≤1279)                   | Vertical padding of every public section                                          |
-| `--interactive-height` | `rem(56)`              | —                                             | Icon-only circle diameter                                                         |
+| `--interactive-height` | `rem(56)`              | `rem(64)`                                     | Icon-only circle diameter — the mobile step is deliberate: the root font-size drops to 14px there, so `rem(56)` would render 49px and the control would visibly shrink. `rem(64)` keeps it 56 real px on every tier |
 | `--control-height`     | `rem(60)`              | `rem(56)`                                     | Canonical height of every default-size control — button, pill, outline, switcher  |
 | `--control-height-sm`  | `rem(48)`              | —                                             | Canonical height of every `small` control — header CTA, language switcher, burger |
 | `--container`          | `min(100%, rem(1600))` | —                                             | Page max-width clamp                                                              |
@@ -265,7 +265,9 @@ Source of truth: `assets/styles/helpers/_breakpoints.scss`. **Always the mixins,
 | `notebook` | `1280–1365px` | Inline horizontal nav + `BookButton`               |
 | `desktop`  | `≥1366px`     | Inline horizontal nav + `BookButton`               |
 
-Mixins: `bp.down($tier)`, `bp.up($tier)`, `bp.only($tier)`, `bp.between($from, $to)`, `bp.short` (`max-height: 500px`), `bp.reduced-motion`, `bp.touch` (`hover: none` — pointer capability, not width). Import alias is always `bp`.
+Mixins: `bp.down($tier)`, `bp.up($tier)`, `bp.only($tier)`, `bp.between($from, $to)`, `bp.short` (`max-height: 500px`), `bp.reduced-motion`, `bp.touch` (`hover: none`) and `bp.mouse` (`hover: hover and pointer: fine`) — pointer capability, not width. Import alias is always `bp`.
+
+**Hover-only styling belongs inside `bp.mouse`, never in the unqualified rule.** iOS and every in-app webview (Telegram, Instagram) leave `:hover` latched on the last-tapped element until the visitor taps elsewhere, so a bare `:hover` rule is a *permanent* state change on touch, not a transient one. That is what left the hero's `outline-dark` CTA stuck in its inverted white fill after a tap. Gate the hover state on a real pointer and give touch its own `:active` / `:focus-visible` path.
 
 ```scss
 @use "~/assets/styles/helpers/breakpoints" as bp;
@@ -304,7 +306,7 @@ Because the fill, the label and the hairline all live in **one clipped layer**, 
 
 `ghost` inks the label only (`--btn-ink: transparent`, `--btn-ink-label: --primary-color`); `disabled` and `loading` hide the inked face outright.
 
-**Touch.** Under `bp.touch` (`hover: none`) the wave is dropped — hover is a lie on a touchscreen and a sticky `:hover` would freeze the circle mid-sweep. The inked face falls back to `clip-path: none` plus an `opacity` fade at `--dur-state`, on `:hover`, `:focus-visible` and `:active`, so a tap reads as one smooth colour change.
+**Touch is the default; the wave is the enhancement.** The unqualified rule gives the inked face `opacity: 0` and no `clip-path`, revealed by `:focus-visible` and `:active` only — a tap reads as one smooth colour change and nothing survives the tap. The pointer-origin wave lives entirely inside `bp.mouse`, where the face becomes `opacity: 1` clipped to `circle(0%)` and `:hover` opens it to `circle(150%)`. Written the other way round — wave by default, `bp.touch` overriding it — a latched `:hover` in a mobile webview left the button permanently inverted, and `--btn-ink-x` / `--btn-ink-y` were being written by taps; `setInkOrigin` now ignores any `pointerType` other than `mouse`.
 
 **Full-width.** `fullwidth` sets `justify-content: space-between` on the root and `flex-grow: 1` + `space-between` on `__label`, so the label sits on the leading edge and the chip or trailing icon pins to the trailing edge instead of floating together in the middle of a wide bar.
 
@@ -315,7 +317,7 @@ Because the fill, the label and the hairline all live in **one clipped layer**, 
 | `outline-light` | Transparent, `rem(2)` `--ink` border, `--ink` label; hover fills `--ink`, label `--surface-warm`                                                                                                                                                                                                                           |
 | `outline-dark`  | For `--surface-ink` sections: transparent, `rem(2)` white border; hover fills white, label `--surface-ink`                                                                                                                                                                                                                 |
 | `ghost`         | Text + trailing arrow, no fill, no inline padding; hover `--primary-color`                                                                                                                                                                                                                                                 |
-| `icon`          | Icon-only `--interactive-height` circle, borderless: a flat `--surface-mute` disc with an `--ink` glyph; hover inks `--primary-color` over `--dur-state` with a `--white` glyph. `disabled` keeps full opacity and the same disc, dropping the glyph to `--ink-40`. Token-driven, so it inverts correctly inside `on-dark` |
+| `icon`          | Icon-only `--interactive-height` circle, borderless: a flat `--surface-mute` disc with an `--icon-size-lg` `--ink` glyph (`--icon-size-xl` on mobile, so the glyph keeps its optical weight against the disc); hover inks `--primary-color` over `--dur-state` with a `--white` glyph. `disabled` keeps full opacity and the same disc, dropping the glyph to `--ink-40`. Token-driven, so it inverts correctly inside `on-dark` |
 | `primary-pill`  | **The signature CTA** — see below                                                                                                                                                                                                                                                                                          |
 
 `to` is resolved through `useLocalePath()` internally, so pass raw paths with a trailing slash. `href` renders a plain `<a>`. States: `disabled`, `loading` (inline spinner, `aria-busy="true"`), `fullwidth`.

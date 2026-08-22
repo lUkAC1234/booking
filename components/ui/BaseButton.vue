@@ -75,7 +75,7 @@ const hasChip = computed(() => props.variant === "primary-pill");
 
 const setInkOrigin = (event: PointerEvent) => {
     const button = event.currentTarget;
-    if (!(button instanceof HTMLElement)) return;
+    if (event.pointerType !== "mouse" || !(button instanceof HTMLElement)) return;
     const bounds = button.getBoundingClientRect();
     button.style.setProperty("--btn-ink-x", `${event.clientX - bounds.left}px`);
     button.style.setProperty("--btn-ink-y", `${event.clientY - bounds.top}px`);
@@ -218,7 +218,7 @@ const rootClass = computed(() => [
         --button-py: 0;
         --button-px: 0;
         --button-h: var(--interactive-height);
-        --icon-size: var(--icon-size-md);
+        --icon-size: var(--icon-size-lg);
         --btn-ink: var(--primary-color);
         --btn-ink-label: var(--white);
         --btn-ink-dur: var(--dur-state);
@@ -229,6 +229,10 @@ const rootClass = computed(() => [
         color: var(--ink);
         background-color: var(--surface-mute);
         border-radius: 50%;
+
+        @include bp.down("mobile") {
+            --icon-size: var(--icon-size-xl);
+        }
     }
 
     &--disabled,
@@ -258,18 +262,18 @@ const rootClass = computed(() => [
         background-color: var(--btn-ink);
         border-color: var(--btn-ink-border, var(--btn-border, transparent));
         color: var(--btn-ink-label);
-        clip-path: circle(0% at var(--btn-ink-x) var(--btn-ink-y));
+        opacity: 0;
         pointer-events: none;
-        transition: clip-path var(--btn-ink-dur) var(--ease-decel);
+        transition: opacity var(--dur-state) var(--ease-decel);
 
         @include bp.reduced-motion {
             transition: none;
         }
     }
 
-    &:hover:not(:disabled) &__face--ink,
-    &:focus-visible &__face--ink {
-        clip-path: circle(150% at var(--btn-ink-x) var(--btn-ink-y));
+    &:focus-visible &__face--ink,
+    &:active:not(:disabled) &__face--ink {
+        opacity: 1;
     }
 
     &--disabled &__face--ink,
@@ -285,11 +289,11 @@ const rootClass = computed(() => [
         justify-content: space-between;
     }
 
-    @include bp.touch {
+    @include bp.mouse {
         &__face--ink {
-            clip-path: none;
-            opacity: 0;
-            transition: opacity var(--dur-state) var(--ease-decel);
+            opacity: 1;
+            clip-path: circle(0% at var(--btn-ink-x) var(--btn-ink-y));
+            transition: clip-path var(--btn-ink-dur) var(--ease-decel);
 
             @include bp.reduced-motion {
                 transition: none;
@@ -297,10 +301,8 @@ const rootClass = computed(() => [
         }
 
         &:hover:not(:disabled) &__face--ink,
-        &:focus-visible &__face--ink,
-        &:active &__face--ink {
-            clip-path: none;
-            opacity: 1;
+        &:focus-visible &__face--ink {
+            clip-path: circle(150% at var(--btn-ink-x) var(--btn-ink-y));
         }
     }
 
@@ -350,8 +352,10 @@ const rootClass = computed(() => [
         }
     }
 
-    &--primary-pill:hover &__chip {
-        transform: translateX(#{functions.rem(2)});
+    @include bp.mouse {
+        &--primary-pill:hover &__chip {
+            transform: translateX(#{functions.rem(2)});
+        }
     }
 }
 

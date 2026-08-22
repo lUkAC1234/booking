@@ -9,12 +9,13 @@ interface SeoInput {
     noindex?: boolean;
 }
 
-const DEFAULT_OG_IMAGE = "/og-default.png";
+const DEFAULT_OG_IMAGE = "/og-default.jpg";
 
 export const useSeo = (input: SeoInput) => {
     const route = useRoute();
     const config = useRuntimeConfig();
     const { locale } = useI18n();
+    const { brand } = useAppConfig();
     const siteUrl = config.public.siteUrl;
 
     const canonical = computed(() => {
@@ -39,6 +40,10 @@ export const useSeo = (input: SeoInput) => {
         return `${siteUrl}${path.startsWith("/") ? path : `/${path}`}`;
     });
 
+    const imageType = computed(() =>
+        resolvedImage.value.endsWith(".png") ? "image/png" : "image/jpeg",
+    );
+
     useSeoMeta({
         title: () => title.value,
         description: () => description.value,
@@ -47,10 +52,13 @@ export const useSeo = (input: SeoInput) => {
         ogDescription: () => description.value,
         ogType: input.type ?? "website",
         ogImage: () => resolvedImage.value,
+        ogImageType: () => imageType.value,
         ogImageWidth: 1200,
         ogImageHeight: 630,
+        ogImageAlt: () => title.value,
         ogUrl: () => canonical.value,
         ogLocale: () => locale.value,
+        ogSiteName: brand.name,
         twitterCard: "summary_large_image",
         twitterTitle: () => title.value,
         twitterDescription: () => description.value,
