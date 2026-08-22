@@ -1758,14 +1758,14 @@ Must return **zero matches**. Any new `.ts` / `.vue` file that introduces a raw 
 
 ### Motion System v2 — use the directives FIRST (added 2026-05-31)
 
-The site has a unified scroll-motion layer ("Motion System v2", level **Editorial+**). For 95% of animation needs you do **not** write GSAP — you add a directive. The engine lives in [`plugins/scroll-reveal.ts`](../frontend/plugins/scroll-reveal.ts) (the `v-reveal` + `v-parallax` directives), [`assets/styles/animations/__animations.scss`](../frontend/assets/styles/animations/__animations.scss) (the CSS contract), [`utils/motion.ts`](../frontend/utils/motion.ts) (split/observer helpers) and [`composables/useHeroIntro.ts`](../frontend/composables/useHeroIntro.ts).
+The site has a unified scroll-motion layer ("Motion System v2", level **Editorial+**). For 95% of animation needs you do **not** write GSAP — you add a directive. The engine lives in [`plugins/scroll-reveal.ts`](../frontend/plugins/scroll-reveal.ts) (the `v-reveal` + `v-parallax` directives), [`assets/styles/animations/__animations.scss`](../frontend/assets/styles/animations/__animations.scss) (the CSS contract), [`utils/motion.ts`](../frontend/utils/motion.ts) (split/observer helpers) and [`components/ui/HeroTitle.vue`](../frontend/components/ui/HeroTitle.vue) (the server-rendered hero word split).
 
 - `v-reveal` — fade + rise on scroll-in. Variants `.up`(default)`.down`/`.left`/`.right`/`.scale`/`.zoom`/`.clip`/`.clipLeft`; timing `.fast`/`.slow`.
 - `v-reveal.stagger` — reveal direct children in sequence (use on a grid/list/row container, combine with a variant).
 - `v-reveal.text` (`.chars` for character-level) — masked word reveal for headings / short type.
 - `v-parallax` / `v-parallax="10"` — gentle GSAP-scrubbed parallax for **media only** (strength 6–14). Never on an element that already carries a CSS `rotate`/`scale`.
 - Fine control object: `v-reveal="{ variant, distance, delay, stagger, duration }"`.
-- Heroes: bind `ref="rootRef"` on the root `<section>`, call `useHeroIntro(rootRef)`, and mark parts with `data-hero="title|lead|actions|media|card"` (never put `v-reveal.text` on a `data-hero="title"` H1; never opacity-hide `data-hero="media"`).
+- Heroes: mark the root `<section>` with `data-hero="root"`, render the H1 through `<HeroTitle>`, and mark the parts with `data-hero="lead|actions|media|card"`. The intro is **pure CSS keyframes** so it starts at first paint — never drive a hero from `onMounted`, never put `v-reveal.text` on a `data-hero="title"` H1, never opacity-hide `data-hero="media"`.
 
 **These directives are pure CSS + IntersectionObserver on the common path (no GSAP), flash-free, no-JS-safe, SSR-safe, and self-disable under `prefers-reduced-motion`.** Do NOT hand-roll per-section reveal scenes, and do NOT add a reduced-motion guard for them. Reserve raw GSAP (`useGsap()`) for: `v-parallax`'s scrub, `useStatsCounter`, and genuinely bespoke narrative scenes that the directives can't express. Never keep a section-level `v-reveal` AND reveal its children (double animation). Engine files are shared — extend the vocabulary there, never fork it per-component.
 

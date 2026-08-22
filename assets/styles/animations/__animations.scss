@@ -99,17 +99,12 @@
     }
 }
 
-:root.js [data-hero="root"] {
+[data-hero="root"] {
     [data-hero="lead"],
     [data-hero="actions"],
     [data-hero="card"] {
-        opacity: 0;
-        transform: translate3d(0, 32px, 0);
-        transition:
-            opacity var(--hero-dur, 0.9s) var(--ease-decel, cubic-bezier(0.22, 1, 0.36, 1)) var(--hero-delay, 0s),
-            transform var(--hero-dur, 0.9s) var(--ease-decel, cubic-bezier(0.22, 1, 0.36, 1)) var(--hero-delay, 0s);
-        animation: heroReadyFallback 0.01s 3s forwards;
-        will-change: opacity, transform;
+        animation: heroRiseIn var(--hero-dur, 0.9s) var(--ease-decel, cubic-bezier(0.22, 1, 0.36, 1))
+            var(--hero-delay, 0s) backwards;
     }
 
     [data-hero="lead"] {
@@ -120,44 +115,46 @@
         --hero-delay: 0.32s;
     }
 
-    [data-hero="card"] {
-        transition-delay: calc(0.36s + var(--rv-stagger, 0.1s) * var(--reveal-i, 0));
+    @for $i from 1 through 8 {
+        [data-hero="card"]:nth-child(#{$i}) {
+            --hero-delay: calc(0.36s + var(--rv-stagger, 0.1s) * #{$i - 1});
+        }
     }
 
     [data-hero="media"] {
+        animation: heroMediaIn 1.2s var(--ease-decel, cubic-bezier(0.22, 1, 0.36, 1)) backwards;
+    }
+
+    [data-hero="title"] .tr-w__i {
+        transform: none;
+        will-change: auto;
+        animation: heroWordIn var(--tr-dur, 1s) var(--ease-soft, cubic-bezier(0.33, 1, 0.68, 1))
+            var(--tr-delay, 0s) backwards;
+    }
+
+    @for $i from 1 through 16 {
+        [data-hero="title"] .tr-w:nth-child(#{$i}) {
+            --tr-delay: calc(var(--tr-stagger, 0.06s) * #{$i - 1});
+        }
+    }
+}
+
+@keyframes heroRiseIn {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 32px, 0);
+    }
+}
+
+@keyframes heroMediaIn {
+    from {
         transform: scale(1.06);
-        transition: transform 1.2s var(--ease-decel, cubic-bezier(0.22, 1, 0.36, 1));
-        will-change: transform;
     }
 }
 
-:root.js [data-hero="root"].hero-in {
-    [data-hero="lead"],
-    [data-hero="actions"],
-    [data-hero="card"] {
-        opacity: 1;
-        transform: none;
-        animation: none;
-        will-change: auto;
-    }
-
-    [data-hero="media"] {
-        transform: none;
-        will-change: auto;
-    }
-}
-
-@keyframes heroReadyFallback {
-    to {
-        opacity: 1;
-        transform: none;
-    }
-}
-
-.hero--reduced {
-    [data-hero] {
-        opacity: 1 !important;
-        transform: none !important;
+@keyframes heroWordIn {
+    from {
+        transform: translate3d(0, 115%, 0);
     }
 }
 
@@ -211,6 +208,7 @@
     .tr-c__i {
         transform: none !important;
         transition: none !important;
+        animation: none !important;
         will-change: auto;
     }
 

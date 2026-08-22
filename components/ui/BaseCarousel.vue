@@ -1,5 +1,8 @@
 <template>
-    <div class="base-carousel" :class="{ 'base-carousel--single': single }">
+    <div
+        class="base-carousel"
+        :class="{ 'base-carousel--single': single, 'base-carousel--measured': measured }"
+    >
         <div ref="viewport" class="base-carousel__viewport" @focusin="onFocusIn">
             <ul
                 ref="track"
@@ -13,7 +16,12 @@
                 @dragstart.prevent
                 @click.capture="onClickCapture"
             >
-                <li v-for="(item, position) in items" :key="item.id" class="base-carousel__slide">
+                <li
+                    v-for="(item, position) in items"
+                    :key="item.id"
+                    class="base-carousel__slide"
+                    :class="{ 'base-carousel__slide--off': offView[position] }"
+                >
                     <slot :item="item" :index="position" />
                 </li>
             </ul>
@@ -52,14 +60,30 @@ const FLICK_DURATION = 320;
 const FLICK_DISTANCE = 8;
 const EDGE_RESISTANCE = 0.82;
 
+interface SlideSpan {
+    start: number;
+    end: number;
+}
+
 const { t } = useI18n();
 const viewport = ref<HTMLElement | null>(null);
 const track = ref<HTMLElement | null>(null);
 const dragging = ref(false);
 const index = ref(0);
 const snaps = shallowRef<number[]>([0]);
+const spans = shallowRef<SlideSpan[]>([]);
+const frameWidth = ref(0);
+const measured = ref(false);
 
-let slideStarts: number[] = [0];
+const offView = computed(() => {
+    const width = frameWidth.value;
+    const offset = snaps.value[index.value] ?? 0;
+
+    return spans.value.map(
+        (span) => width > 0 && (span.end <= offset + 1 || span.start >= offset + width - 1),
+    );
+});
+
 let tracking = false;
 let dragged = false;
 let pointerId = -1;
@@ -114,21 +138,26 @@ const measure = () => {
 
     const slides = slidesOf(element);
     const last = slides[slides.length - 1];
-    if (!last) return;
+    if (!last || !frame.clientWidth) return;
 
     const base = slides[0].offsetLeft;
     const limit = Math.max(0, last.offsetLeft + last.offsetWidth - base - frame.clientWidth);
     const positions: number[] = [];
 
-    slideStarts = slides.map((slide) => slide.offsetLeft - base);
+    frameWidth.value = frame.clientWidth;
+    spans.value = slides.map((slide) => ({
+        start: slide.offsetLeft - base,
+        end: slide.offsetLeft - base + slide.offsetWidth,
+    }));
 
-    for (const start of slideStarts) {
+    for (const { start } of spans.value) {
         const value = Math.min(start, limit);
         if (!positions.length || value - positions[positions.length - 1] > 1) positions.push(value);
     }
 
     snaps.value = positions;
     index.value = Math.min(index.value, positions.length - 1);
+    measured.value = true;
     applyOffset(positions[index.value], false);
 };
 
@@ -217,11 +246,11 @@ const onFocusIn = (event: FocusEvent) => {
     if (!(slide instanceof HTMLElement)) return;
 
     const position = slidesOf(element).indexOf(slide);
-    if (position < 0) return;
+    const span = spans.value[position];
+    if (!span) return;
 
-    const start = slideStarts[position];
     const current = snaps.value[index.value];
-    if (start >= current && start + slide.offsetWidth <= current + frame.clientWidth + 1) return;
+    if (span.start >= current && span.end <= current + frame.clientWidth + 1) return;
 
     goTo(position);
 };
@@ -267,6 +296,19 @@ useResizeObserver(viewport, measure);
 
     &__slide {
         display: grid;
+
+        &--off {
+            visibility: hidden;
+            transition: visibility var(--carousel-speed);
+        }
+    }
+
+    &:not(&--measured) &__slide:nth-child(n + 4) {
+        visibility: hidden;
+    }
+
+    &__track--dragging &__slide--off {
+        visibility: visible;
     }
 
     &--single {
@@ -278,6 +320,10 @@ useResizeObserver(viewport, measure);
         grid-auto-columns: 100%;
         gap: functions.rem(12);
         cursor: default;
+    }
+
+    &--single:not(&--measured) &__slide:nth-child(n + 2) {
+        visibility: hidden;
     }
 
     &--single &__controls {
@@ -311,6 +357,10 @@ useResizeObserver(viewport, measure);
         &__track {
             grid-auto-columns: calc((100% - #{functions.rem(24)}) / 2);
         }
+
+        &:not(&--measured) &__slide:nth-child(n + 3) {
+            visibility: hidden;
+        }
     }
 
     @include bp.down("mobile") {
@@ -319,6 +369,10 @@ useResizeObserver(viewport, measure);
         &__track {
             grid-auto-columns: 100%;
             gap: functions.rem(16);
+        }
+
+        &:not(&--measured) &__slide:nth-child(n + 2) {
+            visibility: hidden;
         }
 
         &--single {

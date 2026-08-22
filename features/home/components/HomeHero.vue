@@ -1,5 +1,5 @@
 <template>
-    <section ref="root" class="home-hero" data-hero="root" :aria-labelledby="headingId">
+    <section class="home-hero" data-hero="root" :aria-labelledby="headingId">
         <HeroMedia
             data-hero="media"
             :desktop-src="DESKTOP_SRC"
@@ -11,9 +11,7 @@
 
         <AppContainer size="wide" class="home-hero__inner">
             <div class="home-hero__copy">
-                <BaseHeading :id="headingId" level="h1" data-hero="title" class="home-hero__title">
-                    {{ t("home.hero.title") }}
-                </BaseHeading>
+                <HeroTitle :id="headingId" :text="t('home.hero.title')" class="home-hero__title" />
 
                 <p data-hero="lead" class="home-hero__lead">{{ t("home.hero.lead") }}</p>
 
@@ -51,9 +49,6 @@ const PHOTO_HEIGHT = 941;
 
 const { t } = useI18n();
 const headingId = useId();
-const root = ref<HTMLElement | null>(null);
-
-useHeroIntro(root);
 
 const facts = computed<HeroFact[]>(() => [
     { key: "apartments", label: t("home.hero.chips.apartments"), icon: "building" },

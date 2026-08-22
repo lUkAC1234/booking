@@ -1,6 +1,5 @@
 <template>
     <section
-        ref="root"
         class="page-hero"
         :class="{ 'page-hero--photo': photo }"
         data-hero="root"
@@ -20,9 +19,7 @@
             <div class="page-hero__copy">
                 <AppBreadcrumbs :items="crumbs" :on-dark="Boolean(photo)" class="page-hero__crumbs" />
 
-                <BaseHeading :id="headingId" level="h1" data-hero="title" class="page-hero__title">
-                    {{ title }}
-                </BaseHeading>
+                <HeroTitle :id="headingId" :text="title" class="page-hero__title" />
 
                 <div class="page-hero__aside">
                     <p data-hero="lead" class="page-hero__lead">{{ lead }}</p>
@@ -75,9 +72,6 @@ withDefaults(defineProps<Props>(), {
 });
 
 const headingId = useId();
-const root = ref<HTMLElement | null>(null);
-
-useHeroIntro(root);
 </script>
 
 <style scoped lang="scss">

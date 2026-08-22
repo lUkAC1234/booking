@@ -391,7 +391,6 @@ Icons are Vue components rather than sprite references or `<img>`: they inherit 
 | `useScrollDirection` | Up/down detection (header hide-on-scroll)                                 |
 | `useFocusTrap`       | Accessible modal/menu focus containment                                   |
 | `useGsap`            | Lazy GSAP loader — never on the critical path                             |
-| `useHeroIntro`       | Hero entrance animation                                                   |
 | `useStatsCounter`    | Animated number counters                                                  |
 
 Auto-imported from `composables/`, `composables/**`, and `features/*/composables`.
