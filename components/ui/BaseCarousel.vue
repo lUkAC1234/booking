@@ -313,7 +313,7 @@ useResizeObserver(viewport, measure);
 
     &--single {
         position: relative;
-        gap: 0;
+        display: block;
     }
 
     &--single &__track {
@@ -373,10 +373,6 @@ useResizeObserver(viewport, measure);
 
         &:not(&--measured) &__slide:nth-child(n + 2) {
             visibility: hidden;
-        }
-
-        &--single {
-            gap: 0;
         }
 
         &--single &__controls {

@@ -97,7 +97,7 @@ const openLightbox = async (startIndex: number) => {
         }
     }
 
-    &__image {
+    &__link &__image {
         display: block;
         width: 100%;
         height: auto;
