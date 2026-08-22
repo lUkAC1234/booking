@@ -82,7 +82,7 @@ const facts = computed<HeroFact[]>(() => [
     &__inner {
         position: relative;
         z-index: 2;
-        min-height: 100dvh;
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: center;

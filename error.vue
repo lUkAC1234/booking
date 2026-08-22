@@ -4,11 +4,8 @@
             :code="statusCode"
             :title="title"
             :description="description"
-            :primary-label="primaryLabel"
-            :secondary-label="secondaryLabel"
-            :on-primary="handlePrimary"
-            :on-secondary="handleSecondary"
-            :show-links="isNotFound"
+            :action-label="actionLabel"
+            :on-action="handleAction"
         />
     </NuxtLayout>
 </template>
@@ -19,7 +16,6 @@ import type { NuxtError } from "#app";
 const props = defineProps<{ error: NuxtError }>();
 const { t } = useI18n();
 const localePath = useLocalePath();
-const router = useRouter();
 
 const isNotFound = computed(() => props.error?.statusCode === 404);
 const statusCode = computed(() => props.error?.statusCode ?? 404);
@@ -33,26 +29,11 @@ const title = computed(() =>
 const description = computed(() =>
     isNotFound.value ? t("error404.description") : t("error-boundary.description"),
 );
-const primaryLabel = computed(() =>
+const actionLabel = computed(() =>
     isNotFound.value ? t("error404.back-home") : t("error-boundary.go-home"),
 );
-const secondaryLabel = computed(() =>
-    isNotFound.value ? t("error404.go-back") : t("error-boundary.reload"),
-);
 
-const handlePrimary = () => clearError({ redirect: localePath("/") });
-
-const handleSecondary = () => {
-    if (isNotFound.value) {
-        if (window.history.length > 1) {
-            router.back();
-            return;
-        }
-        handlePrimary();
-        return;
-    }
-    window.location.reload();
-};
+const handleAction = () => clearError({ redirect: localePath("/") });
 
 useSeoMeta({
     title: () => pageTitle.value,

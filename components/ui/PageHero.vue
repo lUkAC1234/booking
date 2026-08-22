@@ -189,7 +189,7 @@ const headingId = useId();
     &--photo &__inner {
         position: relative;
         z-index: 2;
-        min-height: 100dvh;
+        min-height: 100vh;
         justify-content: center;
         padding-block: calc(var(--app-header-height) + #{functions.rem(72)}) functions.rem(96);
     }

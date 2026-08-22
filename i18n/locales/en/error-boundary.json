@@ -2,8 +2,7 @@
     "error-boundary": {
         "page-title": "Error",
         "title": "Something went wrong",
-        "description": "An unexpected error occurred. Reload the page or go back to the home page.",
-        "reload": "Reload",
+        "description": "An unexpected error occurred. Head back to the home page and try again.",
         "go-home": "Go home"
     }
 }

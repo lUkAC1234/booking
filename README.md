@@ -274,7 +274,7 @@ That produces: `<title>`, meta description and keywords, the full Open Graph set
 | ---------------------------- | ---------------------------------------------------------------------------------------- |
 | Canonical                    | `useSeo` — `${siteUrl}${path}/`                                                          |
 | `hreflang` × 3 + `x-default` | `useLocaleHead` in `app.vue`                                                             |
-| `og:image`                   | Page cover → `SiteConfig.hero_image` for the current locale → `/og-image.svg`            |
+| `og:image`                   | `useSeo({ image })` → falls back to `/og-default.jpg` (1200×630, keep under 300 KB)      |
 | `og:site_name`               | `useAppConfig().brand.name`                                                              |
 | JSON-LD                      | `useJsonLd()` — organization, website, breadcrumbs, FAQ, service, article, creative work |
 | `sitemap_index.xml`          | `@nuxtjs/sitemap`, `zeroRuntime: true` — no server needed                                |
@@ -466,7 +466,7 @@ Both scripts re-emit the `.gz` and `.br` siblings after rewriting a file, so the
 
 ## 14 · Known TODO
 
-- [ ] **`public/og-image.png`** — de-branding removed the raster OG image; a neutral `og-image.svg` placeholder is in its place. Most social platforms do **not** render SVG previews. Add a real 1200×630 PNG and point `DEFAULT_OG_IMAGE` in [`composables/useSeo.ts`](composables/useSeo.ts) at it. (Filling `hero_image` in the CMS also solves this, per locale.)
+- [ ] Nothing outstanding. The OG image lives at **`public/og-default.jpg`** (1200×630, 159 KB) and is referenced by `DEFAULT_OG_IMAGE` in [`composables/useSeo.ts`](composables/useSeo.ts). Replacing it means keeping those exact dimensions and staying under 300 KB — WhatsApp drops larger previews.
 
 ---
 

@@ -110,8 +110,8 @@ const rootClass = computed(() => [
     --btn-ink-dur: 680ms;
     --button-h: var(--control-height);
 
-    display: inline-grid;
-    grid-template-columns: 1fr;
+    position: relative;
+    display: inline-flex;
     min-height: var(--button-h);
     border-radius: var(--pill-radius);
     font-family: var(--font);
@@ -243,7 +243,7 @@ const rootClass = computed(() => [
     }
 
     &__face {
-        grid-area: 1 / 1;
+        flex: 1;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -255,6 +255,8 @@ const rootClass = computed(() => [
     }
 
     &__face--ink {
+        position: absolute;
+        inset: 0;
         background-color: var(--btn-ink);
         border-color: var(--btn-ink-border, var(--btn-border, transparent));
         color: var(--btn-ink-label);
