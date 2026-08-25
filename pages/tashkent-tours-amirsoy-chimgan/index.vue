@@ -38,7 +38,7 @@ jsonLd.touristTripList(
         description: tour.summary,
         url: pageUrl.value,
         image: tour.photos.map((photo) => `${siteUrl}${photo.src}`),
-        itinerary: tour.highlights,
+        itinerary: tour.program,
     })),
     t("tours.title"),
 );

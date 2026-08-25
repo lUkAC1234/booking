@@ -36,12 +36,12 @@
             "omar": {
                 "name": "Omar",
                 "country": "United Arab Emirates",
-                "quote": "Four of us with far too much luggage, and the driver still got everything in. Car arrived early, and we were at the apartment in half an hour."
+                "quote": "Four of us with far too much luggage, and the driver still got everything in. Car arrived early, and we were at the apartment twenty minutes later."
             },
             "sofia": {
                 "name": "Sofia",
                 "country": "Spain",
-                "quote": "The sixteenth-floor apartment at sunset is worth the trip on its own. We extended by three nights on the second day."
+                "quote": "The third-floor apartment at sunset is worth the trip on its own. We extended by three nights on the second day."
             },
             "james": {
                 "name": "James",
@@ -51,7 +51,7 @@
             "anna": {
                 "name": "Anna",
                 "country": "Poland",
-                "quote": "Asked for a child seat the night before and it was fitted when the car arrived. No fuss, no charge, no reminder needed."
+                "quote": "Asked for a child seat the night before and it was fitted when the car arrived. No fuss, no reminder needed."
             },
             "lukas": {
                 "name": "Lukas",
@@ -66,7 +66,7 @@
             "mehmet": {
                 "name": "Mehmet",
                 "country": "Türkiye",
-                "quote": "Besh Qozon is a spectacle before it is a lunch. Plov out of a kazan the size of a table, and we were there before the queue."
+                "quote": "Besh Qozon is a spectacle before it is a lunch. Pilaf out of a kazan the size of a table, and we were there before the queue."
             }
         }
     }

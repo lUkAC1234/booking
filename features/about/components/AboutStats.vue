@@ -19,7 +19,7 @@ const headingId = useId();
 
 const stats = computed(() => [
     { id: "apartments", label: t("about.stats.items.apartments"), value: 2 },
-    { id: "tours", label: t("about.stats.items.tours"), value: 5 },
+    { id: "tours", label: t("about.stats.items.tours"), value: 2 },
     { id: "years", label: t("about.stats.items.years"), value: 6 },
     { id: "languages", label: t("about.stats.items.languages"), value: 3 },
 ]);

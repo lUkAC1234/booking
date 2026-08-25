@@ -16,8 +16,8 @@
                 "answer": "We agree the price with you on WhatsApp before anything is confirmed, so there are never hidden fees. You can pay in cash in US dollars or Uzbek som on arrival, or by bank transfer in advance if you prefer. Prices depend on the season and the length of your stay, which is why we quote on request rather than publishing a fixed rate."
             },
             "check-in": {
-                "question": "What time is check-in, and is a night arrival a problem?",
-                "answer": "Check-in and check-out run around the clock. Tell us your exact arrival time and a member of our staff meets you at the apartment, whatever the hour — most flights into Tashkent land between 02:00 and 05:00 and we are used to it. If you would rather not wait for anyone after a night flight, you let yourself in with the key from the mini-safe. Arrival and departure times are flexible, but they can collide with the guests either side of you, so tell us your preference before you book rather than after."
+                "question": "What time are check-in and check-out?",
+                "answer": "Check-in is from 14:00 and check-out is by 12:00. Most flights into Tashkent land between 02:00 and 05:00, so send us your flight number when you book: when the apartment is free the night before we can usually let you in early, and when it is not we tell you in advance instead of leaving you to find out at the door. Early check-in and late check-out depend on the guests either side of you, which is why we agree them before the booking rather than after. Once the apartment is ready you can let yourself in with the key from the mini-safe if you would rather not wait for anyone."
             },
             "min-stay": {
                 "question": "Is there a minimum stay?",
@@ -25,7 +25,7 @@
             },
             "location": {
                 "question": "How central are the apartments really?",
-                "answer": "Both apartments are inside the true centre of Tashkent, and both are a few minutes on foot from a metro station — one hundred and fifty metres from Kosmonavtlar for the Buyuk Turon apartment, about four hundred for the one on Amir Temur Avenue. Shops, cafes, restaurants and public transport are on the same block as each entrance, and the museums, parks and the Broadway pedestrian street are a five to ten minute walk. You will not need a taxi to reach the places you came to see."
+                "answer": "Both apartments are inside the true centre of Tashkent, and both are a few minutes on foot from a metro station — 150 metres from Cosmonauts station for the Cosmonauts apartment, 200 metres from Minor for the one on Amir Temur Avenue. Shops, cafes, restaurants and public transport are on the same block as each entrance, and the museums, parks and the Broadway pedestrian street are a five to ten minute walk. You will not need a taxi to reach the places you came to see."
             },
             "amirsoy-distance": {
                 "question": "How far is Amirsoy from Tashkent?",
@@ -33,11 +33,11 @@
             },
             "tour-season": {
                 "question": "What is the best season for the mountains?",
-                "answer": "All four mountain routes run all year, and the season changes what you get rather than whether you can go. Amirsoy has snow and working lifts from December to March, then turns green from May with alpine meadows and walking trails. Chimgan is open from April to October and holds snow above 2,000 metres from November. Charvak is at its best from June to September, when the water is warm enough to swim. The Chinorkent cabins are enclosed, so on that day it is visibility rather than temperature that decides whether it is worth going — and we will tell you honestly the evening before."
+                "answer": "The mountain excursion runs all year, and the season changes what you get rather than whether you can go. Amirsoy has snow and working lifts from December to March, then turns green from May with alpine meadows and walking trails. Chimgan is open from April to October and holds snow above 2,000 metres from November. Charvak is at its best from June to September, when the water is warm enough to swim. The Chinorkent cabins are enclosed, so there it is visibility rather than temperature that decides whether the ridge is worth the ride — and we will tell you honestly the evening before. The tour around Tashkent runs in any weather, because most of it is indoors or in the shade."
             },
             "tour-pickup": {
                 "question": "Do you pick us up from our accommodation?",
-                "answer": "Yes. Every day trip starts at your door at 9:00, whether you are staying in one of our apartments or in a hotel elsewhere in Tashkent, and ends at the same door by 18:00. You travel in our own Kia Sportage with room for four guests, and the same driver stays with you for the whole day. Tell us where you are on WhatsApp and we agree the pickup time the evening before."
+                "answer": "Yes. Both excursions start at your door at 9:00, whether you are staying in one of our apartments or in a hotel elsewhere in Tashkent, and end at the same door by 19:00. You travel in our own Kia Sportage with room for four guests, and the same driver stays with you for the whole day. Tell us where you are on WhatsApp and we agree the pickup time the evening before."
             },
             "airport-meeting": {
                 "question": "Where exactly will the driver meet me at the airport?",
@@ -49,7 +49,7 @@
             },
             "child-seat": {
                 "question": "Can you provide a child seat, and how many of us fit in the car?",
-                "answer": "Child and booster seats are free of charge — we just need to know the age of the child in advance so the seat is fitted before the car leaves for the airport. Every transfer and every excursion is driven in our own Kia Sportage, a compact SUV that takes four passengers with their luggage. If there are more of you than that, or you are carrying skis or a bicycle, say so on WhatsApp when you book and we arrange a second car that arrives at the same time."
+                "answer": "Yes, we fit child and booster seats — we just need to know the age of the child in advance so the seat is in the car before it leaves for the airport. Every transfer and every excursion is driven in our own Kia Sportage, a compact SUV that takes four passengers with their luggage. If there are more of you than that, or you are carrying skis or a bicycle, say so on WhatsApp when you book and we arrange a second car that arrives at the same time."
             }
         }
     }

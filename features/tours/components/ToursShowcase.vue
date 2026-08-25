@@ -7,26 +7,28 @@
                 </template>
             </SectionHeader>
 
-            <BaseCarousel v-reveal :items="items">
-                <template #default="{ item }">
-                    <OfferCard
-                        :title="item.title"
-                        :description="item.summary"
-                        :facts="item.facts"
-                        :highlights="item.highlights"
-                        :photo-brief="item.photoBrief"
-                        :photos="item.photos"
-                        photo-sizes="90vw md:45vw xl:30vw xxl:28vw"
-                        context-kind="tour"
-                        :tone="tone === 'dark' ? 'dark' : 'light'"
-                    />
-                </template>
-            </BaseCarousel>
+            <div v-reveal.stagger class="tours-showcase__grid">
+                <OfferCard
+                    v-for="item in items"
+                    :key="item.id"
+                    :title="item.title"
+                    :description="item.summary"
+                    :facts="item.facts"
+                    :highlights="item.program.slice(0, TEASER_STEPS)"
+                    :photo-brief="item.photoBrief"
+                    :photos="item.photos"
+                    photo-sizes="90vw md:46vw xxl:44vw"
+                    context-kind="tour"
+                    :tone="tone === 'dark' ? 'dark' : 'light'"
+                />
+            </div>
         </AppContainer>
     </section>
 </template>
 
 <script setup lang="ts">
+const TEASER_STEPS = 3;
+
 interface Props {
     title: string;
     lead?: string;
@@ -66,9 +68,26 @@ const headingId = useId();
         gap: functions.rem(56);
     }
 
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: stretch;
+        gap: functions.rem(32);
+    }
+
+    @include bp.down("tablet") {
+        &__grid {
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+
     @include bp.down("mobile") {
         &__inner {
             gap: functions.rem(40);
+        }
+
+        &__grid {
+            gap: functions.rem(20);
         }
     }
 }

@@ -258,8 +258,14 @@ useResizeObserver(menu, syncIndicator);
         gap: functions.rem(12);
     }
 
+    &__cta {
+        @include bp.down("mobile") {
+            display: none;
+        }
+    }
+
     &__lang {
-        @include bp.down("laptop") {
+        @include bp.between("tablet", "laptop") {
             display: none;
         }
     }

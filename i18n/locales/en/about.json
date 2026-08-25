@@ -1,12 +1,12 @@
 {
     "about": {
         "title": "About City Center Apartments Tashkent",
-        "lead": "We are a small family operation in Tashkent: two apartments we look after ourselves, seven excursions we drive personally, and airport transfers at whatever hour your flight lands.",
+        "lead": "We are a small family operation in Tashkent: two apartments we look after ourselves, two full-day excursions we drive personally, and airport transfers at whatever hour your flight lands.",
         "hero": {
             "chips": {
                 "since": "Hosting since 2020",
                 "apartments": "2 apartments, both central",
-                "tours": "7 excursions we drive ourselves",
+                "tours": "2 excursions we drive ourselves",
                 "languages": "English, Russian, Uzbek"
             }
         },
@@ -29,7 +29,7 @@
                 "fourth": "Airport transfers were the last piece, and the one guests thank us for most. Most flights into Tashkent land between two and five in the morning, which is exactly when arriving in an unfamiliar country is hardest and when the taxi rank is least forgiving. Having a driver with your name on a sign, who has watched your flight and will wait an hour if passport control is slow, removes the single worst hour of the trip. We run the transfers for guests staying with us and for people staying elsewhere, because it is a good service whether or not you rent our apartment.",
                 "fifth": "What ties all of it together is that there is one thread. You write once, on WhatsApp, and the apartment, the driver and the mountain day are arranged by the same person in the same conversation. Nothing is confirmed by an automated email you have to dig out of a spam folder at midnight, and nobody is going to hand you off to a partner agency. That is the whole model, and it is the reason we have never built a booking engine: a booking engine would be faster for us and worse for you.",
                 "sixth": "The people who stay with us are not one type. In spring and autumn it is mostly couples and small groups doing Uzbekistan properly, with Tashkent as the first and last stop around Samarkand and Bukhara. In winter it is skiers, who want an early car to Amirsoy and a warm flat to come back to. Through the summer it is families escaping the heat towards Charvak, and a steady stream of people here for work who discover halfway through the week that the mountains are ninety minutes away. We have learned to ask a couple of questions at the start rather than assume, because a family with a small child and a snowboarder on a solo trip need almost nothing in common from us.",
-                "seventh": "We are also honest about what we are not. We are not a hotel: there is no reception desk, no restaurant and nobody in the building at three in the morning except the security guard in the lobby. We do not run tours to every corner of the country, because we only sell the seven routes we drive ourselves and know in every season. And we will tell you when something is not worth it, whether that is a mountain day in heavy cloud or a cable car on an afternoon when the ridge is invisible from fifty metres. Losing a booking that way costs us less than a guest who felt sold to."
+                "seventh": "We are also honest about what we are not. We are not a hotel: there is no reception desk, no restaurant and nobody in the building at three in the morning except the security guard in the lobby. We do not run tours to every corner of the country, because we only sell the two routes we drive ourselves and know in every season. And we will tell you when something is not worth it, whether that is a mountain day in heavy cloud or a cable car on an afternoon when the ridge is invisible from fifty metres. Losing a booking that way costs us less than a guest who felt sold to."
             },
             "link-apartments": "See the two apartments",
             "link-contact": "Write to us directly"
@@ -50,7 +50,7 @@
             "items": {
                 "local": {
                     "title": "We are local, and we are here",
-                    "text": "Tashkent is home, not a market we entered. We grew up here, we live a ten-minute drive from both apartments, and if something breaks at eleven at night one of us comes over. That proximity is the whole product. It is what lets us promise a late check-in without qualifying it, hand over keys in person, and give you an honest answer about a neighbourhood or a restaurant instead of the answer that generates a commission. It also means the small things get handled without becoming a story: a pharmacy at midnight, a SIM card that will not activate, a taxi driver who has misread the address. Those are the moments that decide whether a trip felt easy, and they cannot be solved by a support ticket from another city."
+                    "text": "Tashkent is home, not a market we entered. We grew up here, we live a ten-minute drive from both apartments, and if something breaks at eleven at night one of us comes over. That proximity is the whole product. It is what lets us meet a late flight in person, hand over keys ourselves, and give you an honest answer about a neighbourhood or a restaurant instead of the answer that generates a commission. It also means the small things get handled without becoming a story: a pharmacy at midnight, a SIM card that will not activate, a taxi driver who has misread the address. Those are the moments that decide whether a trip felt easy, and they cannot be solved by a support ticket from another city."
                 },
                 "thread": {
                     "title": "One conversation, start to finish",
@@ -62,7 +62,7 @@
                 },
                 "fees": {
                     "title": "No hidden fees, no surprise surcharges",
-                    "text": "There is no cleaning fee added at the end, no service charge, no premium for arriving at three in the morning and no upsell waiting for you at the kerb. Child seats are free, the first hour of airport waiting is free, and if your group turns out not to fit in one car we send a second one and swallow the difference rather than putting it on your bill. Nor is there a deposit to lose. We hold your dates on your word, and if your plans change we would rather know early and release the apartment than hold money over you for a trip that is not happening."
+                    "text": "There is no cleaning fee added at the end, no service charge, no premium for arriving at three in the morning and no upsell waiting for you at the kerb. The first hour of airport waiting is free, and if your group turns out not to fit in one car we send a second one and swallow the difference rather than putting it on your bill. Nor is there a deposit to lose. We hold your dates on your word, and if your plans change we would rather know early and release the apartment than hold money over you for a trip that is not happening."
                 }
             }
         },
@@ -75,12 +75,12 @@
             "extras-link": "What is inside each apartment",
             "rules": {
                 "hours": {
-                    "term": "Check-in and check-out around the clock",
-                    "text": "There is no fixed 14:00 window here. Tell us your exact arrival time and a member of our staff meets you at the apartment, whatever the hour — most flights into Tashkent land between 02:00 and 05:00, so a night arrival is the rule rather than the exception. Times are flexible, but they can collide with the guests either side of you, so tell us what you would like before you book rather than after."
+                    "term": "Check-in from 14:00, check-out by 12:00",
+                    "text": "Check-in runs from 14:00 and check-out is by 12:00. Most flights into Tashkent land between 02:00 and 05:00, so tell us your flight when you book: when the apartment is free the night before we can usually let you in early, and when it is not we say so in advance rather than leaving you to find out at the door. Early check-in and late check-out both depend on the guests either side of you, which is why we would rather agree them before the booking than after."
                 },
                 "keys": {
-                    "term": "Keys in person, entry at any hour",
-                    "text": "On the day of arrival we send the entrance code and a photo of the door, so you can let yourself in at three in the morning without waiting for anyone. One of us still comes by to hand the keys over properly and show you how the building works."
+                    "term": "Keys in person, or let yourself in",
+                    "text": "On the day of arrival we send the entrance code and a photo of the door, so once the apartment is ready you can let yourself in without waiting for anyone. One of us still comes by to hand the keys over properly and show you how the building works."
                 },
                 "registration": {
                     "term": "Registration is handled by us",
@@ -109,14 +109,14 @@
             "lead": "Three services, run by the same people, bookable in the same message.",
             "items": {
                 "apartments": {
-                    "title": "Apartments in Tashkent city center",
-                    "text": "Two flats within walking distance of Amir Timur Square, both with self check-in at any hour, fibre Wi-Fi and free parking. We hand over the keys ourselves and we are minutes away for the whole stay. One is a two-bedroom apartment on the eighth floor for families and small groups, the other a one-bedroom on the sixteenth with a window wall over Tashkent City Park.",
+                    "title": "Apartments in the center of Tashkent",
+                    "text": "Two flats within walking distance of Amir Timur Square, both with self check-in from 14:00, fibre Wi-Fi and free parking. We hand over the keys ourselves and we are minutes away for the whole stay. One is a two-bedroom apartment on the eighth floor for families and small groups, the other a one-bedroom on the sixteenth with a window wall over Tashkent City Park.",
                     "link": "See both apartments"
                 },
                 "tours": {
                     "title": "Excursions to the mountains and the city",
-                    "text": "Seven routes we drive personally. Four are full days in the Western Tian Shan — the Amirsoy resort, Greater Chimgan, the Charvak reservoir and the Chinorkent cable car — with pickup from your door at 9:00 and back by 18:00. Three are shorter and inside Tashkent: the metro stations, the Besh Qozon plov centre with the bazaars, and Magic City after dark. Every one of them runs in our own Kia Sportage, four seats, same driver all day.",
-                    "link": "See all 7 excursions"
+                    "text": "Two full-day routes we drive personally. The tour around Tashkent takes in Khast-Imam, Chorsu bazaar, the Romanov palace, lunch at the Besh Qozon pilaf centre, the museums, Minor Mosque, Independence Square, Magic City and the mosaic metro stations. The tour to the mountains of the Tashkent region runs to Amirsoy and its cable car, Greater Chimgan, the Charvak reservoir and the Chinorkent cable car, with lunch at the Fayz cafe. Both leave your door at 9:00 and are back by 19:00, in our own Kia Sportage 2024, four seats, same driver all day.",
+                    "link": "See both excursions"
                 },
                 "transfer": {
                     "title": "Airport transfers at any hour",

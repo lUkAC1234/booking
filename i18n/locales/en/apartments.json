@@ -1,6 +1,6 @@
 {
     "apartments": {
-        "title": "Apartments in Tashkent city center",
+        "title": "Apartments in the center of Tashkent",
         "lead": "Two apartments in the middle of Tashkent, both a short walk from a metro station. We host them ourselves, so the person who answers your message is the person who hands you the keys.",
         "section-lead": "We keep exactly two apartments and look after both of them personally. That is the whole inventory, which is why we can promise the photos match what you walk into, and why the calendar fills up early in spring and autumn.",
         "all-link": "See both apartments",
@@ -9,7 +9,7 @@
         "hero": {
             "chips": {
                 "walk": "Metro within a few minutes",
-                "checkin": "Check-in and check-out 24/7",
+                "checkin": "Check-in 14:00, check-out 12:00",
                 "stay": "From one night",
                 "reply": "We reply in 10 minutes"
             }
@@ -27,11 +27,11 @@
             "items": {
                 "metro": {
                     "title": "The first metro in Central Asia",
-                    "text": "Tashkent opened its metro in 1977, the first in the region, and built the stations like public halls: chandeliers, carved marble, cosmonaut mosaics and domed ceilings thirty metres underground. Kosmonavtlar, Minor, Toshkent, Pakhtakor and Alisher Navoi are the ones worth the detour. Photography and filming were officially permitted from 1 June 2018, which is why almost nobody outside the country has seen them, and why we now run a proper excursion through them."
+                    "text": "Tashkent opened its metro in 1977, the first in the region, and built the stations like public halls: chandeliers, carved marble, cosmonaut mosaics and domed ceilings thirty metres underground. Cosmonauts, Minor, Toshkent, Pakhtakor and Alisher Navoi are the ones worth the detour. Photography and filming were officially permitted from 1 June 2018, which is why almost nobody outside the country has seen them, and why the mosaic stations are a stop on our tour around Tashkent."
                 },
                 "plov": {
-                    "title": "Besh Qozon, where plov is made by the tonne",
-                    "text": "Plov is the national dish and the Central Asian Plov Centre, known to everyone here as Besh Qozon, is where it happens at scale: roughly one and a half tonnes cooked in a single day, in open kazans wide enough to stand in. Go before one in the afternoon, because when the kazan is finished it is finished. We will tell you what else to order alongside it, and we drive guests there as a half-day excursion with the bazaars attached."
+                    "title": "Besh Qozon, where pilaf is made by the tonne",
+                    "text": "Pilaf is the national dish and the Central Asian Pilaf Centre, known to everyone here as Besh Qozon, is where it happens at scale: roughly one and a half tonnes cooked in a single day, in open kazans wide enough to stand in. Go before one in the afternoon, because when the kazan is finished it is finished. We will tell you what else to order alongside it, and it is the lunch stop on our full-day tour around Tashkent, with Chorsu bazaar on the same route."
                 },
                 "bazaars": {
                     "title": "Bazaars, fruit and what to actually buy",
@@ -57,15 +57,15 @@
             "steps": {
                 "message": {
                     "title": "Send us your dates",
-                    "text": "Tap any booking button and WhatsApp opens with the apartment already named. Tell us the dates, how many of you there are and roughly when you land. We answer with real availability, the total price and the exact address. Arrival and departure times are flexible, but they can collide with the guests either side of you, so tell us what you would like before you book rather than after."
+                    "text": "Tap any booking button and WhatsApp opens with the apartment already named. Tell us the dates, how many of you there are and roughly when you land. We answer with real availability, the total price and the exact address. Check-in is from 14:00 and check-out is by 12:00; if you need to arrive earlier or leave later, ask before you book rather than after, because it depends on the guests either side of you."
                 },
                 "confirm": {
                     "title": "We confirm and hold it",
                     "text": "Once you say yes the apartment comes off the calendar. No deposit is required, no card is charged, and if your plans change you tell us in the same thread. We will also ask whether you want a driver waiting at the airport and whether you have a mountain day in mind."
                 },
                 "checkin": {
-                    "title": "Arrive at any hour",
-                    "text": "Check-in and check-out run around the clock. Tell us your exact arrival time and a member of our staff meets you at the apartment. If you land in the middle of the night and would rather not wait for anyone, you let yourself in with the key from the mini-safe — we send the entrance code and a photo of the door on the day."
+                    "title": "Check in from 14:00",
+                    "text": "Check-in runs from 14:00 and check-out is by 12:00. Tell us your exact arrival time and a member of our staff meets you at the apartment, or you let yourself in with the key from the mini-safe if you would rather not wait for anyone — we send the entrance code and a photo of the door on the day. If you land on a night flight, send the flight number when you book and we will tell you whether the apartment can be ready before 14:00."
                 }
             }
         },
@@ -76,12 +76,12 @@
             "climate": "Two air conditioners",
             "essentials": "Hairdryer, iron and fresh linen on arrival",
             "furnished": "Fully furnished, with every basic necessity in place",
-            "checkin": "Check-in and check-out at any hour, day or night"
+            "checkin": "Check-in from 14:00, check-out by 12:00"
         },
         "items": {
             "buyuk-turon": {
-                "title": "Buyuk Turon Apartment",
-                "summary": "Fifty-five square metres on Buyuk Turon street, one hundred and fifty metres from Kosmonavtlar metro and ten metres from the Golubye Kupola park.",
+                "title": "Cosmonauts Apartment",
+                "summary": "A 55 square metre apartment located at 75 Buyuk Turon Street, 150 metres from the Cosmonauts metro station and 10 metres from Blue Domes Park.",
                 "photo": "Warm daylight interior of a Tashkent apartment: cream plaster walls, a low oak coffee table, a deep terracotta armchair, a floor lamp with a white linen shade, sheer curtains diffusing afternoon light, a framed abstract print above a sideboard, ceramic vases. Editorial interiors photography, warm white balance, soft natural light, faint film grain, no people, 16:10 landscape.",
                 "facts": {
                     "size": "55 m²",
@@ -89,13 +89,13 @@
                     "metro": "Metro — 150 m",
                     "bathrooms": "1 bathroom",
                     "wifi": "Wi-Fi 20–100 Mbps",
-                    "checkin": "Check-in 24/7"
+                    "checkin": "Check-in from 14:00"
                 },
                 "nearby": {
-                    "metro": "Kosmonavtlar metro station — 150 m",
-                    "park": "Golubye Kupola park — 10 m",
+                    "metro": "Cosmonauts metro station — 150 m",
+                    "park": "Blue Domes park — 10 m",
                     "shop": "Smart supermarket — 20 m",
-                    "food": "Golubye Kupola restaurant — 100 m",
+                    "food": "Blue Domes restaurant — 100 m",
                     "transport": "Public transport stop — 200 m",
                     "culture": "Museum of History and Exhibition Hall — 400 m",
                     "station": "North railway station (Afrosiyob) — 2 km"
@@ -103,18 +103,18 @@
             },
             "amir-temur": {
                 "title": "Amir Temur Avenue Apartment",
-                "summary": "Sixty-two square metres on Amir Temur Avenue, the main artery running north out of the city centre, with a metro station a few minutes from the entrance.",
+                "summary": "A 62 square metre apartment located at 48 Amir Temur Avenue, 200 metres from the Minor metro station.",
                 "photo": "Bright interior of a Tashkent apartment on a main avenue: tall windows behind sheer curtains, cream bouclé sofa, round marble side table, muted rose throw blanket, pale oak floor, minimal styling, a bookshelf in soft shadow. Warm grading, natural light only, no people, 16:10 landscape.",
                 "facts": {
                     "size": "62 m²",
                     "rooms": "1 bedroom + living room",
-                    "metro": "Metro — 400 m",
+                    "metro": "Metro — 200 m",
                     "bathrooms": "1 bathroom",
                     "wifi": "Wi-Fi 20–100 Mbps",
-                    "checkin": "Check-in 24/7"
+                    "checkin": "Check-in from 14:00"
                 },
                 "nearby": {
-                    "metro": "Nearest metro station — 400 m",
+                    "metro": "Minor metro station — 200 m",
                     "park": "Amir Temur Square and its chinar trees — 1.5 km",
                     "shop": "Supermarket — 100 m",
                     "food": "Cafes and restaurants on the avenue — 50 m",

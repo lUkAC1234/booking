@@ -25,7 +25,6 @@ const FEATURE_IDS = [
     "meet-greet",
     "flight-tracking",
     "free-waiting",
-    "child-seat",
     "bilingual-driver",
     "one-car",
 ] as const;

@@ -4,26 +4,16 @@ export interface Tour {
     id: string;
     title: string;
     summary: string;
-    highlights: string[];
+    program: string[];
     facts: CardFact[];
     photos: GalleryPhoto[];
     photoBrief: string;
 }
 
-const TOUR_IDS = [
-    "amirsoy",
-    "chimgan",
-    "charvak",
-    "chinorkent",
-    "tashkent-metro",
-    "besh-qozon",
-    "magic-city",
-] as const;
+const TOUR_IDS = ["tashkent-city", "tashkent-mountains"] as const;
 
 type TourId = (typeof TOUR_IDS)[number];
 
-const HIGHLIGHT_KEYS = ["one", "two", "three"] as const;
-const PHOTO_KEYS = ["one", "two", "three"] as const;
 const FACT_KEYS = ["duration", "group", "vehicle"] as const;
 
 const FACT_ICONS: Record<(typeof FACT_KEYS)[number], IconName> = {
@@ -32,33 +22,53 @@ const FACT_ICONS: Record<(typeof FACT_KEYS)[number], IconName> = {
     vehicle: "car",
 };
 
-const PHOTO_FOLDERS: Record<TourId, string> = {
-    amirsoy: "amirsoy",
-    chimgan: "greaterchimgan",
-    charvak: "charvak",
-    chinorkent: "chinorkent",
-    "tashkent-metro": "metro",
-    "besh-qozon": "beshqozon",
-    "magic-city": "magiccity",
+const PHOTO_KEYS = ["one", "two", "three", "four", "five", "six", "seven", "eight"] as const;
+
+const PROGRAM_KEYS: Record<TourId, readonly string[]> = {
+    "tashkent-city": [
+        "khast-imam",
+        "chorsu",
+        "romanov",
+        "besh-qozon",
+        "applied-arts",
+        "magic-city",
+        "minor",
+        "independence",
+        "amir-temur",
+        "metro",
+    ],
+    "tashkent-mountains": ["amirsoy", "lunch", "chimgan", "charvak", "chinorkent"],
 };
 
-const PHOTO_COUNTS: Record<TourId, number> = {
-    amirsoy: 2,
-    chimgan: 2,
-    charvak: 2,
-    chinorkent: 2,
-    "tashkent-metro": 2,
-    "besh-qozon": 3,
-    "magic-city": 2,
+const PHOTO_SOURCES: Record<TourId, readonly string[]> = {
+    "tashkent-city": [
+        "beshqozon/image3",
+        "beshqozon/image1",
+        "beshqozon/image2",
+        "magiccity/image1",
+        "magiccity/image2",
+        "metro/image1",
+        "metro/image2",
+    ],
+    "tashkent-mountains": [
+        "amirsoy/image1",
+        "amirsoy/image2",
+        "greaterchimgan/image1",
+        "greaterchimgan/image2",
+        "charvak/image1",
+        "charvak/image2",
+        "chinorkent/image1",
+        "chinorkent/image2",
+    ],
 };
 
 export const useTours = () => {
     const { t } = useI18n();
 
     const photosFor = (id: TourId): GalleryPhoto[] =>
-        Array.from({ length: PHOTO_COUNTS[id] }, (_, position) => ({
+        PHOTO_SOURCES[id].map((path, position) => ({
             id: `${id}-${position + 1}`,
-            src: `/images/tours/${PHOTO_FOLDERS[id]}/image${position + 1}.webp`,
+            src: `/images/tours/${path}.webp`,
             alt: t(`tours.items.${id}.photos.${PHOTO_KEYS[position]}`),
         }));
 
@@ -67,7 +77,7 @@ export const useTours = () => {
             id,
             title: t(`tours.items.${id}.title`),
             summary: t(`tours.items.${id}.summary`),
-            highlights: HIGHLIGHT_KEYS.map((key) => t(`tours.items.${id}.highlights.${key}`)),
+            program: PROGRAM_KEYS[id].map((key) => t(`tours.items.${id}.program.${key}`)),
             facts: FACT_KEYS.map((key) => ({
                 label: t(`tours.items.${id}.facts.${key}`),
                 icon: FACT_ICONS[key],

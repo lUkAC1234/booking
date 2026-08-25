@@ -80,7 +80,7 @@
 :root[data-tier="mobile"] {
     --bottom-nav-height: calc(#{functions.rem(72)} + env(safe-area-inset-bottom));
 
-    .app-header__lang,
+    .app-header__cta,
     .app-header__burger,
     .app-header__menu {
         display: none;

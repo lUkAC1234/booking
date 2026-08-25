@@ -1,79 +1,52 @@
 {
     "tours": {
         "title": "Tashkent tours to Amirsoy and Chimgan",
-        "lead": "Seven excursions we drive ourselves: four full days in the Western Tian Shan and three shorter ones inside Tashkent. Mountain routes leave at 9:00 and are back by 18:00, and every one of them runs in one Kia Sportage with the same driver from start to finish.",
+        "lead": "Two excursions, both driven by us: a full day around Tashkent and a full day in the mountains of the Tashkent region. Both leave at 9:00 in the morning and are back at your door at 19:00 the same evening, in one Kia Sportage 2024 with the same driver from start to finish.",
         "section-title": "Tours to Amirsoy and the Chimgan mountains",
-        "section-lead": "The Western Tian Shan begins about eighty kilometres from the centre of Tashkent, and the road there climbs through orchards, a river gorge and a turquoise reservoir before the ridges appear. Four mountain days, plus the metro, the plov centre and Magic City when you want a shorter one — no group buses, no fixed itinerary you have to keep up with.",
-        "all-link": "See all 7 excursions",
-        "catalog": {
-            "title": "Seven excursions we drive ourselves",
-            "lead": "The four mountain routes all run on the same shape of day: pickup from wherever you are staying at 9:00, the climb up through Gazalkent into the Bostanlyk valleys, as long as you want at the destination, and back at your door by 18:00. The three city excursions are shorter — half a day for the metro and Besh Qozon, an evening for Magic City. Every route: up to four guests, one car, one driver who has done the road in every season."
-        },
+        "section-lead": "Did you know that the Tashkent region has the Western Tian Shan mountains? They are very beautiful, and there is a cable car that climbs to 2,290 metres above sea level and the Charvak reservoir. We locals love these places. Do not forget to visit these attractions — as the apartment owner, I will do my best to share this information with you as soon as possible.",
+        "all-link": "See both excursions",
+        "program-title": "Tour program",
+        "program-note": "I will also walk the route with you and advise you where it is worth going inside.",
         "hero": {
             "photo": "Amirsoy gondola cabins crossing the Western Tian Shan ridges in late afternoon light.",
             "chips": {
-                "count": "7 excursions",
+                "count": "2 excursions",
                 "pickup": "Pickup from your door",
-                "drive": "Mountain days 9:00 to 18:00",
-                "car": "Kia Sportage, up to 4 guests"
+                "drive": "9:00 to 19:00, same day",
+                "car": "Kia Sportage 2024, up to 4 guests"
             }
         },
         "practical": {
             "title": "Practical notes before you book",
-            "lead": "The mountain routes run on the same day shape and the same car, so the only real decisions left to you are the date and the destination. The mountains around Tashkent change completely between seasons, and the difference between a good day and a cold one is usually a jacket and a start time. The three city excursions work in any weather. Here is everything we tell guests before they choose.",
+            "lead": "Both excursions run on the same shape of day and in the same car, so the only real decisions left to you are the date and which of the two you want first. The mountains around Tashkent change completely between seasons, and the difference between a good day and a cold one is usually a jacket and a start time. The route around the city works in any weather. Here is everything we tell guests before they choose.",
             "season-title": "When to go where",
-            "season-caption": "Best seasons for each mountain day trip from Tashkent",
+            "season-caption": "Best seasons for the two excursions from Tashkent",
             "season-head": {
-                "place": "Destination",
+                "place": "Excursion",
                 "best": "Best months",
                 "note": "What it is like"
             },
             "season": {
-                "amirsoy": {
-                    "place": "Amirsoy",
+                "city": {
+                    "place": "Tour around Tashkent",
                     "best": "All year",
-                    "note": "Snow and lifts from December, alpine meadows and trails from May"
+                    "note": "Mosques, museums and bazaars work in any weather; spring and autumn are the most comfortable on foot"
                 },
-                "chimgan": {
-                    "place": "Chimgan",
+                "mountains": {
+                    "place": "Tour to the mountains",
                     "best": "All year",
-                    "note": "Open meadows April to October, snow above 2,000 m from November"
-                },
-                "charvak": {
-                    "place": "Charvak",
-                    "best": "June to September",
-                    "note": "Warm enough to swim; clear air and empty shorelines the rest of the year"
-                },
-                "chinorkent": {
-                    "place": "Chinorkent",
-                    "best": "All year",
-                    "note": "Glazed cabins in any weather; best on a clear day for the full circular view"
-                },
-                "metro": {
-                    "place": "Tashkent metro",
-                    "best": "All year",
-                    "note": "Entirely underground, so weather and season are irrelevant"
-                },
-                "plov": {
-                    "place": "Besh Qozon and the bazaars",
-                    "best": "All year",
-                    "note": "Go before 13:00 — when the kazan is finished, it is finished"
-                },
-                "magic-city": {
-                    "place": "Magic City",
-                    "best": "All year",
-                    "note": "An evening route — the floodlights and the fountain show start after dark"
+                    "note": "Snow and working lifts December to March, alpine meadows from May, swimming at Charvak June to September"
                 }
             },
             "schedule-title": "How the day runs",
             "schedule": {
                 "pickup": "9:00 — the driver is at your apartment or hotel, no meeting point to find",
-                "drive": "9:00 to 10:30 — the climb through Gazalkent into the Bostanlyk valleys",
-                "arrival": "10:30 onwards — time at the destination at your pace, not on a group clock",
-                "lunch": "Lunch wherever you prefer — a mountain cafe, a restaurant above the water, or one you bring",
-                "return": "18:00 — back at the door you were collected from",
-                "limit": "Up to 9 hours in total; a later finish is possible if you agree it the day before",
-                "city": "City excursions are three to four hours — morning or afternoon for the metro and Besh Qozon, after sunset for Magic City"
+                "city": "The Tashkent route works from the old town through the museums and the squares to Magic City",
+                "mountains": "The mountain route climbs through Gazalkent into the Bostanlyk valleys, about ninety minutes out",
+                "lunch": "Lunch is built into both days — Besh Qozon in the city, the Fayz cafe in the mountains",
+                "guide": "Your driver walks the sites with you and advises where a ticket is worth buying",
+                "return": "19:00 — back at the door you were collected from, the same evening",
+                "limit": "Up to 10 hours in total; a later finish is possible if you agree it the day before"
             },
             "drive-title": "Drive times from the centre",
             "drive": {
@@ -88,12 +61,12 @@
                 "layers": "Layers rather than one thick coat — the mountains run ten degrees colder than the city",
                 "shoes": "Shoes with grip for anything above the cable car stations",
                 "sun": "Sunglasses and sunscreen, the altitude is deceptive even in winter",
-                "cash": "Some cash in som for mountain cafes, lifts and lakeside restaurants",
+                "cash": "Some cash in som for museum tickets, mountain cafes and lifts",
                 "water": "A water bottle, refilled before you leave the apartment",
-                "documents": "A passport or ID, which some mountain resorts still ask to see"
+                "documents": "A passport or ID, which some museums and mountain resorts still ask to see"
             },
             "car-title": "The car you travel in",
-            "car-lead": "Every day trip and every transfer we run is driven in our own Kia Sportage. It is a compact SUV, which is the right car for this particular road: high enough for the mountain sections above Gazalkent, small enough to park at a crowded viewpoint, and comfortable enough that ninety minutes each way does not feel like the price of the day.",
+            "car-lead": "Both excursions are driven in our own Kia Sportage 2024, a business-class compact SUV, by a driver with 22 years behind the wheel. It is the right car for this particular road: high enough for the mountain sections above Gazalkent, small enough to park at a crowded viewpoint, and comfortable enough that ninety minutes each way does not feel like the price of the day.",
             "car": {
                 "seats": "Four passenger seats, so a family or two couples travel together in one car",
                 "climate": "Air conditioning through the summer and a warm cabin on winter mornings",
@@ -106,138 +79,62 @@
             "pickup-link-transfer": "Add an airport transfer"
         },
         "items": {
-            "amirsoy": {
-                "title": "Amirsoy mountain resort",
-                "summary": "The newest mountain resort in Uzbekistan and the easiest full day in the mountains. Ninety minutes of driving through the Chirchik valley, then the whole middle of the day at 1,500 metres with terraces, trails, lifts and enough space to do nothing at all.",
-                "photo": "The Amirsoy resort base under snow-dusted Western Tian Shan ridges on a clear winter morning, wooden chalet roofs and a lift line, pine forest climbing the slope behind, cool-neutral shadows against warm sunlit snow, no people in frame, 16:10 landscape.",
+            "tashkent-city": {
+                "title": "Tour around Tashkent",
+                "summary": "A full day through the Tashkent people actually come here for: the old town around Khast-Imam, the domes of Chorsu bazaar, the palace of a Romanov grand duke, pilaf straight out of the kazan at Besh Qozon, and the museums, squares and mosaic metro stations of the modern centre. We collect you at 9:00, drive between every stop so nothing is a walk in the heat, and have you back at your door by 19:00 the same evening. Ten stops, one car, no group to keep up with.",
+                "photo": "Khast-Imam square in Tashkent under a clear sky: turquoise domes, carved wooden columns and a paved courtyard, warm afternoon light, no people in frame, 16:10 landscape.",
+                "photos": {
+                    "one": "The turquoise dome of Chorsu bazaar above the market rows of old Tashkent.",
+                    "two": "The ceramic-plate wall and sign of the Besh Qozon Central Asian Pilaf Centre.",
+                    "three": "A cook turning pilaf in one of the giant kazans at Besh Qozon.",
+                    "four": "The illuminated castle at Magic City on a summer evening.",
+                    "five": "The Magic City promenade and its balloon landmark under evening lights.",
+                    "six": "The blue majolica domes of Alisher Navoi station on the Tashkent metro.",
+                    "seven": "A cosmonaut mosaic and crystal chandeliers under the vaulted ceiling of a Tashkent metro station."
+                },
+                "program": {
+                    "khast-imam": "Khast-Imam Square, the religious centre of the capital",
+                    "chorsu": "Chorsu Bazaar, one of the largest bazaars in Uzbekistan and Central Asia",
+                    "romanov": "The palace of Grand Duke Nikolai Konstantinovich Romanov",
+                    "besh-qozon": "Lunch at the famous Central Asian pilaf centre Besh Qozon",
+                    "applied-arts": "The Museum of Applied Arts of Uzbekistan",
+                    "magic-city": "Magic City, the modern park built around a lake",
+                    "minor": "Minor Mosque, in white marble above the Ankhor canal",
+                    "independence": "Independence Square",
+                    "amir-temur": "The Amir Temur Museum",
+                    "metro": "The Tashkent metro, the first in Central Asia, and its mosaic stations"
+                },
+                "facts": {
+                    "duration": "9:00 to 19:00, one day",
+                    "group": "Up to 4 guests",
+                    "vehicle": "Kia Sportage 2024"
+                }
+            },
+            "tashkent-mountains": {
+                "title": "Tour to the mountains of the Tashkent region",
+                "summary": "The mountain day locals take at the weekend. Ninety minutes out of the city the road climbs through Gazalkent into the Bostanlyk valleys and the whole Western Tian Shan opens up: the Amirsoy resort and its gondola, the ridges under Greater Chimgan, the turquoise Charvak reservoir and the glazed cabins of the Chinorkent cable car. Lunch is at the Fayz cafe in the mountains. We collect you at 9:00 and have you back at your door by 19:00, with as long as you want at every stop.",
+                "photo": "The Amirsoy resort base under snow-dusted Western Tian Shan ridges on a clear winter morning, wooden chalet roofs and a lift line, pine forest climbing the slope behind, no people in frame, 16:10 landscape.",
                 "photos": {
                     "one": "The dark timber main lodge of Amirsoy resort under autumn Western Tian Shan ridges.",
-                    "two": "Amirsoy chalet village and chairlift beside a groomed winter piste under snow-covered ranges."
+                    "two": "Amirsoy chalet village and chairlift beside a groomed winter piste under snow-covered ranges.",
+                    "three": "Alpenglow on the snow-covered summit of Greater Chimgan at dusk.",
+                    "four": "Skiers and snowboarders on the open Chimgan slope beside the old drag lift.",
+                    "five": "The turquoise Charvak reservoir seen from the ridge above, with a lakeside village and its bridge.",
+                    "six": "The Charvak shoreline in summer — beach, boats and resort roofs under bare rock ridges.",
+                    "seven": "The glass-fronted Chinorkent cable-car terminal below snow-covered peaks.",
+                    "eight": "A Chinorkent gondola cabin crossing the foothills above the town."
                 },
-                "highlights": {
-                    "one": "The climb through Gazalkent and the Bostanlyk orchards",
-                    "two": "Free time at the resort base — terraces, cafes and walking trails",
-                    "three": "Lifts and snow from December, alpine meadows from May"
-                },
-                "facts": {
-                    "duration": "Up to 9 hours",
-                    "group": "Up to 4 guests",
-                    "vehicle": "Kia Sportage"
-                }
-            },
-            "chimgan": {
-                "title": "Greater Chimgan",
-                "summary": "The classic Tashkent mountain day. Greater Chimgan rises to 3,309 metres above the Charvak basin, and the road to its foot hands you the whole Western Tian Shan skyline in a single afternoon — meadows and horses in summer, deep quiet snow in winter.",
-                "photo": "Greater Chimgan peak seen across a green alpine meadow in late spring, dramatic layered ridges receding into haze behind it, a dirt track curving through the grass, warm afternoon light, no people, 16:10 landscape.",
-                "photos": {
-                    "one": "Alpenglow on the snow-covered summit of Greater Chimgan at dusk.",
-                    "two": "Skiers and snowboarders on the open Chimgan slope beside the old drag lift."
-                },
-                "highlights": {
-                    "one": "The Chimgan plateau under the 3,309 m summit",
-                    "two": "Viewpoints looking down onto the Charvak reservoir",
-                    "three": "Mountain cafes, horse riding and open meadows in summer"
+                "program": {
+                    "amirsoy": "The Amirsoy mountains and the cable car",
+                    "lunch": "Lunch at the Fayz cafe",
+                    "chimgan": "The Chimgan mountains",
+                    "charvak": "The Charvak reservoir",
+                    "chinorkent": "The Chinorkent mountains and the cable car"
                 },
                 "facts": {
-                    "duration": "Up to 9 hours",
+                    "duration": "9:00 to 19:00, one day",
                     "group": "Up to 4 guests",
-                    "vehicle": "Kia Sportage"
-                }
-            },
-            "charvak": {
-                "title": "Charvak reservoir",
-                "summary": "A turquoise reservoir held between bare ochre ridges, an hour and a quarter out of the city and the shortest drive of the five. Swimming and boats from June through September, empty shorelines and remarkably clear air for the rest of the year.",
-                "photo": "Charvak reservoir from an elevated viewpoint: intensely turquoise water surrounded by bare ochre mountains, a small boat wake crossing the frame, strong midday sun, deep blue sky, no people, 16:10 landscape.",
-                "photos": {
-                    "one": "The turquoise Charvak reservoir seen from the ridge above, with a lakeside village and its bridge.",
-                    "two": "The Charvak shoreline in summer — beach, boats and resort roofs under bare rock ridges."
-                },
-                "highlights": {
-                    "one": "The dam viewpoint over the length of the reservoir",
-                    "two": "Time on the shore — swimming and boat hire in summer",
-                    "three": "Lunch at a restaurant looking out over the water"
-                },
-                "facts": {
-                    "duration": "Up to 9 hours",
-                    "group": "Up to 4 guests",
-                    "vehicle": "Kia Sportage"
-                }
-            },
-            "chinorkent": {
-                "title": "Chinorkent cable car",
-                "summary": "One of the most reliable and safest gondola lines in the world, and the one day of the four where the ride itself is the destination. The cabins are fully glazed, so the view is circular and uninterrupted from the moment you leave the lower station — close enough to the slope to feel part of it.",
-                "photo": "A fully glazed panoramic gondola cabin crossing a wooded mountain gorge in the Western Tian Shan, plane trees and a river far below, layered ridges beyond, soft late-morning light, no people in frame, 16:10 landscape.",
-                "photos": {
-                    "one": "The glass-fronted Chinorkent cable-car terminal below snow-covered peaks.",
-                    "two": "A Chinorkent gondola cabin crossing the foothills above the town."
-                },
-                "highlights": {
-                    "one": "Fully glazed cabins with an uninterrupted circular view",
-                    "two": "A calm, unhurried crossing above the gorge and the pine slopes",
-                    "three": "Built and maintained to some of the strictest safety standards there are"
-                },
-                "facts": {
-                    "duration": "Up to 9 hours",
-                    "group": "Up to 4 guests",
-                    "vehicle": "Kia Sportage"
-                }
-            },
-            "tashkent-metro": {
-                "title": "Tashkent metro architecture",
-                "summary": "The first metro in Central Asia, and one of the very few you would ride for the ceilings alone. Chandeliers, carved marble and cosmonaut mosaics thirty metres underground — and photography has only been officially allowed since 1 June 2018, which is why almost nobody outside the country has seen it.",
-                "photo": "An ornate Tashkent metro station platform: domed ceiling with cosmonaut-themed mosaic medallions, blue tiled columns, hanging chandeliers, polished marble floor, symmetrical one-point perspective down the empty platform, no people, 16:10 landscape.",
-                "photos": {
-                    "one": "The blue majolica domes of Alisher Navoi station on the Tashkent metro.",
-                    "two": "A cosmonaut mosaic and crystal chandeliers under the vaulted ceiling of a Tashkent metro station."
-                },
-                "highlights": {
-                    "one": "Kosmonavtlar, Minor, Toshkent, Pakhtakor and Alisher Navoi",
-                    "two": "Cosmonaut medallions, domed mosaic halls and carved marble",
-                    "three": "Filming allowed since June 2018 — bring a camera"
-                },
-                "facts": {
-                    "duration": "Half day, 3–4 hours",
-                    "group": "Up to 4 guests",
-                    "vehicle": "Kia Sportage"
-                }
-            },
-            "besh-qozon": {
-                "title": "Besh Qozon and the bazaars",
-                "summary": "Uzbekistan is known for plov, and Besh Qozon is where the country makes it at scale: roughly one and a half tonnes in a single day, out of open kazans wide enough to stand in. Afterwards we take you through the big bazaars, where the fruit rows are the part guests actually write to us about.",
-                "photo": "A close overhead shot of an Uzbek plov kazan: rice, carrot, chickpeas and lamb glistening under steam, a wooden serving spoon lifting a portion, warm tungsten market light, shallow depth of field, no faces in frame, 16:10 landscape.",
-                "photos": {
-                    "one": "The ceramic-plate wall and sign of the Besh Qozon Central Asian Pilaf Centre.",
-                    "two": "A cook turning plov in one of the giant kazans at Besh Qozon.",
-                    "three": "The turquoise dome of Chorsu bazaar above the market rows of old Tashkent."
-                },
-                "highlights": {
-                    "one": "Plov straight from the kazan at the Central Asian Plov Centre",
-                    "two": "The big bazaars — spices, non bread, dried fruit and melons",
-                    "three": "Which rows sell the sweet fruit, and what it should cost"
-                },
-                "facts": {
-                    "duration": "Half day, 3–4 hours",
-                    "group": "Up to 4 guests",
-                    "vehicle": "Kia Sportage"
-                }
-            },
-            "magic-city": {
-                "title": "Magic City evening",
-                "summary": "The one route that starts after sunset. Magic City is a park built around a lake, with castle architecture that only really works in the dark, when the floodlights and the musical fountains come on. Walking the grounds costs nothing; the rides, the shows and the restaurants are what you pay for, and we will tell you which of them are worth it.",
-                "photo": "Magic City park in Tashkent after sunset: European castle-style pavilions under warm floodlight, their reflection in the lake, illuminated fountains mid-show, a lit promenade, deep blue evening sky, warm grading, no recognisable faces, 16:10 landscape.",
-                "photos": {
-                    "one": "The illuminated castle at Magic City on a summer evening.",
-                    "two": "The Magic City promenade and its balloon landmark under evening lights."
-                },
-                "highlights": {
-                    "one": "Castle architecture and the lake under floodlight after sunset",
-                    "two": "The musical fountain show, worth arriving before dark for",
-                    "three": "Free to walk in, so you only pay for the rides and the restaurants"
-                },
-                "facts": {
-                    "duration": "Evening, 3 to 4 hours",
-                    "group": "Up to 4 guests",
-                    "vehicle": "Kia Sportage"
+                    "vehicle": "Kia Sportage 2024"
                 }
             }
         }
