@@ -5,7 +5,8 @@
     "type": "module",
     "scripts": {
         "dev": "nuxt dev --host",
-        "build": "nuxt build && node scripts/strip-leaked-paths.mjs && node scripts/inline-critical-css.mjs",
+        "//build": "Vercel treats a 200.html at the output root as an SPA fallback and serves it for EVERY unknown path with HTTP 200 — a site-wide soft-404 (Googlebot-Image got HTML back from /favicon.ico, /apple-touch-icon.png and every typo'd URL, all tagged index,follow). The site is fully prerendered and needs no SPA fallback, so the file is dropped and Vercel falls back to the prerendered 404.html, which already sets a real 404 status and noindex,nofollow.",
+        "build": "nuxt build && node -e \"for(const f of ['200.html','200.html.br','200.html.gz'])require('fs').rmSync('.output/public/'+f,{force:true})\" && node scripts/strip-leaked-paths.mjs && node scripts/inline-critical-css.mjs && node scripts/check-seo-assets.mjs",
         "generate": "nuxt generate",
         "preview": "nuxt preview",
         "start": "node .output/server/index.mjs",

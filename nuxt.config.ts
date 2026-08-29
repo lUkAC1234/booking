@@ -101,7 +101,10 @@ export default defineNuxtConfig({
                 ...GA_HEAD_SCRIPTS,
             ],
             link: [
-                { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+                // Google Search does not support SVG favicons (BMP/GIF/ICO/PNG/JPEG/PPM/TIFF only)
+                { rel: "icon", type: "image/png", href: "/favicon.png" },
+                // stops iOS auto-probing /apple-touch-icon.png + -precomposed.png on every visit
+                { rel: "apple-touch-icon", href: "/favicon.png" },
                 {
                     rel: "preload",
                     as: "font",

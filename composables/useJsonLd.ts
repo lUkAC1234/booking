@@ -101,7 +101,8 @@ export const useJsonLd = () => {
     const siteUrl = config.public.siteUrl;
     const brandName = app.brand.name;
     const contact = app.contact;
-    const logoUrl = `${siteUrl}/og-default.jpg`;
+    const logoUrl = `${siteUrl}/favicon.png`;
+    const imageUrl = `${siteUrl}/og-default.png`;
 
     const languageTag = () => (locale.value === "ru" ? "ru-RU" : "en-US");
 
@@ -144,7 +145,7 @@ export const useJsonLd = () => {
             "@id": `${siteUrl}/#localbusiness`,
             name: input.name ?? brandName,
             url: siteUrl,
-            image: logoUrl,
+            image: imageUrl,
             logo: logoUrl,
         };
 

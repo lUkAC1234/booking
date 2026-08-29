@@ -9,12 +9,11 @@ interface SeoInput {
     noindex?: boolean;
 }
 
-const DEFAULT_OG_IMAGE = "/og-default.jpg";
+const DEFAULT_OG_IMAGE = "/og-default.png";
 
 export const useSeo = (input: SeoInput) => {
     const route = useRoute();
     const config = useRuntimeConfig();
-    const { locale } = useI18n();
     const { brand } = useAppConfig();
     const siteUrl = config.public.siteUrl;
 
@@ -57,7 +56,8 @@ export const useSeo = (input: SeoInput) => {
         ogImageHeight: 630,
         ogImageAlt: () => title.value,
         ogUrl: () => canonical.value,
-        ogLocale: () => locale.value,
+        // og:locale intentionally omitted: @nuxtjs/i18n emits it as en_US / ru_RU.
+        // Setting it here overwrote that with the bare locale code ("en"), which is invalid OG.
         ogSiteName: brand.name,
         twitterCard: "summary_large_image",
         twitterTitle: () => title.value,
