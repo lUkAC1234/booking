@@ -64,6 +64,17 @@
             <small class="app-footer__rights">
                 © {{ year }} {{ brandName }}. {{ t("footer.rights") }}.
             </small>
+            <small class="app-footer__credit">
+                {{ t("footer.credit") }}
+                <a
+                    href="https://enzora.uz/"
+                    class="app-footer__credit-link"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Enzora — enzora.uz
+                </a>
+            </small>
             <AppLangSwitcher />
         </AppContainer>
     </footer>
@@ -260,6 +271,7 @@ const year = new Date().getFullYear();
 
     &__bottom {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
         gap: functions.rem(24);
@@ -279,10 +291,37 @@ const year = new Date().getFullYear();
         font-size: functions.rem(14);
     }
 
+    &__credit {
+        color: var(--ink-60);
+        font-size: functions.rem(14);
+    }
+
+    &__credit-link {
+        color: var(--ink);
+        font-weight: var(--font-weight-medium);
+        text-decoration: underline;
+        text-decoration-color: var(--ink-40);
+        text-decoration-thickness: functions.rem(2);
+        text-underline-offset: functions.rem(4);
+        white-space: nowrap;
+        transition: text-decoration-color 220ms var(--ease-decel, cubic-bezier(0.22, 1, 0.36, 1));
+
+        &:hover,
+        &:focus-visible {
+            text-decoration-color: var(--ink);
+        }
+
+        &:focus-visible {
+            outline: functions.rem(2) solid var(--white);
+            outline-offset: functions.rem(2);
+        }
+    }
+
     @include bp.reduced-motion {
         .app-footer__link,
         .app-footer__contact-link,
-        .app-footer__contact-link-chip {
+        .app-footer__contact-link-chip,
+        .app-footer__credit-link {
             transition: none;
         }
     }
